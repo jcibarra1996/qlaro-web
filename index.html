@@ -239,6 +239,13 @@ figure.en-espera .video-control{display:none}
 /* ---------------- Caso real: banda mandarina */
 .caso-banda{background:linear-gradient(135deg,var(--mandarina-light),var(--mandarina) 58%);color:var(--on-mandarina)}
 .caso-wrap{display:grid;gap:var(--s12)}
+@media (min-width:1000px){.caso-wrap{grid-template-columns:7fr 4fr;column-gap:var(--s12);align-items:end}.caso-wrap>.caso-historia,.caso-wrap>.portal{grid-column:1/-1}}
+.caso-cifra{display:grid;gap:var(--s2);align-content:end;padding-left:var(--s6);border-left:3px solid #FFFFFF}
+.cf-antes{font:800 clamp(24px,2.4vw,32px)/1 var(--sans);color:rgba(18,20,24,.55)}
+.cf-antes s{text-decoration-thickness:3px}
+.cf-ahora{font:800 clamp(72px,8vw,120px)/.9 var(--sans);letter-spacing:-.05em;color:#FFFFFF}
+.cf-ahora span{display:block;font-size:.32em;letter-spacing:-.02em;margin-top:6px}
+.cf-que{font:500 12px/16px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#121418;margin-top:var(--s2)}
 .caso-cab{display:grid;gap:var(--s6);max-width:900px}
 .caso-cliente{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s2) var(--s3)}
 .cc-nombre{font:800 18px/24px var(--sans);color:#121418;padding-right:var(--s3);border-right:2px solid rgba(18,20,24,.35)}
@@ -596,10 +603,15 @@ figure.en-espera .video-control{display:none}
         <h2 id="t-caso">Del análisis a la cobranza, cada crédito en un solo portal.</h2>
         <p>Construimos para Savino del Bene México el portal donde Análisis, Dirección y Cobranza trabajan cada solicitud de crédito, con un asistente de IA que responde en lenguaje natural.</p>
       </div>
+      <div class="caso-cifra rev" role="group" aria-label="Tiempo de aprobación de un crédito: antes 2 semanas, ahora 2 días hábiles">
+        <p class="cf-antes"><s>2 semanas</s></p>
+        <p class="cf-ahora">2 días<span>hábiles</span></p>
+        <p class="cf-que">Tiempo de aprobación de un crédito</p>
+      </div>
       <ol class="caso-historia">
         <li class="rev"><span class="ch-paso">El reto</span><b>Tres áreas, una misma solicitud.</b><span>Análisis, Dirección y Cobranza necesitaban trabajar cada crédito sin perder de vista quién tenía qué.</span></li>
         <li class="rev"><span class="ch-paso">Lo que construimos</span><b>Un portal para cada perfil.</b><span>Flujo de autorización de punta a punta y Conty, el asistente con IA del equipo.</span></li>
-        <li class="rev"><span class="ch-paso">El resultado</span><b>Cada crédito con responsable y estatus.</b><span>Las tres áreas ven en qué va cada solicitud. El portal es su herramienta de todos los días.</span></li>
+        <li class="rev"><span class="ch-paso">El resultado</span><b>Aprobaciones en 2 días hábiles.</b><span>Antes tomaban 2 semanas. Hoy las tres áreas ven en qué va cada solicitud.</span></li>
       </ol>
       <figure class="portal rev" aria-label="Recreación del Portal de Crédito con datos de demostración">
         <div class="portal-barra" aria-hidden="true"><i></i><i></i><i></i><span>Portal de Crédito · Dirección</span></div>
