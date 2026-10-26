@@ -3,307 +3,268 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Qlaro · Plataformas con IA para tu área legal</title>
+<title>Qlaro · Lo legal, sin vueltas</title>
 <meta name="description" content="Qlaro construye y opera plataformas con IA para áreas legales: gestión de contratos, intake legal, generación de documentos, expedientes corporativos y tableros.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Qlaro · Que lo legal deje de frenar a tu negocio">
-<meta property="og:description" content="Qlaro construye y opera plataformas con IA para áreas legales: gestión de contratos, intake legal, generación de documentos, expedientes corporativos y tableros.">
+<meta property="og:title" content="Qlaro · Lo legal, sin vueltas">
+<meta property="og:description" content="Plataformas con IA para áreas legales: contratos, solicitudes, documentos y expedientes, con las reglas de tu negocio.">
 <meta property="og:image" content="video/poster.jpg">
 <meta name="theme-color" content="#FF5C00">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@400;600;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&family=Manrope:wght@400;500;700;800&display=swap">
 <style>
-:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 body{margin:0}
 img{max-width:100%}
 [hidden]{display:none!important}
-/* Layout: hero con la q gigante, franja de las cuatro plataformas en el orden en que vive un contrato,
-   una sección por plataforma con su captura real, la IA en una banda Noche y un cierre en mandarina. */
+/* Concepto: la página es un contrato. Secciones como cláusulas (PRIMERA, SEGUNDA...), control de cambios
+   como recurso gráfico (tachado + inserción), comentarios al margen como en Word y un bloque de firmas para contactar.
+   Papel blanco, tinta, mandarina solo donde hay un cambio, una cita o una acción. */
 :root{
-  --surface:#FFFFFF; --raised:#F5F6F8; --line:#E3E5EA; --line-strong:#8A909B;
-  --ink:#121418; --muted:#5B6270;
-  --mandarina:#FF5C00; --mandarina-light:#FFA033; --mandarina-deep:#D64400;
-  --mandarina-text:#B83A00; --mandarina-soft:#FFE7D6; --on-mandarina:#121418;
-  --riesgo:#B4231B; --ok:#2E6B4A; --ok-soft:#E4F1EA; --paper:#FFFFFF; --paper-ink:#1F1F1F;
+  --papel:#FFFFFF; --papel-2:#F5F6F8; --linea:#E3E5EA; --linea-2:#C9CDD4; --tinta:#121418; --tenue:#5B6270;
+  --mandarina:#FF5C00; --mandarina-claro:#FFA033; --mandarina-texto:#B83A00; --marcador:#FFE7D6; --borrado:#B4231B;
+  --noche:#121418; --noche-2:#1C1F25; --noche-linea:#2A2E36; --noche-tinta:#F4F5F7; --noche-tenue:#9AA0AB; --noche-mand:#FF7A26;
   --sans:"Manrope", "Segoe UI", system-ui, sans-serif;
   --mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
-  --r:12px; --max:1200px;
+  --max:1240px; --r:12px;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --surface:#121418; --raised:#1C1F25; --line:#2A2E36; --line-strong:#5E646E;
-  --ink:#F4F5F7; --muted:#9AA0AB; --mandarina-text:#FF7A26; --mandarina-soft:#3A1A08;
-  --riesgo:#FF8A80; --ok:#7FD1A3; --ok-soft:#173326; color-scheme:dark}}
+  --papel:#121418; --papel-2:#1C1F25; --linea:#2A2E36; --linea-2:#3A3F48; --tinta:#F4F5F7; --tenue:#9AA0AB;
+  --mandarina-texto:#FF7A26; --marcador:#3A1A08; --borrado:#FF8A80; color-scheme:dark}}
 :root[data-theme="dark"]{
-  --surface:#121418; --raised:#1C1F25; --line:#2A2E36; --line-strong:#5E646E;
-  --ink:#F4F5F7; --muted:#9AA0AB; --mandarina-text:#FF7A26; --mandarina-soft:#3A1A08;
-  --riesgo:#FF8A80; --ok:#7FD1A3; --ok-soft:#173326; color-scheme:dark}
-/* Banda Noche: siempre oscura, en cualquier tema */
-.noche{
-  --surface:#121418; --raised:#1C1F25; --line:#2A2E36; --line-strong:#5E646E;
-  --ink:#F4F5F7; --muted:#9AA0AB; --mandarina-text:#FF7A26; --mandarina-soft:#3A1A08;
-  --riesgo:#FF8A80; --ok:#7FD1A3; --ok-soft:#173326;
-  background:var(--surface); color:var(--ink); color-scheme:dark}
+  --papel:#121418; --papel-2:#1C1F25; --linea:#2A2E36; --linea-2:#3A3F48; --tinta:#F4F5F7; --tenue:#9AA0AB;
+  --mandarina-texto:#FF7A26; --marcador:#3A1A08; --borrado:#FF8A80; color-scheme:dark}
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
-body{background:var(--surface);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
-a{color:var(--mandarina-text)}
-:focus-visible{outline:2px solid var(--mandarina-text);outline-offset:2px;border-radius:6px}
-h1,h2,h3{font-weight:800;margin:0;text-wrap:balance}
-h1{font-size:clamp(44px,7vw,88px);line-height:1;letter-spacing:-.035em}
-h2{font-size:clamp(34px,4.4vw,54px);line-height:1.05;letter-spacing:-.025em}
-h3{font-size:22px;line-height:1.25;letter-spacing:-.01em;font-weight:600}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+body{background:var(--papel);color:var(--tinta);font-family:var(--sans);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--papel)}
+a{color:var(--mandarina-texto)}
+:focus-visible{outline:2px solid var(--mandarina-texto);outline-offset:3px;border-radius:4px}
+h1,h2,h3{margin:0;font-weight:800;text-wrap:balance;letter-spacing:-.03em}
 p{margin:0}
-.wrap{max-width:var(--max);margin:0 auto;padding-left:max(16px, env(safe-area-inset-left,0px));padding-right:max(16px, env(safe-area-inset-right,0px))}
-@media (min-width:720px){.wrap{padding-left:max(32px, env(safe-area-inset-left,0px));padding-right:max(32px, env(safe-area-inset-right,0px))}}
-.label{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--mandarina-text)}
-.lead{font-size:clamp(18px,2vw,21px);line-height:1.5;color:var(--muted);max-width:56ch}
-.muted{color:var(--muted)}
-.btn{display:inline-flex;align-items:center;gap:10px;font:800 16px var(--sans);text-decoration:none;border-radius:var(--r);padding:14px 22px;border:2px solid transparent;cursor:pointer;transition:transform .15s ease}
+.wrap{max-width:var(--max);margin:0 auto;padding-left:max(20px, env(safe-area-inset-left,0px));padding-right:max(20px, env(safe-area-inset-right,0px))}
+@media (min-width:760px){.wrap{padding-left:max(40px, env(safe-area-inset-left,0px));padding-right:max(40px, env(safe-area-inset-right,0px))}}
+.mono{font-family:var(--mono)}
+.clausula{font:500 13px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mandarina-texto)}
+.clausula b{color:var(--tinta);font-weight:500}
+del{color:var(--borrado);text-decoration:line-through;text-decoration-thickness:.08em}
+ins{text-decoration:underline;text-decoration-color:var(--mandarina);text-decoration-thickness:.08em;text-underline-offset:.12em}
+mark{background:var(--marcador);color:inherit;padding:0 .12em;box-shadow:inset 0 -.12em 0 var(--mandarina)}
+.btn{display:inline-flex;align-items:center;gap:10px;font:800 16px var(--sans);text-decoration:none;border-radius:var(--r);padding:15px 22px;border:2px solid transparent;cursor:pointer;transition:transform .15s ease,background .15s ease}
 .btn:hover{transform:translateY(-1px)}
-.btn-primary{background:var(--mandarina);color:var(--on-mandarina)}
-.btn-ghost{border-color:var(--line-strong);color:var(--ink);background:transparent}
-.logo{display:block;height:32px;width:auto;color:var(--ink)}
+.btn-primario{background:var(--mandarina);color:#121418}
+.btn-linea{border-color:var(--tinta);color:var(--tinta)}
+.flecha{font-family:var(--mono);font-weight:500}
+
+/* ------------------------------------------------ Encabezado */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--papel);border-bottom:1px solid var(--linea)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:68px}
+.logo{display:block;height:30px;width:auto;color:var(--tinta)}
 .logo .q{fill:var(--mandarina)} .logo .w{fill:currentColor}
+.nav ol{display:none;list-style:none;margin:0;padding:0;gap:26px;counter-reset:c}
+.nav ol a{color:var(--tinta);text-decoration:none;font-size:15px;font-weight:500}
+.nav ol a span{font:500 11px var(--mono);color:var(--tenue);margin-right:6px;letter-spacing:.08em}
+.nav ol a:hover{color:var(--mandarina-texto)}
+.nav .btn{padding:10px 16px;font-size:14px}
+@media (min-width:980px){.nav ol{display:flex}}
 
-/* Encabezado */
-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--surface);border-bottom:1px solid var(--line)}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:66px}
-.nav ul{display:none;list-style:none;margin:0;padding:0;gap:26px}
-.nav ul a{color:var(--ink);text-decoration:none;font-weight:600;font-size:15px}
-.nav ul a:hover{color:var(--mandarina-text)}
-.nav .btn{padding:9px 16px;font-size:14px}
-@media (min-width:900px){.nav ul{display:flex}}
-
-/* Hero */
-.hero{display:grid;gap:40px;padding-block:56px 64px}
-.hero-copy{display:flex;flex-direction:column;gap:24px;min-width:0;align-self:center}
-.hero h1 span{display:block;color:var(--mandarina-text)}
-.actions{display:flex;flex-wrap:wrap;gap:12px}
-.hero-art{position:relative;aspect-ratio:1/1;max-width:100%;border-radius:0;overflow:hidden;background:linear-gradient(135deg,var(--mandarina-light) 0%,var(--mandarina) 62%)}
-.hero-win{position:absolute;left:9%;top:11%;width:135%;border:0;animation:sube 1.1s cubic-bezier(.2,.8,.2,1) both}
-.hero-dato{position:absolute;left:20px;bottom:20px;right:20px;display:flex;align-items:baseline;gap:10px;max-width:max-content;background:#121418;color:#F4F5F7;border-radius:var(--r);padding:12px 16px;font-size:15px;line-height:1.3}
-.hero-dato b{font-size:28px;font-weight:800;color:#FF7A26;letter-spacing:-.02em}
-@keyframes sube{from{transform:translateY(7%)}to{transform:none}}
-@media (min-width:960px){.hero{grid-template-columns:1.2fr 1fr;padding-block:80px 88px}.hero-art{aspect-ratio:auto;min-height:540px}}
-
-/* Las cuatro plataformas */
-.suite{border-block:1px solid var(--line);background:var(--raised)}
-.suite-in{padding-block:40px;display:flex;flex-direction:column;gap:24px}
-.suite-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 24px}
-.suite-head p{font-weight:600;font-size:19px}
-.tiles{list-style:none;margin:0;padding:0;display:grid;gap:12px;grid-template-columns:1fr}
-.tile a{display:flex;flex-direction:column;gap:8px;height:100%;padding:22px;border:1px solid var(--line);border-radius:var(--r);background:var(--surface);color:var(--ink);text-decoration:none;transition:border-color .2s,transform .2s}
-.tile a:hover{border-color:var(--mandarina);transform:translateY(-2px)}
-.tile .etapa{font:500 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-.tile b{font-size:21px;letter-spacing:-.01em;line-height:1.2}
-.tile span:last-child{color:var(--muted);font-size:15px;line-height:1.5}
-.tile .ir{margin-top:auto;font:500 13px var(--mono);color:var(--mandarina-text)!important}
-@media (min-width:640px){.tiles{grid-template-columns:1fr 1fr}}
-@media (min-width:1040px){.tiles{grid-template-columns:repeat(4,1fr)}}
-
-/* Bandas */
-section{scroll-margin-top:80px}
-.band{padding-block:96px}
-.band.alt{background:var(--raised)}
-.head{display:flex;flex-direction:column;gap:16px;max-width:780px;margin-bottom:48px}
-
-/* Video */
-.video{display:grid;gap:32px}
-.video video{display:block;width:100%;max-width:100%;aspect-ratio:16/9;background:#121418;border-radius:var(--r)}
-@media (min-width:960px){.video{grid-template-columns:1fr 2fr;align-items:center}}
-
-/* Ventana para las capturas */
-.win{margin:0;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--paper);min-width:0}
-.win-bar{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid #E3E5EA;background:#F5F6F8;font:500 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:#5B6270}
-.win-bar i{width:10px;height:10px;border-radius:50%;background:var(--mandarina);flex:none}
-.win img{display:block;width:100%;height:auto}
-.nota{font:400 13px var(--mono);color:var(--muted);margin-top:10px}
-
-/* Secciones de plataforma */
-.plat{display:grid;gap:40px;align-items:center}
-.plat-copy{display:flex;flex-direction:column;gap:20px;min-width:0}
-.plat-copy .num{font:500 13px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-.puntos{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:0;border-top:1px solid var(--line)}
-.puntos li{display:grid;grid-template-columns:auto 1fr;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
-.puntos li::before{content:"";width:10px;height:10px;margin-top:9px;background:var(--mandarina)}
-.puntos b{display:block;font-weight:600}
-.puntos span{color:var(--muted);font-size:16px}
-@media (min-width:960px){
-  .plat{grid-template-columns:5fr 7fr}
-  .plat.inv{grid-template-columns:7fr 5fr}
-  .plat.inv .plat-copy{order:2}
+/* ------------------------------------------------ Proemio */
+.proemio{padding-block:64px 0}
+.proemio-grid{display:grid;gap:40px}
+.proemio .clausula{margin-bottom:28px}
+.titular{font-size:clamp(54px,10.5vw,148px);line-height:.92;letter-spacing:-.045em}
+.titular span{display:block}
+.titular del{color:var(--tenue);text-decoration:none;position:relative}
+.titular del::after{content:"";position:absolute;left:-.02em;right:-.02em;top:52%;height:.075em;background:var(--borrado);transform-origin:left;animation:tacha .7s .5s cubic-bezier(.6,0,.2,1) both}
+.titular ins{text-decoration:none;position:relative;color:var(--tinta)}
+.titular ins::after{content:"";position:absolute;left:0;right:0;bottom:-.04em;height:.09em;background:var(--mandarina);transform-origin:left;animation:tacha .6s 1.15s cubic-bezier(.6,0,.2,1) both}
+.titular ins em{font-style:normal;animation:entra .5s 1.05s ease both}
+@keyframes tacha{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes entra{from{opacity:.15}to{opacity:1}}
+.proemio-pie{display:grid;gap:28px;margin-top:40px;align-items:start}
+.bajada{font-size:clamp(19px,2vw,22px);line-height:1.5;color:var(--tinta);max-width:40ch}
+.bajada b{font-weight:700}
+.acciones{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.comentario{border:1px solid var(--linea-2);border-radius:var(--r);padding:16px 18px;background:var(--papel);max-width:360px;position:relative}
+.comentario .quien{display:flex;align-items:center;gap:10px;font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--tenue);margin-bottom:8px}
+.comentario .quien i{width:22px;height:22px;border-radius:50%;background:var(--mandarina);display:inline-grid;place-items:center;font:800 12px var(--sans);color:#121418;font-style:normal}
+.comentario p{font-size:16px;line-height:1.45}
+.comentario .resuelto{margin-top:10px;font:500 12px var(--mono);color:var(--tenue)}
+@media (min-width:980px){
+  .proemio-pie{grid-template-columns:1fr 360px;gap:60px}
+  .comentario::before{content:"";position:absolute;right:100%;top:30px;width:60px;border-top:1px dashed var(--linea-2)}
 }
-.duo{display:grid;gap:16px}
-@media (min-width:960px){.duo{grid-template-columns:1fr 1fr}}
+/* Captura del producto que se sale por la derecha */
+.escaparate{position:relative;margin-top:72px;padding-bottom:0}
+.escaparate::before{content:"";position:absolute;left:30%;right:0;top:70px;bottom:0;background:var(--mandarina)}
+.escaparate figure{position:relative;margin:0 6% 0 auto;width:min(1000px,88%);border:1px solid var(--linea);border-radius:var(--r) var(--r) 0 0;overflow:hidden;background:#FFFFFF}
+.escaparate img{display:block;width:100%;height:auto}
+.escaparate figcaption{position:absolute;left:0;bottom:16px;font:500 12px var(--mono);letter-spacing:.06em;color:var(--tenue);max-width:22%;display:none}
+@media (min-width:980px){.escaparate figcaption{display:block}}
 
-/* Reglas de tu negocio */
-.reglas{display:grid;gap:16px;margin-bottom:40px}
-.regla{border:1px solid var(--line);border-radius:var(--r);padding:24px;display:flex;flex-direction:column;gap:10px;background:var(--surface);min-width:0}
-.regla .label{color:var(--muted)}
-.regla.si{border-color:var(--ink)} .regla.si .label{color:var(--ink)}
-.regla.mid .label{color:var(--mandarina-text)}
-.regla.no{border-color:var(--riesgo)} .regla.no .label{color:var(--riesgo)}
-.regla b{font-size:22px;letter-spacing:-.01em;line-height:1.2}
-.regla p{color:var(--muted);font-size:16px}
-.tema{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:16px}
-.pill{font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:999px;background:var(--mandarina-soft);color:var(--mandarina-text)}
-@media (min-width:860px){.reglas{grid-template-columns:repeat(3,1fr)}}
+/* ------------------------------------------------ Cláusulas */
+.seccion{padding-block:110px;border-top:1px solid var(--linea)}
+.seccion.sin-borde{border-top:0}
+.cabeza{display:grid;gap:18px;margin-bottom:56px}
+.cabeza h2{font-size:clamp(38px,5.2vw,68px);line-height:1;max-width:16ch}
+.cabeza p{font-size:20px;line-height:1.5;color:var(--tenue);max-width:52ch}
+@media (min-width:980px){.cabeza{grid-template-columns:260px 1fr;column-gap:40px}.cabeza .clausula{padding-top:14px}.cabeza > :not(.clausula){grid-column:2}}
 
-/* IA */
-.ia .head h2 span{color:var(--mandarina)}
-.verbos{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;margin-bottom:28px;scrollbar-width:thin}
-.verbos button{flex:none;font:800 17px var(--sans);letter-spacing:-.01em;color:var(--ink);background:transparent;border:2px solid var(--line-strong);border-radius:var(--r);padding:10px 18px;cursor:pointer;transition:background .2s,border-color .2s}
-.verbos button:hover{border-color:var(--mandarina)}
-.verbos button[aria-selected="true"]{background:var(--mandarina);border-color:var(--mandarina);color:#121418}
-.panel{display:grid;gap:32px;align-items:center}
-.panel-copy{display:flex;flex-direction:column;gap:14px;min-width:0}
-.panel-copy h3{font-size:clamp(28px,3.2vw,40px);font-weight:800;letter-spacing:-.025em;line-height:1.1}
-.panel-copy p{color:var(--muted);font-size:18px;max-width:46ch}
-.panel-copy .donde{font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.panel-copy .donde b{color:var(--mandarina-text);font-weight:500}
+/* PRIMERA: el problema como control de cambios */
+.cambios{list-style:none;margin:0;padding:0;border-top:2px solid var(--tinta)}
+.cambios li{display:grid;gap:6px 40px;padding:26px 0;border-bottom:1px solid var(--linea);align-items:baseline}
+.cambios .n{font:500 13px var(--mono);color:var(--tenue)}
+.cambios del{font-size:clamp(20px,2.2vw,26px);font-weight:500;color:var(--tenue);text-decoration-color:var(--borrado)}
+.cambios ins{font-size:clamp(20px,2.2vw,26px);font-weight:800;text-decoration-color:var(--mandarina)}
+@media (min-width:980px){.cambios li{grid-template-columns:260px 1fr 1fr}}
+
+/* SEGUNDA: la IA (banda noche) */
+.noche{background:var(--noche);color:var(--noche-tinta);border-top:0;
+  --tinta:#F4F5F7; --tenue:#9AA0AB; --linea:#2A2E36; --linea-2:#3A3F48; --mandarina-texto:#FF7A26; --papel:#121418; --papel-2:#1C1F25; --marcador:#3A1A08; --borrado:#FF8A80; color-scheme:dark}
+.reglas{display:grid;border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);margin-bottom:80px}
+.reglas > div{padding:26px 0;display:grid;gap:6px;border-bottom:1px solid var(--linea)}
+.reglas > div:last-child{border-bottom:0}
+.reglas .t{font:500 12px var(--mono);letter-spacing:.12em;text-transform:uppercase}
+.reglas .si .t{color:var(--tinta)} .reglas .acepta .t{color:var(--noche-mand)} .reglas .no .t{color:#FF8A80}
+.reglas b{font-size:clamp(24px,2.6vw,32px);font-weight:800;letter-spacing:-.02em;line-height:1.15}
+.reglas span{color:var(--tenue);font-size:16px}
+.reglas-tema{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:baseline;margin-bottom:18px}
+.reglas-tema b{font-size:20px}
+.reglas-tema span{font:500 12px var(--mono);color:var(--tenue);letter-spacing:.06em}
+@media (min-width:980px){.reglas{grid-template-columns:repeat(3,1fr)}.reglas > div{border-bottom:0;padding:30px 28px 30px 0}.reglas > div + div{border-left:1px solid var(--linea);padding-left:28px}}
+.verbos{display:flex;flex-wrap:wrap;gap:4px 22px;margin:0 0 40px;padding:0;list-style:none}
+.verbos button{font:800 clamp(28px,3.6vw,46px)/1.1 var(--sans);letter-spacing:-.03em;background:none;border:0;padding:0;color:var(--noche-linea);cursor:pointer;transition:color .2s}
+.verbos button:hover{color:var(--tenue)}
+.verbos button[aria-selected="true"]{color:var(--noche-mand)}
+.verbos li:not(:last-child)::after{content:"·";color:var(--noche-linea);font-size:clamp(28px,3.6vw,46px);font-weight:800;margin-left:22px}
+.verbos li{display:flex;align-items:baseline}
+.panel{display:grid;gap:36px;align-items:start}
 .panel[hidden]{display:none}
-@media (min-width:960px){.panel{grid-template-columns:5fr 7fr}}
-.ia-pie{margin-top:56px;padding-top:28px;border-top:1px solid var(--line);display:grid;gap:20px}
-.ia-pie p{font-size:clamp(22px,2.6vw,30px);font-weight:800;letter-spacing:-.02em;line-height:1.2}
-.ia-pie p span{color:var(--muted)}
-@media (min-width:860px){.ia-pie{grid-template-columns:repeat(3,1fr);gap:32px}}
+.panel-texto h3{font-size:clamp(26px,2.8vw,36px);line-height:1.1;margin-bottom:14px}
+.panel-texto p{color:var(--tenue);font-size:18px;max-width:44ch}
+@media (min-width:980px){.panel{grid-template-columns:5fr 7fr;gap:56px}}
+.marco{margin:0;border:1px solid var(--linea);border-radius:var(--r);overflow:hidden;background:#FFFFFF}
+.marco img{display:block;width:100%;height:auto}
+/* Hoja de documento para las maquetas */
+.hoja{background:#FFFFFF;color:#1F1F1F;border-radius:var(--r);border:1px solid var(--linea);padding:30px;display:grid;gap:18px}
+.hoja .rotulo{font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#5B6270;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.hoja .rotulo b{font-weight:500;color:#8E1B14;background:#FBE3E1;border-radius:999px;padding:2px 10px}
+.hoja .texto{font-size:17px;line-height:1.7}
+.hoja .texto del{color:#B4231B} .hoja .texto ins{text-decoration-color:#FF5C00;color:#121418}
+.hoja mark{background:#FFE7D6;box-shadow:inset 0 -.12em 0 #FF5C00}
+.hoja .nota{border-left:0;background:#F5F6F8;border-radius:8px;padding:14px 16px;font-size:15px;color:#121418}
+.hoja .nota span{display:block;font:500 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#B83A00;margin-bottom:4px}
+.hoja .ok{font:500 12px var(--mono);color:#121418}
+.cierre-ia{margin-top:80px;display:grid;gap:24px;border-top:1px solid var(--linea);padding-top:34px}
+.cierre-ia p{font-size:clamp(22px,2.4vw,28px);font-weight:800;letter-spacing:-.02em;line-height:1.2}
+.cierre-ia p span{color:var(--tenue);font-weight:500}
+@media (min-width:980px){.cierre-ia{grid-template-columns:repeat(3,1fr)}}
 
-/* Maquetas en HTML (papel claro siempre, como un documento) */
-.doc{background:var(--paper);color:var(--paper-ink);border-radius:var(--r);border:1px solid var(--line);overflow:hidden}
-.doc-in{padding:28px;display:flex;flex-direction:column;gap:16px}
-.doc .titulo{font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#5B6270}
-.doc .clausula{font-family:var(--sans);font-size:17px;line-height:1.7;color:#1F1F1F}
-.doc mark{background:#FFE7D6;color:#1F1F1F;padding:1px 2px;box-shadow:inset 0 -2px 0 #FF5C00}
-.doc del{color:#B4231B;text-decoration-thickness:2px}
-.doc ins{color:#2E6B4A;text-decoration:underline;text-decoration-thickness:2px}
-.chip{display:inline-flex;align-items:center;gap:8px;font:500 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:6px 10px;border-radius:999px}
-.chip.alto{background:#FBE3E1;color:#8E1B14}
-.chip.ok{background:#ECEEF2;color:#121418}
-.globo{border-left:3px solid #FF5C00;background:#F5F6F8;padding:14px 16px;border-radius:0 8px 8px 0;font-size:15px;color:#121418}
-.globo b{display:block;font-size:13px;font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase;color:#B83A00;margin-bottom:4px;font-weight:500}
-.resumen{background:#FFE7D6;border-radius:10px;padding:20px;font-size:16px;line-height:1.6;color:#121418}
-.resumen b{display:block;font:500 12px var(--mono);letter-spacing:.08em;color:#B83A00;margin-bottom:6px}
-.sugerencia{border:1px dashed #8A909B;border-radius:10px;padding:18px;display:flex;flex-direction:column;gap:10px}
-.sugerencia .fila{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between}
-.mini-btn{font:800 14px var(--sans);background:#FF5C00;color:#121418;border-radius:10px;padding:8px 14px}
+/* TERCERA: plataformas como índice */
+.indice{display:grid;gap:40px}
+.indice ol{list-style:none;margin:0;padding:0;border-top:2px solid var(--tinta)}
+.indice li{border-bottom:1px solid var(--linea)}
+.indice a{display:grid;grid-template-columns:52px 1fr auto;gap:4px 16px;align-items:baseline;padding:22px 0;text-decoration:none;color:var(--tinta)}
+.indice .n{font:500 13px var(--mono);color:var(--tenue)}
+.indice .nombre{font-size:clamp(22px,2.4vw,30px);font-weight:800;letter-spacing:-.02em;line-height:1.15}
+.indice .desc{grid-column:2/4;color:var(--tenue);font-size:16px;max-width:52ch}
+.indice .ir{font:500 13px var(--mono);color:var(--tenue);transition:transform .2s,color .2s}
+.indice a:hover .nombre,.indice a[aria-current="true"] .nombre{color:var(--mandarina-texto)}
+.indice a:hover .ir,.indice a[aria-current="true"] .ir{color:var(--mandarina-texto);transform:translateX(4px)}
+.indice .mini{display:block;margin-top:14px;grid-column:1/-1;border:1px solid var(--linea);border-radius:8px;overflow:hidden}
+.indice .mini img{display:block;width:100%;height:auto}
+.vista{display:none}
+@media (min-width:980px){
+  .indice{grid-template-columns:5fr 6fr;gap:60px;align-items:start}
+  .indice .mini{display:none}
+  .vista{display:block;position:sticky;top:110px}
+  .vista figure{margin:0;border:1px solid var(--linea);border-radius:var(--r);overflow:hidden;background:#FFFFFF}
+  .vista img{display:block;width:100%;height:auto;aspect-ratio:16/11;object-fit:cover;object-position:left top}
+  .vista figcaption{font:500 12px var(--mono);color:var(--tenue);padding-top:12px;letter-spacing:.04em}
+}
+.medida{margin-top:28px;display:flex;flex-wrap:wrap;gap:12px 24px;align-items:baseline}
+.medida b{font-size:20px}
+.nota-pie{font:400 13px var(--mono);color:var(--tenue);margin-top:18px}
 
-/* Después de la firma */
-.despues{display:grid;gap:20px}
-.despues article{display:flex;flex-direction:column;gap:14px;min-width:0}
-.despues h3{font-size:24px;font-weight:800;letter-spacing:-.015em}
-.despues p{color:var(--muted);font-size:16px}
-@media (min-width:960px){.despues{grid-template-columns:repeat(3,1fr);gap:28px}}
+/* CUARTA: demo */
+.demo{display:grid;gap:36px}
+.demo video{display:block;width:100%;max-width:100%;aspect-ratio:16/9;border-radius:var(--r);background:#121418}
+.incluye{font-size:17px;color:var(--tenue);line-height:1.8}
+.incluye b{color:var(--tinta);font-weight:700}
 
-/* Método */
-.pasos{list-style:none;margin:0;padding:0;display:grid;gap:14px}
-.paso{border:2px solid var(--line-strong);border-radius:var(--r);padding:26px;display:flex;flex-direction:column;gap:10px;min-width:0;transition:background .2s,border-color .2s,color .2s}
-.paso .label{color:inherit}
-.paso h3{font-size:24px;font-weight:800}
-.paso p{color:var(--muted);font-size:16px}
-.paso.on{background:var(--mandarina);border-color:var(--mandarina);color:var(--on-mandarina)}
-.paso.on p{color:var(--on-mandarina)}
-@media (min-width:960px){.pasos{grid-template-columns:repeat(4,1fr)}}
+/* QUINTA: seguridad */
+.fracciones{list-style:none;margin:0;padding:0;display:grid;border-top:2px solid var(--tinta)}
+.fracciones li{display:grid;grid-template-columns:56px 1fr;gap:4px 12px;padding:24px 0;border-bottom:1px solid var(--linea)}
+.fracciones .n{font:500 14px var(--mono);color:var(--mandarina-texto);grid-row:span 2;padding-top:4px}
+.fracciones b{font-size:20px;font-weight:800;letter-spacing:-.01em}
+.fracciones span{color:var(--tenue);font-size:16px;max-width:48ch}
+@media (min-width:980px){.fracciones{grid-template-columns:1fr 1fr;column-gap:60px}}
 
-/* Para quién */
-.quien{display:grid;border-top:2px solid var(--ink)}
-.quien > div{display:grid;gap:6px;padding:24px 0;border-bottom:1px solid var(--line);min-width:0}
-.quien h3{font-size:24px;font-weight:800}
-.quien p{color:var(--muted);max-width:64ch}
-.quien .usa{font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--mandarina-text)}
-@media (min-width:900px){.quien > div{grid-template-columns:260px 1fr;gap:4px 32px;align-items:baseline}.quien .usa{grid-column:2}}
+/* SEXTA: método */
+.metodo{list-style:none;margin:0;padding:0;display:grid;gap:0;border-top:2px solid var(--tinta)}
+.metodo li{display:grid;gap:8px;padding:28px 0;border-bottom:1px solid var(--linea)}
+.metodo .num{font-size:clamp(56px,6vw,88px);font-weight:800;letter-spacing:-.05em;line-height:.9;color:var(--linea-2)}
+.metodo li:first-child .num{color:var(--mandarina)}
+.metodo h3{font-size:24px;letter-spacing:-.02em}
+.metodo p{color:var(--tenue);font-size:16px}
+.metodo .recibes{font:500 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--tinta);margin-top:6px}
+.metodo .recibes span{color:var(--mandarina-texto)}
+@media (min-width:980px){.metodo{grid-template-columns:repeat(4,1fr);column-gap:32px}.metodo li{border-bottom:0;padding-right:8px}}
 
-/* Preguntas */
-.faq{display:grid;gap:0;border-top:1px solid var(--line);max-width:860px}
-.faq details{border-bottom:1px solid var(--line)}
-.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;padding:22px 0;font-weight:600;font-size:19px}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"+";font:500 22px var(--mono);color:var(--mandarina-text);line-height:1}
-.faq details[open] summary::after{content:"−"}
-.faq details p{padding:0 0 22px;color:var(--muted);max-width:66ch}
+/* SÉPTIMA: quién está detrás */
+.detras{display:grid;gap:40px}
+.detras .relato p{max-width:60ch;margin-bottom:16px}
+.cita-grande{margin:0;font-size:clamp(30px,3.8vw,50px);font-weight:800;letter-spacing:-.03em;line-height:1.08}
+.cita-grande cite{display:block;margin-top:18px;font:500 13px var(--mono);font-style:normal;letter-spacing:.1em;text-transform:uppercase;color:var(--mandarina-texto)}
+@media (min-width:980px){.detras{grid-template-columns:6fr 5fr;gap:80px;align-items:start}}
 
-/* Cierre */
-.cta{background:linear-gradient(135deg,var(--mandarina-light) 0%,var(--mandarina) 55%);color:#121418;position:relative;overflow:hidden}
-.cta-in{display:grid;gap:40px;padding-block:96px;position:relative;z-index:1}
-.cta-copy{display:flex;flex-direction:column;gap:20px;min-width:0}
-@media (min-width:960px){.cta-in{grid-template-columns:1fr 1.15fr;align-items:start}}
-.pedido{background:#FFFFFF;color:#121418;border-radius:var(--r);padding:24px;display:flex;flex-direction:column;gap:16px;min-width:0}
-.campos{display:grid;gap:14px}
-@media (min-width:640px){.campos{grid-template-columns:1fr 1fr}.campos .ancho{grid-column:1/-1}}
-.pedido label{display:flex;flex-direction:column;gap:6px;font-weight:600;font-size:14px;min-width:0}
-.pedido input,.pedido select,.pedido textarea{font:400 16px var(--sans);color:#121418;background:#FFFFFF;border:1px solid #8A909B;border-radius:var(--r);padding:11px 12px;width:100%}
-.pedido textarea{resize:vertical}
-.pedido .btn{align-self:flex-start}
-.pedido .error{font-size:14px;color:#B4231B;min-height:0}
-.pedido .error:empty{display:none}
+/* OCTAVA: dudas */
+.dudas{border-top:2px solid var(--tinta);max-width:900px}
+.dudas details{border-bottom:1px solid var(--linea)}
+.dudas summary{cursor:pointer;list-style:none;display:grid;grid-template-columns:52px 1fr auto;gap:12px;padding:22px 0;font-size:19px;font-weight:700;align-items:baseline}
+.dudas summary::-webkit-details-marker{display:none}
+.dudas summary .n{font:500 13px var(--mono);color:var(--tenue)}
+.dudas summary::after{content:"+";font:500 22px var(--mono);color:var(--mandarina-texto);line-height:1}
+.dudas details[open] summary::after{content:"−"}
+.dudas details p{padding:0 0 24px 64px;color:var(--tenue);max-width:68ch}
+
+/* Firmas */
+.firmas{background:var(--mandarina);color:#121418;position:relative;overflow:hidden;border-top:0}
+.firmas .clausula,.firmas .clausula b{color:#121418}
+.firmas h2{font-size:clamp(42px,6vw,84px);line-height:.95;color:#FFFFFF;max-width:11ch}
+.firmas .lado p{font-size:19px;max-width:40ch;margin-top:22px}
+.firmas-grid{display:grid;gap:48px;position:relative;z-index:1}
+@media (min-width:980px){.firmas-grid{grid-template-columns:5fr 6fr;gap:80px;align-items:start}.firmas .lado{padding-bottom:300px}}
+.bigq{position:absolute;left:-3%;bottom:-210px;width:min(400px,60vw);height:auto;z-index:0}
+@media (max-width:979px){.bigq{display:none}}
+.bloque{background:#FFFFFF;color:#121418;border-radius:var(--r);padding:32px;display:grid;gap:26px}
+.bloque .encabezado{font:500 12px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#5B6270;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.renglones{display:grid;gap:26px}
+@media (min-width:640px){.renglones{grid-template-columns:1fr 1fr}.renglones .ancho{grid-column:1/-1}}
+.renglon{display:flex;flex-direction:column-reverse;gap:6px;min-width:0}
+.renglon span{font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#5B6270}
+.renglon input,.renglon select,.renglon textarea{font:500 18px var(--sans);color:#121418;background:transparent;border:0;border-bottom:1.5px solid #121418;border-radius:0;padding:8px 0;width:100%;outline:none}
+.renglon textarea{resize:vertical;min-height:72px;font-size:16px}
+.renglon input:focus,.renglon select:focus,.renglon textarea:focus{border-bottom-color:#FF5C00;box-shadow:0 2px 0 #FF5C00}
+.bloque .btn{justify-self:start;background:#121418;color:#FFFFFF}
+.error{font-size:14px;color:#B4231B}
+.error:empty{display:none}
 .listo[hidden]{display:none}
-.listo{display:flex;flex-direction:column;gap:12px;border-top:1px solid #E3E5EA;padding-top:16px}
-.listo .label{color:#B83A00}
-.listo pre{margin:0;white-space:pre-wrap;overflow-wrap:anywhere;font:400 14px/1.6 var(--mono);background:#F5F6F8;border-radius:10px;padding:14px;max-height:260px;overflow:auto}
-.listo .mail span{font-size:15px}
-.listo .mail code{background:#F5F6F8}
-.btn-correo{display:inline-flex;align-items:center;font:800 15px var(--sans);background:#FF5C00;color:#121418;border-radius:var(--r);padding:13px 18px;text-decoration:none}
-.cta .label{color:#121418}
-.cta h2{font-size:clamp(40px,6vw,76px);color:#FFFFFF;max-width:11ch;letter-spacing:-.035em}
-.cta p{font-size:19px;max-width:52ch}
-.mail{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
-.mail code{font:400 18px var(--mono);background:rgba(255,255,255,.9);color:#121418;padding:12px 16px;border-radius:var(--r);user-select:all;overflow-wrap:anywhere}
-.mail button{font:800 15px var(--sans);background:#121418;color:#FFFFFF;border:0;border-radius:var(--r);padding:13px 18px;cursor:pointer}
-.ok{font:400 14px var(--mono);color:#121418}
-.cta .bigq{position:absolute;left:-4%;bottom:-46%;width:min(420px,62vw);height:auto;z-index:0}
-#t-contratos{font-size:clamp(30px,3.4vw,42px)}
-@media (max-width:719px){.cta .bigq{opacity:.3}}
+.listo{display:grid;gap:14px;border-top:1px dashed #C9CDD4;padding-top:20px}
+.listo pre{margin:0;white-space:pre-wrap;overflow-wrap:anywhere;font:400 14px/1.6 var(--mono);background:#F5F6F8;border-radius:8px;padding:14px;max-height:240px;overflow:auto}
+.listo .fila{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.listo button,.listo a{font:800 15px var(--sans);border-radius:var(--r);padding:12px 16px;cursor:pointer;text-decoration:none;border:2px solid #121418;background:#FFFFFF;color:#121418}
+.listo a{background:#FF5C00;border-color:#FF5C00}
+.listo code{font:500 15px var(--mono);user-select:all}
+.estado{font:500 13px var(--mono);color:#121418}
 
-footer{padding-block:40px;border-top:1px solid var(--line)}
-.foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;color:var(--muted);font-size:14px}
-.foot .logo{height:26px}
-
-/* Catálogo de plataformas */
-.catalogo{list-style:none;margin:0;padding:0;display:grid;gap:16px;grid-template-columns:1fr}
-.prod{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:var(--r);background:var(--surface);overflow:hidden;min-width:0;transition:border-color .2s,transform .2s}
-.prod:hover{border-color:var(--mandarina);transform:translateY(-2px)}
-.thumb{aspect-ratio:16/9;max-width:100%;overflow:hidden;background:#FFFFFF;border-bottom:1px solid var(--line)}
-.thumb img{display:block;width:100%;height:100%;object-fit:cover;object-position:left top}
-.prod-in{display:flex;flex-direction:column;gap:8px;padding:22px;flex:1}
-.prod .cat{font:500 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mandarina-text)}
-.prod h3{font-size:22px;font-weight:800;letter-spacing:-.015em}
-.prod p:not(.cat){color:var(--muted);font-size:16px;line-height:1.5}
-.prod .ver{margin-top:auto;padding-top:6px;font:500 13px var(--mono)}
-.prod.medida{background:linear-gradient(135deg,var(--mandarina-light) 0%,var(--mandarina) 60%);border-color:transparent;position:relative}
-.prod.medida .prod-in{justify-content:flex-end;gap:12px;padding:28px;min-height:280px}
-.prod.medida .cat{color:#121418}
-.prod.medida h3{color:#FFFFFF;font-size:clamp(28px,3vw,34px);letter-spacing:-.025em;line-height:1.1}
-.prod.medida p:not(.cat){color:#121418;font-size:17px}
-.btn-dark{background:#121418;color:#FFFFFF;align-self:flex-start;margin-top:6px}
-@media (min-width:640px){.catalogo{grid-template-columns:1fr 1fr}}
-@media (min-width:1040px){.catalogo{grid-template-columns:repeat(3,1fr)}}
-/* Seguridad */
-.seguro{list-style:none;margin:0;padding:0;display:grid;gap:0;border-top:1px solid var(--line)}
-.seguro li{display:flex;flex-direction:column;gap:6px;padding:24px 0;border-bottom:1px solid var(--line);min-width:0}
-.seguro b{font-size:21px;font-weight:800;letter-spacing:-.01em}
-.seguro span{color:var(--muted);font-size:16px;max-width:52ch}
-@media (min-width:860px){.seguro{grid-template-columns:repeat(3,1fr);column-gap:40px}}
-/* Nosotros */
-.about{display:grid;gap:40px}
-.story{display:flex;flex-direction:column;gap:18px;min-width:0}
-.story p:not(.label){max-width:62ch}
-.quote{margin:0;background:var(--mandarina-soft);border-radius:var(--r);padding:32px;display:flex;flex-direction:column;gap:18px;align-self:start}
-.quote p{font-weight:800;font-size:clamp(22px,2.6vw,28px);line-height:1.2;letter-spacing:-.01em}
-.quote cite{font-style:normal;font:500 13px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--mandarina-text)}
-@media (min-width:900px){.about{grid-template-columns:1.2fr 1fr}}
-@media (min-width:860px){.base{grid-template-columns:repeat(3,1fr);column-gap:40px}}
-/* Caso: lo que incluye */
-.incluye{list-style:none;margin:48px 0 0;padding:0;display:grid;gap:0;grid-template-columns:1fr;border-top:1px solid var(--line)}
-.incluye li{display:flex;flex-direction:column;gap:4px;padding:18px 0;border-bottom:1px solid var(--line);min-width:0}
-.incluye b{font-weight:800;font-size:18px}
-.incluye span{color:var(--muted);font-size:15px}
-@media (min-width:640px){.incluye{grid-template-columns:1fr 1fr;column-gap:32px}}
-@media (min-width:1040px){.incluye{grid-template-columns:repeat(6,1fr);column-gap:24px}}
-@media (min-width:900px){.quien{grid-template-columns:1fr}}
+footer{padding-block:44px;border-top:1px solid var(--linea)}
+.pie{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;color:var(--tenue);font-size:14px}
+.pie .logo{height:26px}
 </style>
 </head>
 <body>
@@ -318,137 +279,125 @@ footer{padding-block:40px;border-top:1px solid var(--line)}
 
 <header>
   <nav class="wrap nav" aria-label="Principal">
-    <a href="#inicio" aria-label="Qlaro, inicio"><svg class="logo" viewBox="0 0 371.7 152.2" role="img" aria-label="Qlaro"><use href="#lockup"/></svg></a>
-    <ul>
-      <li><a href="#ia">IA</a></li>
-      <li><a href="#plataformas">Plataformas</a></li>
-      <li><a href="#contratos">Demo</a></li>
-      <li><a href="#seguridad">Seguridad</a></li>
-      <li><a href="#nosotros">Nosotros</a></li>
-    </ul>
-    <a class="btn btn-primary" href="#contacto">Agenda un diagnóstico</a>
+    <a href="#proemio" aria-label="Qlaro, inicio"><svg class="logo" viewBox="0 0 371.7 152.2" role="img" aria-label="Qlaro"><use href="#lockup"/></svg></a>
+    <ol>
+      <li><a href="#ia"><span>II</span>La IA</a></li>
+      <li><a href="#plataformas"><span>III</span>Plataformas</a></li>
+      <li><a href="#demo"><span>IV</span>Demo</a></li>
+      <li><a href="#seguridad"><span>V</span>Seguridad</a></li>
+      <li><a href="#metodo"><span>VI</span>Método</a></li>
+    </ol>
+    <a class="btn btn-primario" href="#firmas">Agenda un diagnóstico</a>
   </nav>
 </header>
 
-<main id="inicio">
-  <div class="wrap hero">
-    <div class="hero-copy">
-      <h1>Que lo legal deje de frenar <span>a tu negocio.</span></h1>
-      <p class="lead">Construimos y operamos plataformas con IA para áreas legales: contratos, solicitudes, documentos, expedientes y métricas. Cada una trabaja con las reglas de tu negocio y te dice de dónde sale cada respuesta.</p>
-      <div class="actions">
-        <a class="btn btn-primary" href="#contacto">Agenda un diagnóstico</a>
-        <a class="btn btn-ghost" href="#contratos">Ver la demo</a>
-      </div>
-    </div>
-    <div class="hero-art" aria-hidden="true">
-      <figure class="win hero-win"><div class="win-bar"><i></i>Contrato de suministro · Análisis IA</div><img src="img/revision.jpg" alt=""></figure>
-      <p class="hero-dato"><b>7</b> hallazgos de riesgo alto, cada uno con su cita</p>
-    </div>
-  </div>
-
-  <section class="band noche ia" id="ia" aria-labelledby="t-ia">
+<main id="proemio">
+  <section class="proemio">
     <div class="wrap">
-      <div class="head">
-        <p class="label">Nuestro diferenciador</p>
-        <h2 id="t-ia">Una IA que trabaja <span>con tus reglas.</span></h2>
-        <p class="lead">Tu empresa ya tiene reglas para negociar: por cada tema, lo que prefiere, lo que acepta y lo que nunca acepta. Las escribes una vez y nuestra IA las aplica en cada documento, en minutos.</p>
+      <p class="clausula">Proemio · <b>Plataformas con IA para áreas legales</b></p>
+      <h1 class="titular" aria-label="Lo legal, sin vueltas.">
+        <span aria-hidden="true">Lo legal,</span>
+        <span aria-hidden="true"><del>con vueltas.</del></span>
+        <span aria-hidden="true"><ins><em>sin vueltas.</em></ins></span>
+      </h1>
+      <div class="proemio-pie">
+        <div>
+          <p class="bajada">Construimos y operamos <b>plataformas con IA para tu área legal</b>: contratos, solicitudes, documentos y expedientes. Cada una lee con las reglas de tu negocio y cita de dónde sale cada respuesta.</p>
+          <div class="acciones">
+            <a class="btn btn-primario" href="#firmas">Agenda un diagnóstico</a>
+            <a class="btn btn-linea" href="#demo">Ver la demo <span class="flecha">→</span></a>
+          </div>
+        </div>
+        <aside class="comentario" aria-label="Comentario de ejemplo">
+          <p class="quien"><i>q</i>Comentario · Qlaro</p>
+          <p>Sugerimos eliminar «con vueltas». Lo demás lo decide tu equipo.</p>
+          <p class="resuelto">Cambio aceptado</p>
+        </aside>
       </div>
-      <div class="tema"><span class="pill">Ejemplo</span><b style="font-size:19px">Tema: intereses moratorios</b></div>
-      <div class="reglas">
-        <div class="regla si"><p class="label">Lo que prefieres</p><b>Sin intereses.</b><p>Si la contraparte los exige, que sean recíprocos para ambas partes.</p></div>
-        <div class="regla mid"><p class="label">Lo que aceptas</p><b>Hasta 1.5% mensual.</b><p>Recíprocos, sobre saldos insolutos y después de un periodo de gracia.</p></div>
-        <div class="regla no"><p class="label">Lo que nunca aceptas</p><b>Solo a tu cargo.</b><p>Ni tasas superiores al 2% mensual ni intereses sin requerimiento previo.</p></div>
-      </div>
-      <p class="nota" style="margin:-24px 0 48px">Los porcentajes son un ejemplo, no una recomendación legal.</p>
+    </div>
+    <div class="escaparate">
+      <figure>
+        <img src="img/revision.jpg" alt="Contrato de suministro abierto en la plataforma junto al análisis de la IA: resumen para el negocio y hallazgos por nivel de riesgo." width="1600" height="1185">
+      </figure>
+      <figcaption class="wrap">Captura real · datos de demostración</figcaption>
+    </div>
+  </section>
 
-      <div class="verbos" role="tablist" aria-label="Lo que hace la IA">
-        <button role="tab" id="tab-lee" aria-controls="p-lee" aria-selected="true">Lee</button>
-        <button role="tab" id="tab-cita" aria-controls="p-cita" aria-selected="false" tabindex="-1">Cita</button>
-        <button role="tab" id="tab-propone" aria-controls="p-propone" aria-selected="false" tabindex="-1">Propone</button>
-        <button role="tab" id="tab-explica" aria-controls="p-explica" aria-selected="false" tabindex="-1">Explica</button>
-        <button role="tab" id="tab-verifica" aria-controls="p-verifica" aria-selected="false" tabindex="-1">Verifica</button>
-        <button role="tab" id="tab-llena" aria-controls="p-llena" aria-selected="false" tabindex="-1">Llena</button>
-        <button role="tab" id="tab-sugiere" aria-controls="p-sugiere" aria-selected="false" tabindex="-1">Sugiere</button>
+  <section class="seccion sin-borde" id="problema" aria-labelledby="t-problema">
+    <div class="wrap">
+      <div class="cabeza">
+        <p class="clausula">Primera · <b>Del problema</b></p>
+        <h2 id="t-problema">¿Cómo va mi contrato?</h2>
+        <p>La pregunta que el negocio le hace a legal todos los días. Si hace falta preguntarla, el proceso no se ve. Esto es lo que cambiamos.</p>
       </div>
+      <ol class="cambios">
+        <li><span class="n">1.1</span><del>Contratos perdidos en la bandeja de correo</del><ins>Una sola puerta y estatus visible para quien pidió</ins></li>
+        <li><span class="n">1.2</span><del>Tres versiones del mismo documento</del><ins>Una versión vigente, con su historial</ins></li>
+        <li><span class="n">1.3</span><del>Avisos de no renovación que nadie agenda</del><ins>Vencimientos con fecha, área y aviso</ins></li>
+        <li><span class="n">1.4</span><del>Reportes armados a mano para la junta</del><ins>Un tablero con tiempos, volumen y riesgo</ins></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="seccion noche" id="ia" aria-labelledby="t-ia">
+    <div class="wrap">
+      <div class="cabeza">
+        <p class="clausula">Segunda · <b>De la IA</b></p>
+        <h2 id="t-ia">Una IA que trabaja con las reglas de tu negocio.</h2>
+        <p>Tu empresa ya sabe qué prefiere, qué acepta y qué nunca acepta. Lo escribes una vez por tema y la IA lo aplica a cada documento, en minutos.</p>
+      </div>
+      <div class="reglas-tema"><b>Intereses moratorios</b><span>EJEMPLO · NO ES UNA RECOMENDACIÓN LEGAL</span></div>
+      <div class="reglas">
+        <div class="si"><p class="t">Lo que prefieres</p><b>Sin intereses.</b><span>Si la contraparte los exige, que sean recíprocos.</span></div>
+        <div class="acepta"><p class="t">Lo que aceptas</p><b>Hasta 1.5% mensual.</b><span>Recíprocos, sobre saldos insolutos y con periodo de gracia.</span></div>
+        <div class="no"><p class="t">Lo que nunca aceptas</p><b>Solo a tu cargo.</b><span>Ni tasas superiores al 2% mensual ni sin requerimiento previo.</span></div>
+      </div>
+
+      <ul class="verbos" role="tablist" aria-label="Lo que hace la IA">
+        <li><button role="tab" id="tab-lee" aria-controls="p-lee" aria-selected="true">Lee</button></li>
+        <li><button role="tab" id="tab-cita" aria-controls="p-cita" aria-selected="false" tabindex="-1">Cita</button></li>
+        <li><button role="tab" id="tab-propone" aria-controls="p-propone" aria-selected="false" tabindex="-1">Propone</button></li>
+        <li><button role="tab" id="tab-verifica" aria-controls="p-verifica" aria-selected="false" tabindex="-1">Verifica</button></li>
+        <li><button role="tab" id="tab-explica" aria-controls="p-explica" aria-selected="false" tabindex="-1">Explica</button></li>
+      </ul>
 
       <div class="panel" role="tabpanel" id="p-lee" aria-labelledby="tab-lee">
-        <div class="panel-copy">
-          <h3>Lee el documento completo y lo compara con tus reglas.</h3>
-          <p>Cada cláusula que se aparta de lo que tu empresa acepta se vuelve un hallazgo, con su nivel de riesgo: alto, medio o bajo.</p>
-        </div>
-        <figure class="win"><div class="win-bar"><i></i>Contrato de suministro · Análisis IA</div><img src="img/revision.jpg" alt="Contrato de suministro abierto junto al análisis de la IA: resumen para el negocio y conteo de 7 hallazgos de riesgo alto, 4 de riesgo medio y 0 de riesgo bajo." width="1600" height="1185" loading="lazy"></figure>
+        <div class="panel-texto"><h3>Lee el contrato completo y lo compara con tus reglas.</h3><p>Cada cláusula que se aparta de lo que tu empresa acepta se vuelve un hallazgo, con su nivel de riesgo.</p></div>
+        <figure class="marco"><img src="img/revision.jpg" alt="Análisis de la IA junto al contrato de suministro." width="1600" height="1185" loading="lazy"></figure>
       </div>
-
       <div class="panel" role="tabpanel" id="p-cita" aria-labelledby="tab-cita" hidden>
-        <div class="panel-copy">
-          <h3>Cita el texto exacto.</h3>
-          <p>Cada hallazgo trae la cláusula de donde sale. Y antes de mostrarlo, comprobamos que esa cita exista de verdad en el documento.</p>
+        <div class="panel-texto"><h3>Cita el texto exacto.</h3><p>Cada hallazgo trae la cláusula de donde sale. Antes de mostrarlo, el sistema comprueba que la cita exista en el contrato. Sin cita, no hay hallazgo.</p></div>
+        <div class="hoja">
+          <p class="rotulo">Hallazgo · Cláusula QUINTA <b>Riesgo alto</b></p>
+          <p class="texto">QUINTA.- INTERESES MORATORIOS. …pagará a EL PROVEEDOR intereses moratorios a razón del <mark>tres por ciento mensual</mark> sobre el saldo insoluto…</p>
+          <p class="nota"><span>Contra tus reglas</span>La tasa supera lo que tus reglas aceptan: hasta 1.5% mensual.</p>
+          <p class="ok">✓ Cita comprobada en el contrato</p>
         </div>
-        <div class="doc"><div class="doc-in">
-          <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;align-items:center"><span class="titulo">Hallazgo · Cláusula QUINTA</span><span class="chip alto">Riesgo alto</span></div>
-          <p style="font-weight:800;font-size:20px;color:#121418">Intereses moratorios</p>
-          <p class="clausula">QUINTA. INTERESES MORATORIOS. En caso de mora, la parte morosa pagará intereses a razón del <mark>cinco por ciento mensual</mark>.</p>
-          <div class="globo"><b>Contra tus reglas</b>La tasa supera lo que tus reglas aceptan: hasta 1.5% mensual.</div>
-          <span class="chip ok" style="align-self:flex-start">Cita comprobada en el documento</span>
-        </div></div>
       </div>
-
       <div class="panel" role="tabpanel" id="p-propone" aria-labelledby="tab-propone" hidden>
-        <div class="panel-copy">
-          <h3>Propone la redacción.</h3>
-          <p>Toma la cláusula modelo de tus reglas y arma la contrapropuesta. Sale en Word, con control de cambios, lista para mandar a la contraparte.</p>
+        <div class="panel-texto"><h3>Propone la redacción.</h3><p>Toma la cláusula modelo de tus reglas y arma la contrapropuesta en Word, con control de cambios.</p></div>
+        <div class="hoja">
+          <p class="rotulo">Contrapropuesta.docx · Control de cambios</p>
+          <p class="texto">QUINTA.- INTERESES MORATORIOS. …pagará a EL PROVEEDOR intereses moratorios a razón del <del>tres por ciento mensual</del> <ins>uno punto cinco por ciento mensual</ins> sobre el saldo insoluto, <ins>previo requerimiento por escrito</ins>…</p>
         </div>
-        <div class="doc"><div class="doc-in">
-          <span class="titulo">Contrapropuesta · Contrato de suministro.docx</span>
-          <p class="clausula">QUINTA. INTERESES MORATORIOS. En caso de mora, la parte morosa pagará intereses a razón del <del>cinco por ciento mensual</del> <ins>uno punto cinco por ciento mensual sobre saldos insolutos, previo requerimiento por escrito</ins>.</p>
-          <div class="globo"><b>Nota para la contraparte</b>La tasa se ajusta a lo que nuestra empresa acepta en este tipo de contratos.</div>
-        </div></div>
       </div>
-
-      <div class="panel" role="tabpanel" id="p-explica" aria-labelledby="tab-explica" hidden>
-        <div class="panel-copy">
-          <h3>Te lo explica en lenguaje de negocio.</h3>
-          <p>El área que pidió el documento recibe un resumen claro: qué se firma, hasta cuándo y qué conviene revisar. Sin tecnicismos.</p>
-        </div>
-        <div class="doc"><div class="doc-in">
-          <span class="titulo">Contrato de suministro · Proveedor XYZ</span>
-          <div class="resumen"><b>RESUMEN PARA EL NEGOCIO</b>Es un contrato de suministro de empaques de cartón y material de embalaje, vigente hasta el 31 de enero de 2027 y con renovación automática. El equipo legal revisa varias cláusulas muy favorables al proveedor: intereses, renovación con aviso largo, terminación con pena y tope de responsabilidad. Conviene revisar pronto el plazo de aviso de no renovación.</div>
-        </div></div>
-      </div>
-
       <div class="panel" role="tabpanel" id="p-verifica" aria-labelledby="tab-verifica" hidden>
-        <div class="panel-copy">
-          <h3>Verifica las declaraciones.</h3>
-          <p>Compara lo que cada parte declara con su expediente: denominación, escritura, representante y poder, RFC y domicilio. Si algo no coincide, te propone corregirlo.</p>
+        <div class="panel-texto"><h3>Verifica las declaraciones.</h3><p>Compara lo que cada parte declara con su expediente: escritura, representante, RFC y domicilio. Un dato de relleno se marca y se propone el correcto.</p></div>
+        <div class="hoja">
+          <p class="rotulo">Hallazgo · Declaración I <b style="color:#7A4B00;background:#FBF1E1">Riesgo medio</b></p>
+          <p class="texto">…según consta en la escritura pública número <mark>00000</mark>, otorgada ante la fe del Notario Público número <mark>000</mark>…</p>
+          <p class="nota"><span>Contra el expediente</span>Son datos de relleno. El acta constitutiva del expediente indica otra escritura y otra notaría.</p>
         </div>
-        <figure class="win"><div class="win-bar"><i></i>Contrato · Partes y expedientes</div><img src="img/partes.jpg" alt="Las dos partes de un contrato con su expediente corporativo, los documentos que faltan y los datos por completar." width="1600" height="782" loading="lazy"></figure>
+      </div>
+      <div class="panel" role="tabpanel" id="p-explica" aria-labelledby="tab-explica" hidden>
+        <div class="panel-texto"><h3>Te lo explica en lenguaje de negocio.</h3><p>Quien pidió el contrato recibe un resumen claro: qué se firma, hasta cuándo y qué conviene revisar.</p></div>
+        <div class="hoja">
+          <p class="rotulo">Resumen para el negocio</p>
+          <p class="texto" style="font-size:16px">Es un contrato de suministro de empaques de cartón, vigente hasta el 31 de enero de 2027 y con renovación automática. Legal revisa varias cláusulas favorables al proveedor: intereses, renovación con aviso largo, terminación con pena y tope de responsabilidad. Conviene revisar pronto el plazo de aviso de no renovación.</p>
+        </div>
       </div>
 
-      <div class="panel" role="tabpanel" id="p-llena" aria-labelledby="tab-llena" hidden>
-        <div class="panel-copy">
-          <h3>Llena los datos por ti.</h3>
-          <p>Partes, objeto, monto, vigencia, renovación y plazo de aviso. Cada dato con su cita, para que tu equipo solo confirme.</p>
-        </div>
-        <figure class="win"><div class="win-bar"><i></i>Contrato de arrendamiento · Ficha</div><img src="img/ficha.jpg" alt="Ficha de un contrato de arrendamiento: vigencia, abogado responsable y términos clave leídos por la IA, cada uno con su cita." width="1600" height="1185" loading="lazy"></figure>
-      </div>
-
-      <div class="panel" role="tabpanel" id="p-sugiere" aria-labelledby="tab-sugiere" hidden>
-        <div class="panel-copy">
-          <h3>Te sugiere las reglas que faltan.</h3>
-          <p>Si un tema aparece en tus documentos y todavía no tiene regla, la IA te propone las tres posiciones. Tu equipo las ajusta y las aprueba.</p>
-        </div>
-        <div class="doc"><div class="doc-in">
-          <span class="titulo">Reglas · Contratos de suministro</span>
-          <div class="sugerencia">
-            <div class="fila"><b style="font-size:18px;color:#121418">Tema sin regla: penas convencionales</b><span class="chip" style="background:#FFE7D6;color:#B83A00">Sugerencia de la IA</span></div>
-            <p style="font-size:15px;color:#5B6270">Aparece en 3 de tus contratos de suministro. La IA propone lo que prefieres, lo que aceptas y lo que nunca aceptas, para que tu equipo lo revise.</p>
-            <span class="mini-btn" style="align-self:flex-start">Revisar sugerencia</span>
-          </div>
-          <p style="font:400 13px var(--mono);color:#5B6270">Ejemplo ilustrativo.</p>
-        </div></div>
-      </div>
-
-      <div class="ia-pie">
+      <div class="cierre-ia">
         <p>Una sola IA. <span>En todas nuestras plataformas.</span></p>
         <p>Siempre con tus reglas. <span>No con criterios de alguien más.</span></p>
         <p>Siempre con su cita. <span>Sabes de dónde sale cada respuesta.</span></p>
@@ -456,179 +405,143 @@ footer{padding-block:40px;border-top:1px solid var(--line)}
     </div>
   </section>
 
-  <section class="band alt" id="plataformas" aria-labelledby="t-plataformas">
+  <section class="seccion" id="plataformas" aria-labelledby="t-plataformas">
     <div class="wrap">
-      <div class="head">
-        <p class="label">Plataformas</p>
+      <div class="cabeza">
+        <p class="clausula">Tercera · <b>De las plataformas</b></p>
         <h2 id="t-plataformas">Una plataforma para cada parte del trabajo legal.</h2>
-        <p class="lead">Cada área legal se atora en un lugar distinto. Construimos plataformas que funcionan solas o conectadas entre sí, con la misma IA y la misma base.</p>
+        <p>Funcionan solas o conectadas entre sí, con la misma IA y la misma base.</p>
       </div>
-      <ul class="catalogo">
-        <li class="prod">
-          <div class="thumb"><img src="img/cartera.jpg" alt="" loading="lazy"></div>
-          <div class="prod-in"><p class="cat">CLM</p><h3>Gestión de contratos</h3><p>Revisión con IA, contrapropuesta en Word, firma con Mifiel, cartera vigente y avisos de vencimiento.</p><a class="ver" href="#contratos">Ver la demo</a></div>
-        </li>
-        <li class="prod">
-          <div class="thumb"><img src="img/intake.jpg" alt="" loading="lazy"></div>
-          <div class="prod-in"><p class="cat">Intake legal</p><h3>Solicitudes al área legal</h3><p>Una sola puerta para lo que el negocio le pide a legal, con etapas, responsables y estatus visible para quien pidió.</p></div>
-        </li>
-        <li class="prod">
-          <div class="thumb"><img src="img/plantillas.jpg" alt="" loading="lazy"></div>
-          <div class="prod-in"><p class="cat">Automatización documental</p><h3>Generación de documentos</h3><p>Contratos y documentos que se arman solos desde un formulario y una plantilla aprobada por tu dirección legal.</p></div>
-        </li>
-        <li class="prod">
-          <div class="thumb"><img src="img/expedientes.jpg" alt="" loading="lazy"></div>
-          <div class="prod-in"><p class="cat">Corporativo</p><h3>Expedientes corporativos</h3><p>Actas, poderes y constancias de cada empresa, leídos por IA, validados por tu equipo y siempre a la mano.</p></div>
-        </li>
-        <li class="prod">
-          <div class="thumb"><img src="img/reportes.jpg" alt="" loading="lazy"></div>
-          <div class="prod-in"><p class="cat">Métricas</p><h3>Tableros legales</h3><p>Tiempos de revisión, volumen, carga por persona y riesgo, en un tablero que tu área legal puede llevar a la junta.</p></div>
-        </li>
-        <li class="prod medida">
-          <div class="prod-in"><p class="cat">A la medida</p><h3>¿Tu proceso no está aquí?</h3><p>Mapeamos cómo trabaja hoy tu área legal y construimos la plataforma que le falta.</p><a class="btn btn-dark" href="#contacto">Cuéntanos tu caso</a></div>
-        </li>
-      </ul>
-      <p class="nota">Capturas reales de nuestras plataformas, con datos de demostración.</p>
-    </div>
-  </section>
-
-  <section class="band" id="contratos" aria-labelledby="t-contratos">
-    <div class="wrap">
-      <div class="video">
-        <div class="head" style="margin:0">
-          <p class="label">Míralo funcionar</p>
-          <h2 id="t-contratos">Demo de plataforma de revisión y gestión de contratos</h2>
-          <p class="lead">Un contrato de principio a fin en 74 segundos: las reglas de tu negocio, la IA revisando, la firma con Mifiel y la cartera al día.</p>
+      <div class="indice">
+        <ol>
+          <li><a href="#demo" data-img="img/cartera.jpg" data-pie="Gestión de contratos · cartera vigente" aria-current="true"><span class="n">3.1</span><span class="nombre">Gestión de contratos</span><span class="ir">→</span><span class="desc">Revisión con IA, contrapropuesta en Word, firma con Mifiel, cartera vigente y avisos de vencimiento.</span><span class="mini"><img src="img/cartera.jpg" alt="Cartera de contratos vigentes." loading="lazy"></span></a></li>
+          <li><a href="#firmas" data-img="img/intake.jpg" data-pie="Intake legal · solicitudes del negocio"><span class="n">3.2</span><span class="nombre">Intake legal</span><span class="ir">→</span><span class="desc">Una sola puerta para lo que el negocio le pide a legal, con etapas y estatus visible para quien pidió.</span><span class="mini"><img src="img/intake.jpg" alt="Solicitudes del área de negocio con su avance." loading="lazy"></span></a></li>
+          <li><a href="#firmas" data-img="img/plantillas.jpg" data-pie="Generación de documentos · plantillas aprobadas"><span class="n">3.3</span><span class="nombre">Generación de documentos</span><span class="ir">→</span><span class="desc">Contratos que se arman solos desde un formulario y una plantilla aprobada por tu dirección legal.</span><span class="mini"><img src="img/plantillas.jpg" alt="Biblioteca de plantillas." loading="lazy"></span></a></li>
+          <li><a href="#firmas" data-img="img/expedientes.jpg" data-pie="Expedientes corporativos · empresas y documentos"><span class="n">3.4</span><span class="nombre">Expedientes corporativos</span><span class="ir">→</span><span class="desc">Actas, poderes y constancias leídos por IA, validados por tu equipo y siempre a la mano.</span><span class="mini"><img src="img/expedientes.jpg" alt="Tabla de expedientes corporativos." loading="lazy"></span></a></li>
+          <li><a href="#firmas" data-img="img/reportes.jpg" data-pie="Tableros legales · tiempos, volumen y riesgo"><span class="n">3.5</span><span class="nombre">Tableros legales</span><span class="ir">→</span><span class="desc">Tiempos de revisión, volumen y riesgo, en un tablero que tu área legal puede llevar a la junta.</span><span class="mini"><img src="img/reportes.jpg" alt="Tablero de reportes legales." loading="lazy"></span></a></li>
+        </ol>
+        <div class="vista" aria-hidden="true">
+          <figure><img id="vista-img" src="img/cartera.jpg" alt=""><figcaption id="vista-pie">Gestión de contratos · cartera vigente</figcaption></figure>
         </div>
-        <video controls preload="metadata" playsinline poster="video/poster.jpg" src="video/qlaro.mp4" aria-label="Video de Qlaro: gestión de contratos con IA"></video>
       </div>
-      <ul class="incluye">
-        <li><b>Solicitud</b><span>El negocio pide y ve en qué va.</span></li>
-        <li><b>Revisión con IA</b><span>Hallazgos contra tus reglas, con su cita.</span></li>
-        <li><b>Contrapropuesta</b><span>En Word, con control de cambios.</span></li>
-        <li><b>Firma</b><span>e.firma con Mifiel y constancia NOM-151.</span></li>
-        <li><b>Cartera</b><span>Monto, vigencia y responsable de cada contrato.</span></li>
-        <li><b>Vencimientos</b><span>Avisos antes de cada fecha límite.</span></li>
-      </ul>
+      <div class="medida"><b>¿Tu proceso no está en la lista?</b><a href="#firmas">Lo mapeamos y construimos la plataforma que le falta a tu área legal →</a></div>
+      <p class="nota-pie">Capturas reales de nuestras plataformas, con datos de demostración.</p>
     </div>
   </section>
 
-  <section class="band noche" id="seguridad" aria-labelledby="t-seguridad">
+  <section class="seccion" id="demo" aria-labelledby="t-demo">
     <div class="wrap">
-      <div class="head">
-        <p class="label">Seguridad</p>
+      <div class="cabeza">
+        <p class="clausula">Cuarta · <b>De la demo</b></p>
+        <h2 id="t-demo">Demo de plataforma de revisión y gestión de contratos</h2>
+        <p>Un contrato de principio a fin en 74 segundos.</p>
+      </div>
+      <div class="demo">
+        <video controls preload="metadata" playsinline poster="video/poster.jpg" src="video/qlaro.mp4" aria-label="Video de la demo de gestión de contratos con IA"></video>
+        <p class="incluye"><b>Solicitud</b>: el negocio pide y ve en qué va · <b>Revisión con IA</b>: hallazgos contra tus reglas, con su cita · <b>Contrapropuesta</b> en Word con control de cambios · <b>Firma</b> con e.firma, Mifiel y constancia NOM-151 · <b>Cartera</b> con monto, vigencia y responsable · <b>Vencimientos</b> con aviso antes de cada fecha límite.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion" id="seguridad" aria-labelledby="t-seguridad">
+    <div class="wrap">
+      <div class="cabeza">
+        <p class="clausula">Quinta · <b>De la confidencialidad</b></p>
         <h2 id="t-seguridad">Tus contratos, bajo llave.</h2>
-        <p class="lead">Lo primero que pregunta un área legal es qué pasa con sus documentos. Esto es lo que hacemos con ellos.</p>
+        <p>Lo primero que pregunta un área legal es qué pasa con sus documentos.</p>
       </div>
-      <ul class="seguro">
-        <li><b>Cada empresa ve solo lo suyo.</b><span>La base de datos separa la información por organización: un usuario solo puede leer los registros de su propia empresa.</span></li>
-        <li><b>Cifrados en reposo y en tránsito.</b><span>Tus documentos se guardan cifrados con AES-256 y viajan cifrados con TLS, en infraestructura con certificaciones SOC 2 Tipo 2 e ISO 27001.</span></li>
-        <li><b>La IA no aprende con tus contratos.</b><span>Usamos Claude, de Anthropic, a través de su API. Anthropic no usa lo que se envía por su API para entrenar sus modelos, salvo que el cliente lo autorice.</span></li>
-        <li><b>Permisos por perfil.</b><span>Dirección jurídica, abogados y negocio ven cosas distintas. El negocio no ve los comentarios internos de la IA, y solo la dirección jurídica cambia las reglas.</span></li>
-        <li><b>Todo deja rastro.</b><span>Cada cambio queda en el historial del contrato con quién y cuándo, y la dirección jurídica puede consultar quién abrió cada documento.</span></li>
-        <li><b>Nada del contrato en bitácoras técnicas.</b><span>Los registros técnicos guardan identificadores y conteos, nunca el texto de un contrato. Las credenciales de firma electrónica se guardan cifradas.</span></li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="band" id="nosotros" aria-labelledby="t-nosotros">
-    <div class="wrap about">
-      <div class="story">
-        <p class="label">Nosotros</p>
-        <h2 id="t-nosotros">Nacimos del otro lado del escritorio.</h2>
-        <p>Qlaro nace de años dentro de áreas legales de empresas multinacionales de consumo, logística y consultoría, dirigiendo un equipo jurídico repartido en cinco países de Latinoamérica.</p>
-        <p>Ahí aprendimos algo que no enseñan en la facultad: la mayoría de los cuellos de botella legales no son jurídicos, son operativos. Un contrato no se atora por una cláusula difícil; se atora porque nadie sabe en qué escritorio está.</p>
-        <p>Por eso construimos nuestras propias herramientas: generadores de contratos con IA, gestores de contratos y tableros de seguimiento. Hoy llevamos esa forma de trabajar a tu empresa.</p>
-      </div>
-      <figure class="quote">
-        <p>«Lo que frena a lo legal casi nunca es el derecho. Es la operación.»</p>
-        <cite>Juan Carlos Ibarra · Fundador</cite>
-      </figure>
-    </div>
-  </section>
-
-  <section class="band alt" id="metodo" aria-labelledby="t-metodo">
-    <div class="wrap">
-      <div class="head">
-        <p class="label">Método Qlaro</p>
-        <h2 id="t-metodo">Primero entendemos. Luego construimos.</h2>
-        <p class="lead">La tecnología sin diagnóstico solo automatiza el desorden. Por eso cada plataforma pasa por cuatro pasos, siempre en este orden, y nos quedamos hasta que tu equipo la opera solo.</p>
-      </div>
-      <ol class="pasos">
-        <li class="paso on"><p class="label">01 / Mapear</p><h3>Cómo fluye hoy</h3><p>Quién pide, quién aprueba y dónde se atora cada solicitud, documento y contrato.</p></li>
-        <li class="paso"><p class="label">02 / Medir</p><h3>La línea base</h3><p>Tiempos, volumen y riesgo reales, para saber de dónde partimos.</p></li>
-        <li class="paso"><p class="label">03 / Automatizar</p><h3>Lo que se repite</h3><p>Las plataformas que tu operación necesita, con tus reglas, tus plantillas y la IA donde el dato lo justifique.</p></li>
-        <li class="paso"><p class="label">04 / Operar</p><h3>Hasta que fluya solo</h3><p>Tablero, reglas y acompañamiento hasta que tu equipo lo opere por su cuenta.</p></li>
+      <ol class="fracciones">
+        <li><span class="n">I.</span><b>Cada empresa ve solo lo suyo.</b><span>La base de datos separa la información por organización, tabla por tabla.</span></li>
+        <li><span class="n">II.</span><b>Cifrado en reposo y en tránsito.</b><span>AES-256 y TLS, en infraestructura con certificaciones SOC 2 Tipo 2 e ISO 27001.</span></li>
+        <li><span class="n">III.</span><b>La IA no aprende con tus contratos.</b><span>Usamos Claude, de Anthropic, por su API. Lo que se envía no se usa para entrenar sus modelos, salvo que el cliente lo autorice.</span></li>
+        <li><span class="n">IV.</span><b>Permisos por perfil.</b><span>Legal y negocio ven cosas distintas. Solo la dirección jurídica cambia las reglas.</span></li>
+        <li><span class="n">V.</span><b>Todo deja rastro.</b><span>Historial de cada cambio con quién y cuándo, y registro de quién abrió cada documento.</span></li>
+        <li><span class="n">VI.</span><b>Nada del contrato en bitácoras técnicas.</b><span>Los registros técnicos guardan identificadores y conteos, nunca el texto de un contrato.</span></li>
       </ol>
     </div>
   </section>
 
-  <section class="band" id="para-quien" aria-labelledby="t-quien">
+  <section class="seccion" id="metodo" aria-labelledby="t-metodo">
     <div class="wrap">
-      <div class="head">
-        <p class="label">Para quién</p>
-        <h2 id="t-quien">Para quien necesita que lo legal avance.</h2>
+      <div class="cabeza">
+        <p class="clausula">Sexta · <b>Del método</b></p>
+        <h2 id="t-metodo">Primero entendemos. Luego construimos.</h2>
+        <p>La tecnología sin diagnóstico solo automatiza el desorden. Cuatro pasos, siempre en este orden.</p>
       </div>
-      <div class="quien">
-        <div><h3>Dirección jurídica</h3><p>Un equipo que deja de perseguir firmas y correos, con visibilidad de su carga y datos para defender prioridades.</p><p class="usa">Contratos · Expedientes · IA legal</p></div>
-        <div><h3>Operaciones y compras</h3><p>Contratos con proveedores que avanzan al ritmo de la operación, con estatus visible sin tener que preguntar.</p><p class="usa">Intake · Generación de documentos · Firmas</p></div>
-        <div><h3>Finanzas</h3><p>Cartera con monto, vencimientos y renovaciones a la vista, y un área legal que se mide como cualquier otra.</p><p class="usa">Vencimientos · Tableros y métricas</p></div>
-        <div><h3>Dirección general</h3><p>Saber qué se firma, qué riesgo se asume y cuánto tarda lo legal, sin abrir un solo contrato.</p><p class="usa">Tableros y métricas · Resúmenes de IA</p></div>
+      <ol class="metodo">
+        <li><span class="num">01</span><h3>Mapear</h3><p>Quién pide, quién aprueba y dónde se atora cada solicitud y cada contrato.</p><p class="recibes"><span>Recibes</span> · el mapa del flujo</p></li>
+        <li><span class="num">02</span><h3>Medir</h3><p>Tiempos, volumen y riesgo reales, para saber de dónde partimos.</p><p class="recibes"><span>Recibes</span> · la línea base</p></li>
+        <li><span class="num">03</span><h3>Automatizar</h3><p>Reglas, plantillas, flujos y firma en la plataforma que tu operación necesita.</p><p class="recibes"><span>Recibes</span> · la plataforma configurada</p></li>
+        <li><span class="num">04</span><h3>Operar</h3><p>Acompañamiento y tablero hasta que tu equipo lo opere por su cuenta.</p><p class="recibes"><span>Recibes</span> · un equipo autónomo</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="seccion" id="nosotros" aria-labelledby="t-nosotros">
+    <div class="wrap">
+      <div class="cabeza">
+        <p class="clausula">Séptima · <b>De quién está detrás</b></p>
+        <h2 id="t-nosotros">Nacimos del otro lado del escritorio.</h2>
+      </div>
+      <div class="detras">
+        <div class="relato">
+          <p>Qlaro nace de años dentro de áreas legales de empresas multinacionales de consumo, logística y consultoría, dirigiendo un equipo jurídico repartido en cinco países de Latinoamérica.</p>
+          <p>Ahí aprendimos que la mayoría de los cuellos de botella legales no son jurídicos, son operativos. Un contrato no se atora por una cláusula difícil; se atora porque nadie sabe en qué escritorio está.</p>
+          <p>Por eso construimos nuestras propias herramientas, y hoy llevamos esa forma de trabajar a tu empresa.</p>
+        </div>
+        <blockquote class="cita-grande">«Lo que frena a lo legal casi nunca es el derecho. Es la operación.»<cite>Juan Carlos Ibarra · Fundador</cite></blockquote>
       </div>
     </div>
   </section>
 
-  <section class="band alt" id="preguntas" aria-labelledby="t-preguntas">
+  <section class="seccion" id="dudas" aria-labelledby="t-dudas">
     <div class="wrap">
-      <div class="head">
-        <p class="label">Preguntas</p>
-        <h2 id="t-preguntas">Lo que nos preguntan primero.</h2>
+      <div class="cabeza">
+        <p class="clausula">Octava · <b>De las dudas</b></p>
+        <h2 id="t-dudas">Lo que nos preguntan primero.</h2>
       </div>
-      <div class="faq">
-        <details open><summary>¿Qué hace Qlaro?</summary><p>Somos una empresa de LegalTech. Diseñamos, construimos y operamos plataformas con IA para áreas legales: gestión de contratos, intake legal, generación de documentos, expedientes corporativos y tableros.</p></details>
-        <details><summary>¿Qué tan seguros están mis contratos?</summary><p>Se guardan cifrados en reposo y en tránsito, en infraestructura con certificaciones SOC 2 Tipo 2 e ISO 27001. Cada empresa está separada en la base de datos: nadie de otra organización puede leer tus registros.</p></details>
-        <details><summary>¿La IA aprende con mis contratos?</summary><p>No. Usamos Claude por la API de Anthropic, y Anthropic no usa lo que se envía por su API para entrenar sus modelos, salvo que el cliente lo autorice.</p></details>
-        <details><summary>¿Puedo contratar solo una plataforma?</summary><p>Cada plataforma funciona sola o conectada con las demás. En el diagnóstico vemos por cuál conviene empezar según dónde se atora hoy tu operación.</p></details>
-        <details><summary>¿Hacen plataformas a la medida?</summary><p>Sí. Si tu proceso no encaja en ninguna de nuestras plataformas, lo mapeamos y construimos la que le falta a tu área legal.</p></details>
-        <details><summary>¿De dónde saca la IA sus respuestas?</summary><p>Del documento que estás revisando, de tus reglas y de los expedientes de las partes. Cada hallazgo trae la cita exacta del texto, y comprobamos que esa cita exista en el documento.</p></details>
+      <div class="dudas">
+        <details open><summary><span class="n">8.1</span>¿Qué hace Qlaro?</summary><p>Diseñamos, construimos y operamos plataformas con IA para áreas legales: gestión de contratos, intake legal, generación de documentos, expedientes corporativos y tableros.</p></details>
+        <details><summary><span class="n">8.2</span>¿Qué tan seguros están mis contratos?</summary><p>Se guardan cifrados en reposo y en tránsito, en infraestructura con certificaciones SOC 2 Tipo 2 e ISO 27001. Cada empresa está separada en la base de datos.</p></details>
+        <details><summary><span class="n">8.3</span>¿La IA aprende con mis contratos?</summary><p>No. Usamos Claude por la API de Anthropic, y lo que se envía por su API no se usa para entrenar sus modelos, salvo que el cliente lo autorice.</p></details>
+        <details><summary><span class="n">8.4</span>¿Puedo contratar solo una plataforma?</summary><p>Cada plataforma funciona sola o conectada con las demás. En el diagnóstico vemos por cuál conviene empezar.</p></details>
+        <details><summary><span class="n">8.5</span>¿Hacen plataformas a la medida?</summary><p>Sí. Si tu proceso no encaja en ninguna, lo mapeamos y construimos la que le falta a tu área legal.</p></details>
       </div>
     </div>
   </section>
 
-  <section class="cta" id="contacto" aria-labelledby="t-contacto">
+  <section class="seccion firmas" id="firmas" aria-labelledby="t-firmas">
     <svg class="bigq" viewBox="0 0 200 250" aria-hidden="true">
       <path fill="#FFFFFF" fill-rule="evenodd" d="M18,86a70,70 0 1,0 140,0a70,70 0 1,0 -140,0ZM56,86a32,32 0 1,0 64,0a32,32 0 1,0 -64,0Z"/>
       <rect x="130" y="16" width="46" height="234" fill="#FFFFFF"/>
     </svg>
-    <div class="wrap cta-in">
-      <div class="cta-copy">
-        <p class="label">Agenda un diagnóstico</p>
-        <h2 id="t-contacto">Lo legal, sin vueltas.</h2>
-        <p>Cuéntanos dónde se atora hoy tu área legal. Llena estos datos y mándanos el mensaje por correo. Te respondemos con una propuesta para mapear y medir.</p>
+    <div class="wrap firmas-grid">
+      <div class="lado">
+        <p class="clausula">Firmas · <b>Agenda un diagnóstico</b></p>
+        <h2 id="t-firmas" style="margin-top:20px">Empecemos por un diagnóstico.</h2>
+        <p>Cuéntanos dónde se atora hoy tu área legal. Te respondemos con una propuesta para mapear y medir.</p>
       </div>
-      <form class="pedido" id="pedido" novalidate>
-        <div class="campos">
-          <label for="f-nombre">Tu nombre<input id="f-nombre" name="nombre" autocomplete="name" required></label>
-          <label for="f-empresa">Empresa<input id="f-empresa" name="empresa" autocomplete="organization" required></label>
-          <label for="f-puesto">Puesto<input id="f-puesto" name="puesto" autocomplete="organization-title"></label>
-          <label for="f-volumen">Contratos al mes, aproximado
-            <select id="f-volumen" name="volumen"><option value="">Elige una opción</option><option>Menos de 10</option><option>De 10 a 50</option><option>De 50 a 200</option><option>Más de 200</option></select>
+      <form class="bloque" id="pedido" novalidate>
+        <p class="encabezado"><span>Solicitud de diagnóstico</span><span>Ciudad de México</span></p>
+        <div class="renglones">
+          <label class="renglon" for="f-nombre"><span>Nombre</span><input id="f-nombre" name="nombre" autocomplete="name" required></label>
+          <label class="renglon" for="f-empresa"><span>Empresa</span><input id="f-empresa" name="empresa" autocomplete="organization" required></label>
+          <label class="renglon" for="f-puesto"><span>Puesto</span><input id="f-puesto" name="puesto" autocomplete="organization-title"></label>
+          <label class="renglon" for="f-volumen"><span>Contratos al mes</span>
+            <select id="f-volumen" name="volumen"><option value="">Elige</option><option>Menos de 10</option><option>De 10 a 50</option><option>De 50 a 200</option><option>Más de 200</option></select>
           </label>
-          <label for="f-atora" class="ancho">¿Dónde se atora hoy tu área legal?<textarea id="f-atora" name="atora" rows="3" placeholder="Por ejemplo: los contratos de proveedores tardan semanas en revisarse y nadie sabe en qué van."></textarea></label>
+          <label class="renglon ancho" for="f-atora"><span>¿Dónde se atora hoy tu área legal?</span><textarea id="f-atora" name="atora" rows="2"></textarea></label>
         </div>
-        <button type="submit" class="btn btn-dark">Preparar mi mensaje</button>
+        <button type="submit" class="btn">Preparar mi mensaje</button>
         <p class="error" id="f-error" role="alert"></p>
         <div class="listo" id="listo" hidden>
-          <p class="label">Tu mensaje</p>
           <pre id="mensaje"></pre>
-          <div class="mail">
-            <a id="abrir-correo" class="btn-correo" href="mailto:contacto@qlaro.mx">Abrir en mi correo</a>
+          <div class="fila">
+            <a id="abrir-correo" href="mailto:contacto@qlaro.mx">Abrir en mi correo</a>
             <button type="button" id="copiar-msg">Copiar mensaje</button>
-            <span>y mándalo a</span>
-            <code id="correo">contacto@qlaro.mx</code>
-            <button type="button" id="copiar">Copiar correo</button>
+            <span>o escríbenos a <code id="correo">contacto@qlaro.mx</code></span>
           </div>
-          <span class="ok" id="copiado" role="status" aria-live="polite"></span>
+          <span class="estado" id="copiado" role="status" aria-live="polite"></span>
         </div>
       </form>
     </div>
@@ -636,7 +549,7 @@ footer{padding-block:40px;border-top:1px solid var(--line)}
 </main>
 
 <footer>
-  <div class="wrap foot">
+  <div class="wrap pie">
     <svg class="logo" viewBox="0 0 371.7 152.2" role="img" aria-label="Qlaro"><use href="#lockup"/></svg>
     <p>© 2026 Qlaro · Ciudad de México</p>
   </div>
@@ -647,36 +560,27 @@ footer{padding-block:40px;border-top:1px solid var(--line)}
   // Pestañas de la IA
   var tabs=[].slice.call(document.querySelectorAll('.verbos [role="tab"]'));
   function abrir(t,foco){
-    tabs.forEach(function(o){
-      var on=o===t;
-      o.setAttribute('aria-selected',on?'true':'false');
-      o.tabIndex=on?0:-1;
-      document.getElementById(o.getAttribute('aria-controls')).hidden=!on;
-    });
+    tabs.forEach(function(o){var on=o===t;o.setAttribute('aria-selected',on?'true':'false');o.tabIndex=on?0:-1;document.getElementById(o.getAttribute('aria-controls')).hidden=!on;});
     if(foco)t.focus();
   }
   tabs.forEach(function(t,i){
     t.addEventListener('click',function(){abrir(t)});
-    t.addEventListener('keydown',function(e){
-      var k=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0;
-      if(k){e.preventDefault();abrir(tabs[(i+k+tabs.length)%tabs.length],true)}
-    });
+    t.addEventListener('keydown',function(e){var k=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0;if(k){e.preventDefault();abrir(tabs[(i+k+tabs.length)%tabs.length],true)}});
   });
-  // Método: el paso señalado se resalta
-  var pasos=[].slice.call(document.querySelectorAll('.paso'));
-  pasos.forEach(function(p){p.addEventListener('mouseenter',function(){pasos.forEach(function(o){o.classList.toggle('on',o===p)})})});
-  // Formulario: arma el mensaje para que el visitante lo copie y lo mande por correo.
+  // Índice de plataformas: la vista previa sigue al renglón señalado
+  var vi=document.getElementById('vista-img'),vp=document.getElementById('vista-pie');
+  var items=[].slice.call(document.querySelectorAll('.indice a[data-img]'));
+  function ver(a){items.forEach(function(o){o.setAttribute('aria-current',o===a?'true':'false')});vi.src=a.getAttribute('data-img');vp.textContent=a.getAttribute('data-pie');}
+  items.forEach(function(a){a.addEventListener('mouseenter',function(){ver(a)});a.addEventListener('focus',function(){ver(a)});});
+  // Bloque de firmas: arma el mensaje
   var ok=document.getElementById('copiado'),f=document.getElementById('pedido'),err=document.getElementById('f-error'),listo=document.getElementById('listo'),msg=document.getElementById('mensaje');
+  var v=function(id){return document.getElementById(id).value.trim()};
   f.addEventListener('submit',function(e){
     e.preventDefault();
-    var v=function(id){return document.getElementById(id).value.trim()};
     if(!v('f-nombre')||!v('f-empresa')){err.textContent='Escribe tu nombre y tu empresa para preparar el mensaje.';return}
     err.textContent='';
-    var t='Hola, equipo de Qlaro:\n\nMe interesa agendar un diagnóstico.\n\n'+
-      'Nombre: '+v('f-nombre')+'\nEmpresa: '+v('f-empresa')+(v('f-puesto')?'\nPuesto: '+v('f-puesto'):'')+
-      (v('f-volumen')?'\nContratos al mes: '+v('f-volumen'):'')+
-      (v('f-atora')?'\n\nDónde se atora hoy nuestra área legal:\n'+v('f-atora'):'')+'\n\nGracias.';
-    msg.textContent=t; listo.hidden=false; ok.textContent='';
+    var t='Hola, equipo de Qlaro:\n\nMe interesa agendar un diagnóstico.\n\nNombre: '+v('f-nombre')+'\nEmpresa: '+v('f-empresa')+(v('f-puesto')?'\nPuesto: '+v('f-puesto'):'')+(v('f-volumen')?'\nContratos al mes: '+v('f-volumen'):'')+(v('f-atora')?'\n\nDónde se atora hoy nuestra área legal:\n'+v('f-atora'):'')+'\n\nGracias.';
+    msg.textContent=t;listo.hidden=false;ok.textContent='';
     document.getElementById('abrir-correo').href='mailto:contacto@qlaro.mx?subject='+encodeURIComponent('Diagnóstico Qlaro: '+v('f-empresa'))+'&body='+encodeURIComponent(t);
     listo.scrollIntoView({behavior:'smooth',block:'nearest'});
   });
@@ -685,9 +589,6 @@ footer{padding-block:40px;border-top:1px solid var(--line)}
     try{navigator.clipboard.writeText(texto).then(function(){ok.textContent=aviso},sel)}catch(e){sel()}
   }
   document.getElementById('copiar-msg').addEventListener('click',function(){copiar(msg.textContent,msg,'Mensaje copiado')});
-  // Copiar correo
-  var c=document.getElementById('correo');
-  document.getElementById('copiar').addEventListener('click',function(){copiar(c.textContent,c,'Correo copiado')});
 })();
 </script>
 </body>
