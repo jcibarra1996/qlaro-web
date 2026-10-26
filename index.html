@@ -240,12 +240,6 @@ a{color:var(--mandarina-text)}
 
 .paso-panel .recibes code.var{display:block;font:400 13px/18px var(--mono);color:var(--mandarina-text);margin-bottom:2px}
 
-/* ---------------- Hero: prueba */
-.prueba-hero{display:inline-flex;align-items:center;gap:10px;align-self:start;justify-self:start;padding:10px 14px;border-radius:var(--r-md);background:var(--surface-raised);color:var(--ink);text-decoration:none;font-size:14px;line-height:20px;min-height:44px}
-.prueba-hero b{font-weight:800}
-.prueba-hero .ico{width:16px;height:16px;color:var(--mandarina-text);transition:transform .2s}
-.prueba-hero:hover .ico{transform:translateX(3px)}
-.prueba-punto{width:8px;height:8px;border-radius:50%;background:var(--mandarina);flex:none;animation:late 1.6s ease-in-out infinite}
 @keyframes late{50%{opacity:.3}}
 .hero-lead{max-width:30em}
 /* ---------------- Caso real: banda mandarina */
@@ -285,6 +279,12 @@ a{color:var(--mandarina-text)}
 .pc-yo{justify-self:end;background:#F5F6F8}
 .pc-ia{background:#121418;color:#F4F5F7}
 .pc-ia span{display:block;font:500 11px/16px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:#FF7A26;margin-bottom:2px}
+.pm-fila.destello{animation:destello 1.4s ease}
+@keyframes destello{0%{background:#FFE7D6}100%{background:transparent}}
+.pc-ia em{font-style:normal}
+.pc-ia.escribiendo em::after{content:"";display:inline-block;width:2px;height:1em;background:#FF7A26;margin-left:2px;vertical-align:-2px;animation:late .8s steps(1) infinite}
+.js-portal .pm-chat p{transition:opacity .4s,transform .4s}
+.js-portal .pm-chat p.oculto{opacity:0;transform:translateY(8px)}
 .portal figcaption{padding:10px 16px;border-top:1px solid #E3E5EA;font-size:12px;color:#5B6270}
 .caso-datos{display:grid;gap:var(--s6);margin-top:var(--s12)}
 @media (min-width:860px){.caso-datos{grid-template-columns:repeat(3,1fr)}}
@@ -468,7 +468,6 @@ a{color:var(--mandarina-text)}
         <a class="btn btn-primario" href="#agenda">Agenda una llamada de 30 min <svg class="ico" aria-hidden="true"><use href="#i-flecha"/></svg></a>
         <a class="btn btn-linea" href="#servicios">Ver qué hacemos</a>
       </div>
-      <a class="prueba-hero" href="#caso"><span class="prueba-punto" aria-hidden="true"></span><span><b>En producción:</b> Portal de Crédito de Savino del Bene México</span><svg class="ico" aria-hidden="true"><use href="#i-flecha"/></svg></a>
     </div>
     <div class="bloque">
       <figure class="video-hero">
@@ -588,7 +587,7 @@ a{color:var(--mandarina-text)}
   <section class="sec caso-banda" id="caso" aria-labelledby="t-caso">
     <div class="wrap">
       <div class="caso-cab rev">
-        <p class="label">Caso real · En producción</p>
+        <p class="label">Caso real</p>
         <h2 id="t-caso">Portal de Crédito de Savino del Bene México.</h2>
         <p>Diseñamos y pusimos en operación el portal con el que el área de crédito de una empresa de logística internacional gestiona cada solicitud, del análisis a la autorización y la cobranza.</p>
       </div>
@@ -602,16 +601,16 @@ a{color:var(--mandarina-text)}
             <span class="pl-item">Cobranza</span>
           </aside>
           <div class="portal-main">
-            <div class="pm-cab"><b>Solicitudes por autorizar</b><span class="pm-chip">3 pendientes</span></div>
+            <div class="pm-cab"><b>Solicitudes por autorizar</b><span class="pm-chip" id="pm-chip">2 pendientes</span></div>
             <div class="pm-tabla" role="table" aria-label="Solicitudes de demostración">
               <div class="pm-fila pm-th" role="row"><span role="columnheader">Cliente</span><span role="columnheader">Línea solicitada</span><span role="columnheader">Análisis</span><span role="columnheader">Estatus</span></div>
-              <div class="pm-fila" role="row"><span role="cell">Cliente Demo A</span><span role="cell">$500,000</span><span role="cell">Favorable</span><span role="cell"><em class="st st-pend">Por autorizar</em></span></div>
+              <div class="pm-fila" role="row" id="pm-a"><span role="cell">Cliente Demo A</span><span role="cell">$500,000</span><span role="cell">Favorable</span><span role="cell"><em class="st st-ok" id="pm-a-st">Autorizada</em></span></div>
               <div class="pm-fila" role="row"><span role="cell">Cliente Demo B</span><span role="cell">$1,200,000</span><span role="cell">Con condiciones</span><span role="cell"><em class="st st-pend">Por autorizar</em></span></div>
               <div class="pm-fila" role="row"><span role="cell">Cliente Demo C</span><span role="cell">$250,000</span><span role="cell">Favorable</span><span role="cell"><em class="st st-ok">Autorizada</em></span></div>
             </div>
             <div class="pm-chat" aria-hidden="true">
-              <p class="pc-yo">¿Qué solicitudes llevan más de 5 días sin autorizar?</p>
-              <p class="pc-ia"><span>Asistente IA</span>Dos: Cliente Demo A y Cliente Demo B, ambas con análisis completo.</p>
+              <p class="pc-yo" id="pc-yo">¿Qué solicitudes llevan más de 5 días sin autorizar?</p>
+              <p class="pc-ia" id="pc-ia"><span>Asistente IA</span><em id="pc-ia-txt">Dos: Cliente Demo A y Cliente Demo B, ambas con análisis completo.</em></p>
             </div>
           </div>
         </div>
@@ -620,7 +619,7 @@ a{color:var(--mandarina-text)}
       <ul class="caso-datos">
         <li class="rev"><b>Un portal por perfil.</b><span>Análisis, Dirección y Cobranza ven y hacen solo lo que les corresponde.</span></li>
         <li class="rev"><b>Asistente con IA integrado.</b><span>El equipo consulta expedientes y estatus en lenguaje natural.</span></li>
-        <li class="rev"><b>En uso diario.</b><span>Con dominio propio, sobre la misma base técnica de las plataformas de Qlaro.</span></li>
+        <li class="rev"><b>Lo usan todos los días.</b><span>El área de crédito trabaja ahí cada día, sobre la misma base de las plataformas de Qlaro.</span></li>
       </ul>
       <p class="caso-cierre rev">Si lo hicimos para crédito, lo hacemos para tu área legal. <a href="#agenda">Agenda una llamada</a></p>
     </div>
@@ -889,6 +888,21 @@ a{color:var(--mandarina-text)}
     bd.forEach(function(b){b.addEventListener('click',function(){elegirDia(b);});});
     bh.forEach(function(b){b.addEventListener('click',function(){elegirHora(b);});});
     teclas(bd,elegirDia);teclas(bh,elegirHora);
+  })();
+
+  // Caso real: el portal recreado trabaja solo al entrar en pantalla (pregunta, respuesta de la IA, autorización)
+  (function(){var portal=document.querySelector('.portal');if(!portal||reduce||!('IntersectionObserver' in window))return;
+    var yo=document.getElementById('pc-yo'),ia=document.getElementById('pc-ia'),txt=document.getElementById('pc-ia-txt'),chip=document.getElementById('pm-chip'),fa=document.getElementById('pm-a'),st=document.getElementById('pm-a-st');
+    var completo=txt.textContent,timers=[];
+    function estadoInicial(){timers.forEach(clearTimeout);timers=[];yo.classList.add('oculto');ia.classList.add('oculto');txt.textContent='';chip.textContent='3 pendientes';st.className='st st-pend';st.textContent='Por autorizar';}
+    function t(fn,ms){timers.push(setTimeout(fn,ms));}
+    function correr(){estadoInicial();
+      t(function(){yo.classList.remove('oculto');},500);
+      t(function(){ia.classList.remove('oculto');ia.classList.add('escribiendo');var i=0;(function paso(){txt.textContent=completo.slice(0,i);i+=2;if(i<=completo.length+1)t(paso,28);else ia.classList.remove('escribiendo');})();},1400);
+      t(function(){st.className='st st-ok';st.textContent='Autorizada';chip.textContent='2 pendientes';fa.classList.remove('destello');void fa.offsetWidth;fa.classList.add('destello');},4300);
+    }
+    document.documentElement.classList.add('js-portal');estadoInicial();
+    var visto=false;new IntersectionObserver(function(es){if(es[0].isIntersecting&&!visto){visto=true;correr();}else if(!es[0].isIntersecting&&visto){visto=false;}},{threshold:.45}).observe(portal);
   })();
 
   // Pestañas accesibles (producto y método)
