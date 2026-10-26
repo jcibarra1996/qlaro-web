@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Qlaro · Lo legal, sin vueltas</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Qlaro construye y opera plataformas con IA para áreas legales: gestión de contratos, intake legal, generación de documentos, expedientes corporativos y tableros.">
+<meta name="description" content="Qlaro construye y opera plataformas con IA para áreas legales: intake legal, generación de documentos, gestión de contratos, expedientes corporativos y tableros.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Qlaro · Lo legal, sin vueltas">
-<meta property="og:description" content="Plataformas con IA para áreas legales: contratos, solicitudes, documentos y expedientes, con las reglas de tu negocio.">
+<meta property="og:description" content="Cinco plataformas con IA para áreas legales: solicitudes, documentos, contratos, expedientes y tableros, con las reglas de tu negocio.">
 <meta property="og:image" content="video/poster.jpg">
 <meta name="theme-color" content="#FFFFFF">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -16,8 +16,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
 <style>
-/* Concepto: minimalismo de producto. Blanco y gris claro alternados por sección, una sola tipografía,
-   titulares grandes y centrados, mucho aire. La mandarina de la marca solo en acciones y acentos. */
+/* Concepto: página de producto minimalista para una suite. Blanco y gris claro alternados, una sola tipografía,
+   titulares grandes y centrados. Cada plataforma tiene su propia sección; la mandarina solo en acciones y acentos. */
 :root{
   --bg:#FFFFFF; --bg-2:#F5F5F7; --card:#FFFFFF; --ink:#1D1D1F; --muted:#6E6E73; --line:#D2D2D7;
   --accent:#FF5C00; --accent-hover:#FF7124; --accent-ink:#C24400; --on-accent:#FFFFFF;
@@ -55,8 +55,8 @@ a:hover{text-decoration:underline}
 .skip:focus{top:calc(12px + env(safe-area-inset-top,0px));text-decoration:none}
 .ico{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 
-/* Botones y enlaces de acción */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:11px 22px;border-radius:980px;font:500 17px/1.2 var(--font);letter-spacing:-.01em;border:0;cursor:pointer;transition:background-color .2s ease,opacity .2s ease}
+/* Botones y enlaces */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:11px 22px;border-radius:980px;font:500 17px/1.2 var(--font);letter-spacing:-.01em;border:0;cursor:pointer;transition:background-color .2s ease}
 .btn:hover{text-decoration:none}
 .btn-acento{background:var(--accent);color:var(--on-accent)}
 .btn-acento:hover{background:var(--accent-hover)}
@@ -65,12 +65,12 @@ a:hover{text-decoration:underline}
 .mas:hover::after{transform:translateX(2px)}
 .acciones{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px 28px}
 
-/* ------------------------------------------------ Navegación */
+/* Navegación */
 .top{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:color-mix(in srgb,var(--bg) 80%,transparent);backdrop-filter:saturate(1.8) blur(20px);-webkit-backdrop-filter:saturate(1.8) blur(20px);border-bottom:1px solid color-mix(in srgb,var(--line) 60%,transparent)}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:52px}
 .logo{display:block;height:22px;width:auto;color:var(--ink)}
 .logo .q{fill:var(--accent)} .logo .w{fill:currentColor}
-.nav-links{display:none;gap:28px}
+.nav-links{display:none;gap:26px}
 .nav-links a{color:var(--ink);opacity:.8;font-size:13px;padding:14px 0;transition:opacity .2s}
 .nav-links a:hover{opacity:1;text-decoration:none}
 .nav-der{display:flex;align-items:center;gap:6px}
@@ -78,29 +78,42 @@ a:hover{text-decoration:underline}
 .menu-btn{display:inline-grid;place-items:center;width:44px;height:44px;border:0;background:transparent;color:var(--ink);cursor:pointer;border-radius:10px}
 .menu{padding-block:8px 24px}
 .menu a{display:block;padding:12px 0;font-size:24px;font-weight:600;color:var(--ink);letter-spacing:-.02em}
-@media (min-width:900px){.nav-links{display:flex}.menu-btn,.menu{display:none!important}}
+@media (min-width:980px){.nav-links{display:flex}.menu-btn,.menu{display:none!important}}
 
-/* ------------------------------------------------ Secciones */
+/* Secciones */
 .sec{padding-block:120px}
 .sec.gris{background:var(--bg-2)}
 .sec.negro{background:var(--dark);color:var(--dark-ink);--ink:#F5F5F7;--muted:#A1A1A6;--line:#424245;--card:#1C1C1E;--bg-2:#1C1C1E;--accent-ink:#FF8A4C;color-scheme:dark}
 @media (max-width:733px){.sec{padding-block:80px}}
-.pre{font-size:19px;font-weight:600;color:var(--accent-ink);margin-bottom:10px;letter-spacing:-.01em}
+.pre{display:inline-flex;align-items:center;gap:8px;font-size:19px;font-weight:600;color:var(--accent-ink);margin-bottom:10px;letter-spacing:-.01em}
+.pre .ico{width:22px;height:22px}
 .titulo{font-size:clamp(40px,5.6vw,64px);line-height:1.06;font-weight:700;letter-spacing:-.035em}
 .sub{font-size:clamp(19px,2vw,24px);line-height:1.38;color:var(--muted);max-width:34em;margin-top:20px;font-weight:500;letter-spacing:-.015em}
 .centro .sub{margin-inline:auto}
 .encabezado{margin-bottom:64px}
-
-/* ------------------------------------------------ Hero */
-.hero{padding-block:88px 0;text-align:center;overflow:hidden}
-.hero .marca{font-size:21px;font-weight:600;color:var(--accent-ink);letter-spacing:-.01em}
-.hero h1{font-size:clamp(52px,9vw,112px);line-height:1;font-weight:700;letter-spacing:-.05em;margin-top:8px}
-.hero .sub{margin:22px auto 0;max-width:28em}
-.hero .acciones{margin-top:32px}
-.escaparate{margin:72px auto 0;max-width:var(--wide);padding-left:max(22px,env(safe-area-inset-left,0px));padding-right:max(22px,env(safe-area-inset-right,0px))}
-.escaparate figure{margin:0 auto;max-width:1100px;border-radius:22px;overflow:hidden;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.04),0 30px 80px -20px rgba(0,0,0,.25);border:1px solid var(--line)}
-.escaparate img{display:block;width:100%;height:auto}
 .nota{margin-top:18px;font-size:13px;color:var(--muted)}
+
+/* Hero con explorador de plataformas */
+.hero{padding-block:88px 96px;text-align:center;overflow:hidden}
+.hero .marca{font-size:21px;font-weight:600;color:var(--accent-ink)}
+.hero h1{font-size:clamp(52px,9vw,112px);line-height:1;font-weight:700;letter-spacing:-.05em;margin-top:8px}
+.hero .sub{margin:22px auto 0;max-width:30em}
+.hero .acciones{margin-top:32px}
+.explorador{margin:64px auto 0;max-width:var(--wide);padding-left:max(22px,env(safe-area-inset-left,0px));padding-right:max(22px,env(safe-area-inset-right,0px))}
+.chips{display:flex;justify-content:center;gap:8px;overflow-x:auto;scrollbar-width:none;padding:4px 2px 8px;margin-bottom:28px}
+.chips::-webkit-scrollbar{display:none}
+.chips button{flex:none;display:flex;flex-direction:column;align-items:center;gap:8px;min-width:112px;min-height:44px;padding:14px 14px 12px;border-radius:18px;border:0;background:transparent;color:var(--muted);font:500 14px/1.2 var(--font);cursor:pointer;transition:background-color .25s,color .25s}
+.chips button .ico{width:28px;height:28px;stroke-width:1.5}
+.chips button:hover{color:var(--ink)}
+.chips button[aria-selected="true"]{background:var(--bg-2);color:var(--ink)}
+.chips button[aria-selected="true"] .ico{color:var(--accent)}
+@media (max-width:733px){.chips{justify-content:flex-start}.chips button{min-width:96px}}
+.vista{display:grid;gap:22px;justify-items:center}
+.vista figure{margin:0;width:100%;max-width:1100px;border-radius:22px;overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:0 2px 6px rgba(0,0,0,.04),0 30px 80px -20px rgba(0,0,0,.22)}
+.vista img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:left top}
+.vista .leyenda{font-size:19px;color:var(--muted);max-width:40em}
+.vista .leyenda b{color:var(--ink);font-weight:600}
+.vista .leyenda .mas{min-height:0;font-size:inherit}
 
 /* Declaración */
 .declaracion{font-size:clamp(28px,3.6vw,44px);line-height:1.2;font-weight:600;letter-spacing:-.03em;max-width:24em;margin:0 auto;text-align:center}
@@ -109,12 +122,42 @@ a:hover{text-decoration:underline}
 /* Antes y ahora */
 .cambios{display:grid;gap:20px}
 @media (min-width:734px){.cambios{grid-template-columns:repeat(2,1fr)}}
-.cambio{background:var(--card);border-radius:24px;padding:36px 34px;display:grid;gap:14px;align-content:start}
+@media (min-width:1000px){.cambios{grid-template-columns:repeat(3,1fr)}}
+.cambio{background:var(--card);border-radius:24px;padding:32px 30px;display:grid;gap:12px;align-content:start}
+.cambio .de{font-size:13px;font-weight:600;color:var(--accent-ink)}
 .cambio .antes{font-size:15px;color:var(--muted);text-decoration:line-through;text-decoration-color:color-mix(in srgb,var(--muted) 60%,transparent)}
-.cambio .ahora{font-size:clamp(22px,2.2vw,28px);line-height:1.18;font-weight:600;letter-spacing:-.025em}
+.cambio .ahora{font-size:clamp(21px,2vw,25px);line-height:1.2;font-weight:600;letter-spacing:-.025em}
+
+/* Secciones de plataforma */
+.plataforma .rasgos{display:grid;gap:28px 40px;max-width:980px;margin:0 auto 56px;text-align:left}
+@media (min-width:734px){.plataforma .rasgos{grid-template-columns:repeat(3,1fr)}}
+.rasgo{display:grid;gap:6px;border-top:1px solid var(--line);padding-top:18px}
+.rasgo b{font-size:19px;font-weight:600;letter-spacing:-.02em;line-height:1.3}
+.rasgo span{color:var(--muted);font-size:16px}
+.captura{margin:0 auto;max-width:1100px;border-radius:22px;overflow:hidden;background:#fff;border:1px solid var(--line)}
+.captura img{display:block;width:100%;height:auto}
+.galeria{display:grid;gap:20px;max-width:1100px;margin:20px auto 0}
+@media (min-width:734px){.galeria{grid-template-columns:repeat(3,1fr)}}
+.galeria figure{margin:0;background:var(--card);border-radius:20px;overflow:hidden;display:flex;flex-direction:column}
+.galeria figcaption{padding:22px 22px 16px;display:grid;gap:4px}
+.galeria figcaption b{font-size:19px;font-weight:600;letter-spacing:-.02em}
+.galeria figcaption span{color:var(--muted);font-size:15px}
+.galeria .img{margin:auto 22px 0;border-radius:10px 10px 0 0;overflow:hidden;border:1px solid var(--line);border-bottom:0;background:#fff}
+.galeria img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;object-position:left top}
+.sec.gris .galeria figure{background:var(--bg)}
+.sec:not(.gris) .galeria figure{background:var(--bg-2)}
+.enlaces{margin-top:32px}
 
 /* IA */
-.reglas{display:grid;border-top:1px solid var(--line);margin-bottom:96px}
+.donde{display:grid;gap:20px;margin-bottom:120px}
+@media (min-width:734px){.donde{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1000px){.donde{grid-template-columns:repeat(4,1fr)}}
+.donde li{background:var(--card);border-radius:22px;padding:28px 24px;display:grid;gap:8px;align-content:start}
+.donde .en{font-size:14px;font-weight:600;color:var(--accent-ink)}
+.donde b{font-size:21px;font-weight:600;letter-spacing:-.02em;line-height:1.25}
+.donde span{color:var(--muted);font-size:16px}
+.subtitulo{font-size:clamp(28px,3.4vw,40px);line-height:1.1;font-weight:700;letter-spacing:-.03em}
+.reglas{display:grid;border-top:1px solid var(--line);margin-bottom:88px}
 @media (min-width:734px){.reglas{grid-template-columns:repeat(3,1fr)}}
 .regla{padding:28px 0;border-bottom:1px solid var(--line);display:grid;gap:8px;align-content:start}
 @media (min-width:734px){.regla{padding:32px 28px 32px 0;border-bottom:0}.regla + .regla{padding-left:28px;border-left:1px solid var(--line)}}
@@ -125,7 +168,6 @@ a:hover{text-decoration:underline}
 .regla span{color:var(--muted);font-size:16px}
 .tema{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 16px;margin-bottom:16px;font-size:14px;color:var(--muted)}
 .tema b{color:var(--ink);font-weight:600;font-size:17px}
-
 .seg-wrap{text-align:center}
 .segmentos{display:inline-flex;flex-wrap:wrap;justify-content:center;gap:4px;padding:4px;border-radius:24px;background:var(--bg-2);margin:0 auto 48px}
 .segmentos button{min-height:40px;padding:8px 20px;border-radius:980px;border:0;background:transparent;color:var(--muted);font:500 15px var(--font);cursor:pointer;transition:background-color .25s,color .25s}
@@ -138,6 +180,7 @@ a:hover{text-decoration:underline}
 .marco{margin:0;width:100%;max-width:920px;border-radius:18px;overflow:hidden;background:#fff}
 .marco img{display:block;width:100%;height:auto}
 .hoja{width:100%;max-width:720px;text-align:left;background:#FFFFFF;color:#1D1D1F;border-radius:18px;padding:32px;display:grid;gap:16px}
+@media (max-width:500px){.hoja{padding:22px}}
 .hoja .rotulo{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;align-items:center;font-size:13px;font-weight:600;color:#6E6E73}
 .etiqueta{display:inline-block;border-radius:980px;padding:3px 10px;font-size:12px;font-weight:600}
 .etiqueta.alto{background:#FDECEC;color:#B42318}
@@ -153,19 +196,6 @@ a:hover{text-decoration:underline}
 @media (min-width:734px){.pilares{grid-template-columns:repeat(3,1fr)}}
 .pilares b{display:block;font-size:24px;font-weight:600;letter-spacing:-.02em}
 .pilares span{color:var(--muted);font-size:17px}
-
-/* Plataformas */
-.mosaico{display:grid;gap:20px}
-@media (min-width:734px){.mosaico{grid-template-columns:repeat(2,1fr)}.mosaico .doble{grid-column:1/-1}}
-.tile{background:var(--card);border-radius:28px;overflow:hidden;display:flex;flex-direction:column;text-align:center;padding:48px 32px 0}
-.tile h3{font-size:clamp(28px,3vw,40px);line-height:1.08;letter-spacing:-.035em}
-.tile p{color:var(--muted);font-size:19px;line-height:1.4;margin:12px auto 0;max-width:26em}
-.tile .mas{justify-content:center;margin-top:10px}
-.tile .cuerpo{padding-bottom:32px}
-.tile .imagen{margin:auto auto 0;width:100%;max-width:880px;border-radius:14px 14px 0 0;overflow:hidden;border:1px solid var(--line);border-bottom:0;background:#fff}
-.tile .imagen img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:left top}
-.doble .imagen img{aspect-ratio:16/8}
-.tile.sin-imagen{padding-bottom:48px}
 
 /* Demo */
 .video{margin:0 auto;max-width:1100px}
@@ -216,14 +246,20 @@ a:hover{text-decoration:underline}
 @media (max-width:500px){.formulario{padding:24px}}
 .campos{display:grid;gap:16px}
 @media (min-width:600px){.campos{grid-template-columns:1fr 1fr}.campos .ancho{grid-column:1/-1}}
-.campo{display:grid;gap:6px;min-width:0}
-.campo label{font-size:14px;font-weight:600}
+.campo{display:grid;gap:6px;min-width:0;border:0;margin:0;padding:0}
+.campo label,.campo legend{font-size:14px;font-weight:600;padding:0}
 .campo input,.campo select,.campo textarea{width:100%;min-height:48px;font:400 17px var(--font);color:var(--ink);background:var(--bg-2);border:1px solid transparent;border-radius:12px;padding:12px 14px;transition:border-color .2s,box-shadow .2s}
 .campo textarea{min-height:110px;resize:vertical}
 .campo input:focus,.campo select:focus,.campo textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 22%,transparent)}
 .campo [aria-invalid="true"]{border-color:var(--risk)}
 .campo .err{font-size:14px;color:var(--risk)}
 .campo .err:empty{display:none}
+.opciones{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.opciones label{position:relative;display:inline-flex}
+.opciones input{position:absolute;opacity:0;width:1px;height:1px;min-height:0}
+.opciones span{display:inline-flex;align-items:center;min-height:40px;padding:8px 14px;border-radius:980px;background:var(--bg-2);border:1px solid transparent;font-size:15px;font-weight:500;cursor:pointer;transition:background-color .2s,border-color .2s,color .2s}
+.opciones input:checked + span{background:color-mix(in srgb,var(--accent) 14%,var(--card));border-color:var(--accent);color:var(--ink)}
+.opciones input:focus-visible + span{outline:2px solid var(--accent);outline-offset:2px}
 .ayuda{font-weight:400;color:var(--muted)}
 .formulario .btn{justify-self:start}
 .aviso{font-size:13px;color:var(--muted)}
@@ -246,7 +282,7 @@ a:hover{text-decoration:underline}
 .pie .logo{height:20px;margin-bottom:10px}
 .pie-legal{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;padding-top:16px}
 
-/* Entrada suave: visible en reposo, solo se anima con JS y movimiento permitido */
+/* Entrada suave: visible en reposo; solo se anima con JS y movimiento permitido */
 .js-anim .rev{opacity:.001;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
 .js-anim .rev.visto{opacity:1;transform:none}
 </style>
@@ -262,6 +298,11 @@ a:hover{text-decoration:underline}
     <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
     <symbol id="i-chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
     <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 9h16"/><path d="M4 15h16"/></symbol>
+    <symbol id="i-inbox" viewBox="0 0 24 24"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></symbol>
+    <symbol id="i-fileplus" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M9 15h6"/><path d="M12 18v-6"/></symbol>
+    <symbol id="i-filetext" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></symbol>
+    <symbol id="i-building" viewBox="0 0 24 24"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></symbol>
     <symbol id="i-db" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></symbol>
     <symbol id="i-lock" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
     <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
@@ -275,12 +316,13 @@ a:hover{text-decoration:underline}
   <nav class="wrap ancho nav" aria-label="Principal">
     <a href="#inicio" aria-label="Qlaro, inicio"><svg class="logo" viewBox="0 0 371.7 152.2" role="img" aria-label="Qlaro"><use href="#lockup"/></svg></a>
     <div class="nav-links">
+      <a href="#intake">Intake</a>
+      <a href="#documentos">Documentos</a>
+      <a href="#contratos">Contratos</a>
+      <a href="#expedientes">Expedientes</a>
+      <a href="#tableros">Tableros</a>
       <a href="#ia">La IA</a>
-      <a href="#plataformas">Plataformas</a>
-      <a href="#demo">Demo</a>
       <a href="#privacidad">Privacidad</a>
-      <a href="#metodo">Método</a>
-      <a href="#preguntas">Preguntas</a>
     </div>
     <div class="nav-der">
       <a class="btn btn-acento" href="#contacto">Agenda un diagnóstico</a>
@@ -288,7 +330,7 @@ a:hover{text-decoration:underline}
     </div>
   </nav>
   <div class="wrap menu" id="menu" hidden>
-    <a href="#ia">La IA</a><a href="#plataformas">Plataformas</a><a href="#demo">Demo</a><a href="#privacidad">Privacidad</a><a href="#metodo">Método</a><a href="#preguntas">Preguntas</a>
+    <a href="#intake">Intake legal</a><a href="#documentos">Generación de documentos</a><a href="#contratos">Gestión de contratos</a><a href="#expedientes">Expedientes corporativos</a><a href="#tableros">Tableros legales</a><a href="#ia">La IA</a><a href="#privacidad">Privacidad</a><a href="#preguntas">Preguntas</a>
   </div>
 </header>
 
@@ -298,49 +340,173 @@ a:hover{text-decoration:underline}
     <div class="wrap">
       <p class="marca">Qlaro</p>
       <h1 id="t-hero">Lo legal,<br>sin vueltas.</h1>
-      <p class="sub">Plataformas con IA para tu área legal. Con las reglas de tu negocio y la cita de cada respuesta.</p>
+      <p class="sub">Cinco plataformas con IA para tu área legal: solicitudes, documentos, contratos, expedientes y tableros. Úsalas juntas o empieza por una.</p>
       <div class="acciones">
         <a class="btn btn-acento" href="#contacto">Agenda un diagnóstico</a>
-        <a class="mas" href="#demo">Ver la demo</a>
+        <a class="mas" href="#intake">Conoce las plataformas</a>
       </div>
     </div>
-    <div class="escaparate rev">
-      <figure>
-        <img src="img/revision.jpg" alt="Contrato de suministro abierto en la plataforma junto al análisis de la IA: resumen para el negocio y hallazgos por nivel de riesgo." width="1600" height="1185" fetchpriority="high">
-      </figure>
-      <p class="nota">Captura real con datos de demostración.</p>
+
+    <div class="explorador">
+      <div class="chips" role="tablist" aria-label="Plataformas de Qlaro">
+        <button role="tab" id="x-intake" aria-controls="v-intake" aria-selected="true"><svg class="ico" aria-hidden="true"><use href="#i-inbox"/></svg>Intake legal</button>
+        <button role="tab" id="x-documentos" aria-controls="v-documentos" aria-selected="false" tabindex="-1"><svg class="ico" aria-hidden="true"><use href="#i-fileplus"/></svg>Documentos</button>
+        <button role="tab" id="x-contratos" aria-controls="v-contratos" aria-selected="false" tabindex="-1"><svg class="ico" aria-hidden="true"><use href="#i-filetext"/></svg>Contratos</button>
+        <button role="tab" id="x-expedientes" aria-controls="v-expedientes" aria-selected="false" tabindex="-1"><svg class="ico" aria-hidden="true"><use href="#i-building"/></svg>Expedientes</button>
+        <button role="tab" id="x-tableros" aria-controls="v-tableros" aria-selected="false" tabindex="-1"><svg class="ico" aria-hidden="true"><use href="#i-chart"/></svg>Tableros</button>
+      </div>
+      <div class="vista" role="tabpanel" id="v-intake" aria-labelledby="x-intake" tabindex="0">
+        <figure><img src="img/intake.jpg" alt="Portal de intake: el área de negocio pide un contrato y ve en qué etapa va cada solicitud." width="1600" height="1185" fetchpriority="high"></figure>
+        <p class="leyenda"><b>Intake legal.</b> El negocio pide y ve en qué va, sin escribirle a legal para preguntar. <a class="mas" href="#intake">Más</a></p>
+      </div>
+      <div class="vista" role="tabpanel" id="v-documentos" aria-labelledby="x-documentos" tabindex="0" hidden>
+        <figure><img src="img/plantillas.jpg" alt="Biblioteca de plantillas aprobadas por la dirección legal." width="1600" height="899" loading="lazy"></figure>
+        <p class="leyenda"><b>Generación de documentos.</b> Plantillas aprobadas que se llenan solas con los datos de cada parte. <a class="mas" href="#documentos">Más</a></p>
+      </div>
+      <div class="vista" role="tabpanel" id="v-contratos" aria-labelledby="x-contratos" tabindex="0" hidden>
+        <figure><img src="img/revision.jpg" alt="Contrato de suministro junto al análisis de la IA con hallazgos por nivel de riesgo." width="1600" height="1185" loading="lazy"></figure>
+        <p class="leyenda"><b>Gestión de contratos.</b> Revisión con IA, contrapropuesta, firma y vencimientos en un solo lugar. <a class="mas" href="#contratos">Más</a></p>
+      </div>
+      <div class="vista" role="tabpanel" id="v-expedientes" aria-labelledby="x-expedientes" tabindex="0" hidden>
+        <figure><img src="img/expedientes.jpg" alt="Tabla de expedientes corporativos con RFC, documentos y estado de validación." width="1600" height="813" loading="lazy"></figure>
+        <p class="leyenda"><b>Expedientes corporativos.</b> Actas, poderes y constancias leídos por IA y validados por tu equipo. <a class="mas" href="#expedientes">Más</a></p>
+      </div>
+      <div class="vista" role="tabpanel" id="v-tableros" aria-labelledby="x-tableros" tabindex="0" hidden>
+        <figure><img src="img/reportes.jpg" alt="Tablero con contratos en revisión, tiempo promedio y hallazgos por riesgo y por tema." width="1600" height="1185" loading="lazy"></figure>
+        <p class="leyenda"><b>Tableros legales.</b> Tiempos, volumen y riesgo, calculados con lo que ya está en Qlaro. <a class="mas" href="#tableros">Más</a></p>
+      </div>
+      <p class="nota">Capturas reales con datos de demostración.</p>
     </div>
   </section>
 
-  <section class="sec" aria-label="Qué hace Qlaro">
+  <section class="sec gris" aria-label="Cómo se conectan">
     <div class="wrap">
-      <p class="declaracion rev">Contratos, solicitudes, documentos y expedientes. <span>Construimos y operamos la plataforma que tu área legal necesita, y la IA revisa cada documento con los criterios de tu equipo.</span></p>
+      <p class="declaracion rev">Cinco plataformas. Una sola IA y una sola base. <span>Lo que Legal valida en un expediente llena una plantilla, el contrato generado entra a revisión con tus reglas y el tablero lo cuenta solo.</span></p>
     </div>
   </section>
 
-  <section class="sec gris" id="problema" aria-labelledby="t-problema">
-    <div class="wrap">
+  <section class="sec" id="problema" aria-labelledby="t-problema">
+    <div class="wrap ancho">
       <div class="encabezado centro rev">
-        <h2 class="titulo" id="t-problema">¿Cómo va mi contrato?</h2>
-        <p class="sub">La pregunta que el negocio le hace a legal todos los días. Con Qlaro deja de hacer falta.</p>
+        <h2 class="titulo" id="t-problema">¿En qué va lo que<br>le pedí a legal?</h2>
+        <p class="sub">La pregunta que el negocio hace todos los días. Si hace falta preguntarla, el proceso no se ve. Esto es lo que cambia.</p>
       </div>
       <ul class="cambios">
-        <li class="cambio rev"><p class="antes">Contratos perdidos en la bandeja de correo</p><p class="ahora">Una sola puerta, con estatus visible para quien pidió.</p></li>
-        <li class="cambio rev"><p class="antes">Tres versiones del mismo documento</p><p class="ahora">Una versión vigente, con todo su historial.</p></li>
-        <li class="cambio rev"><p class="antes">Avisos de no renovación que nadie agenda</p><p class="ahora">Vencimientos con fecha, área y aviso.</p></li>
-        <li class="cambio rev"><p class="antes">Reportes armados a mano para la junta</p><p class="ahora">Un tablero con tiempos, volumen y riesgo.</p></li>
+        <li class="cambio rev" style="background:var(--bg-2)"><p class="de">Intake legal</p><p class="antes">Solicitudes perdidas en el correo</p><p class="ahora">Una sola puerta, con estatus visible para quien pidió.</p></li>
+        <li class="cambio rev" style="background:var(--bg-2)"><p class="de">Generación de documentos</p><p class="antes">Cada contrato redactado desde cero</p><p class="ahora">Plantillas aprobadas que se llenan solas.</p></li>
+        <li class="cambio rev" style="background:var(--bg-2)"><p class="de">Gestión de contratos</p><p class="antes">Tres versiones del mismo documento</p><p class="ahora">Una versión vigente, con todo su historial.</p></li>
+        <li class="cambio rev" style="background:var(--bg-2)"><p class="de">Gestión de contratos</p><p class="antes">Avisos de no renovación que nadie agenda</p><p class="ahora">Vencimientos con fecha, área y aviso.</p></li>
+        <li class="cambio rev" style="background:var(--bg-2)"><p class="de">Expedientes corporativos</p><p class="antes">Actas y poderes buscados en carpetas</p><p class="ahora">Datos de cada parte, validados y a la mano.</p></li>
+        <li class="cambio rev" style="background:var(--bg-2)"><p class="de">Tableros legales</p><p class="antes">Reportes armados a mano para la junta</p><p class="ahora">Un tablero con tiempos, volumen y riesgo.</p></li>
       </ul>
     </div>
   </section>
 
+  <!-- Intake legal -->
+  <section class="sec gris plataforma" id="intake" aria-labelledby="t-intake">
+    <div class="wrap ancho">
+      <div class="encabezado centro rev">
+        <p class="pre"><svg class="ico" aria-hidden="true"><use href="#i-inbox"/></svg>Intake legal</p>
+        <h2 class="titulo" id="t-intake">Una sola puerta<br>para pedirle algo a legal.</h2>
+        <p class="sub">El negocio sube su solicitud y ve en qué etapa va. Legal deja de contestar «¿cómo va?».</p>
+      </div>
+      <div class="rasgos rev">
+        <p class="rasgo"><b>Solicitud completa desde el inicio.</b><span>El contrato de la contraparte y sus documentos entran juntos.</span></p>
+        <p class="rasgo"><b>Cinco etapas claras.</b><span>Recibida, revisión legal, negociación, aprobación y firma.</span></p>
+        <p class="rasgo"><b>Tiempo a la vista.</b><span>Quien pidió ve cuántos días lleva cada solicitud en su etapa.</span></p>
+      </div>
+      <figure class="captura rev"><img src="img/intake.jpg" alt="Portal de intake con el avance de cada solicitud por etapa." width="1600" height="1185" loading="lazy"></figure>
+    </div>
+  </section>
+
+  <!-- Generación de documentos -->
+  <section class="sec plataforma" id="documentos" aria-labelledby="t-documentos">
+    <div class="wrap ancho">
+      <div class="encabezado centro rev">
+        <p class="pre"><svg class="ico" aria-hidden="true"><use href="#i-fileplus"/></svg>Generación de documentos</p>
+        <h2 class="titulo" id="t-documentos">Contratos que<br>se arman solos.</h2>
+        <p class="sub">Plantillas aprobadas por tu dirección legal que se llenan con los expedientes de las partes y los datos del negocio.</p>
+      </div>
+      <div class="rasgos rev">
+        <p class="rasgo"><b>Una plantilla por tipo.</b><span>Arrendamiento, compraventa, servicios, suministro o confidencialidad, cada una con su versión.</span></p>
+        <p class="rasgo"><b>Datos que ya estaban validados.</b><span>Denominación, representante, RFC y domicilio salen del expediente de cada parte.</span></p>
+        <p class="rasgo"><b>Directo a revisión.</b><span>El documento generado entra a la revisión de Legal con tus reglas.</span></p>
+      </div>
+      <figure class="captura rev"><img src="img/plantillas.jpg" alt="Biblioteca de plantillas por tipo de contrato." width="1600" height="899" loading="lazy"></figure>
+    </div>
+  </section>
+
+  <!-- Gestión de contratos -->
+  <section class="sec gris plataforma" id="contratos" aria-labelledby="t-contratos">
+    <div class="wrap ancho">
+      <div class="encabezado centro rev">
+        <p class="pre"><svg class="ico" aria-hidden="true"><use href="#i-filetext"/></svg>Gestión de contratos</p>
+        <h2 class="titulo" id="t-contratos">Del borrador<br>a la renovación.</h2>
+        <p class="sub">Revisión con IA contra tus reglas, contrapropuesta en Word, firma electrónica y una cartera que avisa antes de cada fecha.</p>
+      </div>
+      <figure class="captura rev"><img src="img/revision.jpg" alt="Contrato de suministro junto al análisis de la IA: resumen para el negocio y hallazgos por nivel de riesgo." width="1600" height="1185" loading="lazy"></figure>
+      <div class="galeria">
+        <figure class="rev"><figcaption><b>Firma electrónica.</b><span>Con Mifiel y e.firma del SAT, con constancia NOM-151.</span></figcaption><div class="img"><img src="img/firmas.jpg" alt="Contratos pendientes de firma y firmados con Mifiel." width="1600" height="1185" loading="lazy"></div></figure>
+        <figure class="rev"><figcaption><b>Vencimientos.</b><span>Fechas límite de aviso con área responsable y recordatorios previos.</span></figcaption><div class="img"><img src="img/vencimientos.jpg" alt="Lista de vencimientos y fechas límite de aviso." width="1600" height="1185" loading="lazy"></div></figure>
+        <figure class="rev"><figcaption><b>Cartera vigente.</b><span>Monto, término, situación y responsable de cada contrato.</span></figcaption><div class="img"><img src="img/cartera.jpg" alt="Cartera de contratos vigentes." width="1600" height="971" loading="lazy"></div></figure>
+      </div>
+      <p class="centro enlaces"><a class="mas" href="#demo">Ver la demo de 74 segundos</a></p>
+    </div>
+  </section>
+
+  <!-- Expedientes corporativos -->
+  <section class="sec plataforma" id="expedientes" aria-labelledby="t-expedientes">
+    <div class="wrap ancho">
+      <div class="encabezado centro rev">
+        <p class="pre"><svg class="ico" aria-hidden="true"><use href="#i-building"/></svg>Expedientes corporativos</p>
+        <h2 class="titulo" id="t-expedientes">Los datos de cada parte,<br>validados una vez.</h2>
+        <p class="sub">Acta constitutiva, poderes y constancia de situación fiscal. La IA extrae los datos, Legal los valida y se reutilizan en cada contrato.</p>
+      </div>
+      <div class="rasgos rev">
+        <p class="rasgo"><b>Lo que falta, a la vista.</b><span>Cada parte muestra qué documentos y datos están por completar.</span></p>
+        <p class="rasgo"><b>Validado por Legal.</b><span>Nada se usa en un contrato hasta que tu equipo lo confirma.</span></p>
+        <p class="rasgo"><b>Declaraciones verificadas.</b><span>Lo que declara cada contrato se compara con el expediente.</span></p>
+      </div>
+      <figure class="captura rev"><img src="img/expedientes.jpg" alt="Tabla de expedientes corporativos con documentos, datos por completar y estado." width="1600" height="813" loading="lazy"></figure>
+    </div>
+  </section>
+
+  <!-- Tableros legales -->
+  <section class="sec gris plataforma" id="tableros" aria-labelledby="t-tableros">
+    <div class="wrap ancho">
+      <div class="encabezado centro rev">
+        <p class="pre"><svg class="ico" aria-hidden="true"><use href="#i-chart"/></svg>Tableros legales</p>
+        <h2 class="titulo" id="t-tableros">Lo que legal lleva a la junta,<br>ya calculado.</h2>
+        <p class="sub">Con los datos que ya se registran en las plataformas. Sin hojas de cálculo armadas a mano.</p>
+      </div>
+      <div class="rasgos rev">
+        <p class="rasgo"><b>Volumen y avance.</b><span>Contratos en revisión, en negociación, aprobados y pendientes de firma.</span></p>
+        <p class="rasgo"><b>Tiempo de revisión.</b><span>Promedio de la recepción a la aprobación.</span></p>
+        <p class="rasgo"><b>Riesgo por tema.</b><span>Hallazgos por nivel de riesgo y por tema, y los vencimientos de los próximos 90 días.</span></p>
+      </div>
+      <figure class="captura rev"><img src="img/reportes.jpg" alt="Tablero de reportes legales." width="1600" height="1185" loading="lazy"></figure>
+    </div>
+  </section>
+
+  <!-- La IA -->
   <section class="sec negro" id="ia" aria-labelledby="t-ia">
     <div class="wrap">
       <div class="encabezado centro rev">
         <p class="pre">La IA</p>
-        <h2 class="titulo" id="t-ia">Trabaja con las reglas<br>de tu negocio.</h2>
-        <p class="sub">Tu empresa ya sabe qué prefiere, qué acepta y qué nunca acepta. Lo escribes una vez por tema y la IA lo aplica a cada documento, en minutos.</p>
+        <h2 class="titulo" id="t-ia">Una sola IA,<br>en todas las plataformas.</h2>
+        <p class="sub">Siempre con las reglas de tu negocio y con la cita de dónde sale cada respuesta.</p>
       </div>
+      <ul class="donde">
+        <li class="rev"><p class="en">En contratos</p><b>Lee, cita y propone.</b><span>Compara cada cláusula con tus reglas y arma la contrapropuesta.</span></li>
+        <li class="rev"><p class="en">En expedientes</p><b>Extrae los datos.</b><span>De actas, poderes y constancias, para que Legal los valide.</span></li>
+        <li class="rev"><p class="en">En las partes</p><b>Verifica declaraciones.</b><span>Compara lo que declara cada parte con su expediente.</span></li>
+        <li class="rev"><p class="en">En tus reglas</p><b>Sugiere posiciones.</b><span>Propone las que faltan. La dirección jurídica decide.</span></li>
+      </ul>
 
+      <div class="encabezado centro rev" style="margin-bottom:40px">
+        <h3 class="subtitulo">Así revisa un contrato.</h3>
+        <p class="sub">Tu empresa ya sabe qué prefiere, qué acepta y qué nunca acepta. Lo escribes una vez por tema y la IA lo aplica a cada documento.</p>
+      </div>
       <div class="rev">
         <p class="tema"><b>Intereses moratorios</b><span>Ejemplo. No es una recomendación legal.</span></p>
         <div class="reglas">
@@ -351,7 +517,7 @@ a:hover{text-decoration:underline}
       </div>
 
       <div class="seg-wrap">
-        <div class="segmentos" role="tablist" aria-label="Lo que hace la IA">
+        <div class="segmentos" role="tablist" aria-label="Lo que hace la IA con un contrato">
           <button role="tab" id="tab-lee" aria-controls="p-lee" aria-selected="true">Lee</button>
           <button role="tab" id="tab-cita" aria-controls="p-cita" aria-selected="false" tabindex="-1">Cita</button>
           <button role="tab" id="tab-propone" aria-controls="p-propone" aria-selected="false" tabindex="-1">Propone</button>
@@ -361,8 +527,8 @@ a:hover{text-decoration:underline}
       </div>
 
       <div class="panel" role="tabpanel" id="p-lee" aria-labelledby="tab-lee" tabindex="0">
-        <div class="panel-texto"><h3>Lee el contrato completo.</h3><p>Lo compara con tus reglas. Cada cláusula que se aparta de lo que tu empresa acepta se vuelve un hallazgo, con su nivel de riesgo.</p></div>
-        <figure class="marco"><img src="img/revision.jpg" alt="Análisis de la IA junto al contrato de suministro." width="1600" height="1185" loading="lazy"></figure>
+        <div class="panel-texto"><h3>Lee el contrato completo.</h3><p>Cada cláusula que se aparta de lo que tu empresa acepta se vuelve un hallazgo, con su nivel de riesgo.</p></div>
+        <figure class="marco"><img src="img/reglas.jpg" alt="Reglas de la dirección legal por tema: preferida, respaldo aceptable y nunca se acepta, con cláusula modelo." width="1600" height="1185" loading="lazy"></figure>
       </div>
       <div class="panel" role="tabpanel" id="p-cita" aria-labelledby="tab-cita" tabindex="0" hidden>
         <div class="panel-texto"><h3>Cita el texto exacto.</h3><p>Antes de mostrar un hallazgo, el sistema comprueba que la cita exista en el contrato. Sin cita, no hay hallazgo.</p></div>
@@ -381,12 +547,8 @@ a:hover{text-decoration:underline}
         </div>
       </div>
       <div class="panel" role="tabpanel" id="p-verifica" aria-labelledby="tab-verifica" tabindex="0" hidden>
-        <div class="panel-texto"><h3>Verifica las declaraciones.</h3><p>Compara lo que declara cada parte con su expediente: escritura, representante, RFC y domicilio. Un dato de relleno se marca y se propone el correcto.</p></div>
-        <div class="hoja">
-          <p class="rotulo">Hallazgo · Declaración I <span class="etiqueta medio">Riesgo medio</span></p>
-          <p class="texto">…según consta en la escritura pública número <mark>00000</mark>, otorgada ante la fe del Notario Público número <mark>000</mark>…</p>
-          <p class="nota-h"><b>Contra el expediente</b>Son datos de relleno. El acta constitutiva del expediente indica otra escritura y otra notaría.</p>
-        </div>
+        <div class="panel-texto"><h3>Verifica las declaraciones.</h3><p>Compara lo que declara cada parte con su expediente: escritura, representante, RFC y domicilio.</p></div>
+        <figure class="marco"><img src="img/partes.jpg" alt="Comparación de las declaraciones de cada parte con su expediente corporativo." width="1600" height="782" loading="lazy"></figure>
       </div>
       <div class="panel" role="tabpanel" id="p-explica" aria-labelledby="tab-explica" tabindex="0" hidden>
         <div class="panel-texto"><h3>Te lo explica en lenguaje de negocio.</h3><p>Quien pidió el contrato recibe un resumen claro: qué se firma, hasta cuándo y qué conviene revisar.</p></div>
@@ -404,53 +566,18 @@ a:hover{text-decoration:underline}
     </div>
   </section>
 
-  <section class="sec gris" id="plataformas" aria-labelledby="t-plataformas">
-    <div class="wrap ancho">
-      <div class="encabezado centro rev">
-        <p class="pre">Plataformas</p>
-        <h2 class="titulo" id="t-plataformas">Una para cada parte<br>del trabajo legal.</h2>
-        <p class="sub">Funcionan solas o conectadas entre sí, con la misma IA y la misma base.</p>
-      </div>
-      <div class="mosaico">
-        <article class="tile doble rev">
-          <div class="cuerpo"><h3>Gestión de contratos</h3><p>Revisión con IA, contrapropuesta en Word, firma con Mifiel, cartera vigente y avisos de vencimiento.</p><a class="mas" href="#demo">Ver la demo</a></div>
-          <div class="imagen"><img src="img/cartera.jpg" alt="Cartera de contratos vigentes con monto, vigencia y responsable." width="1600" height="971" loading="lazy"></div>
-        </article>
-        <article class="tile rev">
-          <div class="cuerpo"><h3>Intake legal</h3><p>Una sola puerta para lo que el negocio le pide a legal, con estatus visible para quien pidió.</p><a class="mas" href="#contacto">Solicitar diagnóstico</a></div>
-          <div class="imagen"><img src="img/intake.jpg" alt="Solicitudes del área de negocio con su avance." width="1600" height="1185" loading="lazy"></div>
-        </article>
-        <article class="tile rev">
-          <div class="cuerpo"><h3>Generación de documentos</h3><p>Contratos que se arman solos desde un formulario y una plantilla aprobada por tu dirección legal.</p><a class="mas" href="#contacto">Solicitar diagnóstico</a></div>
-          <div class="imagen"><img src="img/plantillas.jpg" alt="Biblioteca de plantillas aprobadas." width="1600" height="899" loading="lazy"></div>
-        </article>
-        <article class="tile rev">
-          <div class="cuerpo"><h3>Expedientes corporativos</h3><p>Actas, poderes y constancias leídos por IA, validados por tu equipo y siempre a la mano.</p><a class="mas" href="#contacto">Solicitar diagnóstico</a></div>
-          <div class="imagen"><img src="img/expedientes.jpg" alt="Tabla de expedientes corporativos." width="1600" height="813" loading="lazy"></div>
-        </article>
-        <article class="tile rev">
-          <div class="cuerpo"><h3>Tableros legales</h3><p>Tiempos de revisión, volumen y riesgo, listos para llevar a la junta.</p><a class="mas" href="#contacto">Solicitar diagnóstico</a></div>
-          <div class="imagen"><img src="img/reportes.jpg" alt="Tablero de reportes legales." width="1600" height="1185" loading="lazy"></div>
-        </article>
-        <article class="tile doble sin-imagen rev">
-          <div><h3>¿Tu proceso no está en la lista?</h3><p>Lo mapeamos y construimos la plataforma que le falta a tu área legal.</p><a class="mas" href="#contacto">Cuéntanos tu caso</a></div>
-        </article>
-      </div>
-      <p class="nota centro">Capturas reales de nuestras plataformas, con datos de demostración.</p>
-    </div>
-  </section>
-
   <section class="sec" id="demo" aria-labelledby="t-demo">
     <div class="wrap ancho">
       <div class="encabezado centro rev">
         <p class="pre">Demo</p>
-        <h2 class="titulo" id="t-demo">Un contrato de principio<br>a fin en 74 segundos.</h2>
+        <h2 class="titulo" id="t-demo">Mira las plataformas<br>trabajar juntas.</h2>
+        <p class="sub">Un contrato de la solicitud a la renovación, en 74 segundos.</p>
       </div>
       <div class="video rev">
-        <video controls preload="metadata" playsinline poster="video/poster.jpg" src="video/qlaro.mp4" width="1280" height="720" aria-label="Video de la demo de gestión de contratos con IA, 74 segundos"></video>
+        <video controls preload="metadata" playsinline poster="video/poster.jpg" src="video/qlaro.mp4" width="1280" height="720" aria-label="Video de la demo: un contrato de la solicitud a la renovación, 74 segundos"></video>
       </div>
       <ol class="pasos-demo" aria-label="Qué muestra la demo">
-        <li><b>1</b>Solicitud</li><li><b>2</b>Revisión con IA</li><li><b>3</b>Contrapropuesta en Word</li><li><b>4</b>Firma con e.firma y NOM-151</li><li><b>5</b>Cartera</li><li><b>6</b>Vencimientos</li>
+        <li><b>1</b>Solicitud en intake</li><li><b>2</b>Revisión con IA</li><li><b>3</b>Contrapropuesta en Word</li><li><b>4</b>Firma con e.firma y NOM-151</li><li><b>5</b>Cartera</li><li><b>6</b>Vencimientos</li>
       </ol>
     </div>
   </section>
@@ -459,16 +586,16 @@ a:hover{text-decoration:underline}
     <div class="wrap">
       <div class="encabezado centro rev">
         <p class="pre">Privacidad</p>
-        <h2 class="titulo" id="t-privacidad">Tus contratos,<br>bajo llave.</h2>
-        <p class="sub">Lo primero que pregunta un área legal es qué pasa con sus documentos.</p>
+        <h2 class="titulo" id="t-privacidad">Tu información,<br>bajo llave.</h2>
+        <p class="sub">Lo primero que pregunta un área legal es qué pasa con sus documentos. Aplica igual en las cinco plataformas.</p>
       </div>
       <ul class="privacidad">
         <li class="priv rev"><svg class="ico" aria-hidden="true"><use href="#i-db"/></svg><b>Cada empresa ve solo lo suyo.</b><span>La base de datos separa la información por organización, tabla por tabla.</span></li>
         <li class="priv rev"><svg class="ico" aria-hidden="true"><use href="#i-lock"/></svg><b>Cifrado en reposo y en tránsito.</b><span>AES-256 y TLS, en infraestructura con certificaciones SOC 2 Tipo 2 e ISO 27001.</span></li>
-        <li class="priv rev"><svg class="ico" aria-hidden="true"><use href="#i-shield"/></svg><b>La IA no aprende con tus contratos.</b><span>Usamos Claude, de Anthropic, por su API. Lo que se envía no se usa para entrenar sus modelos, salvo que el cliente lo autorice.</span></li>
+        <li class="priv rev"><svg class="ico" aria-hidden="true"><use href="#i-shield"/></svg><b>La IA no aprende con tus documentos.</b><span>Usamos Claude, de Anthropic, por su API. Lo que se envía no se usa para entrenar sus modelos, salvo que el cliente lo autorice.</span></li>
         <li class="priv rev"><svg class="ico" aria-hidden="true"><use href="#i-users"/></svg><b>Permisos por perfil.</b><span>Legal y negocio ven cosas distintas. Solo la dirección jurídica cambia las reglas.</span></li>
         <li class="priv rev"><svg class="ico" aria-hidden="true"><use href="#i-history"/></svg><b>Todo deja rastro.</b><span>Historial de cada cambio con quién y cuándo, y registro de quién abrió cada documento.</span></li>
-        <li class="priv rev"><svg class="ico" aria-hidden="true"><use href="#i-eyeoff"/></svg><b>Nada del contrato en bitácoras.</b><span>Los registros técnicos guardan identificadores y conteos, nunca el texto de un contrato.</span></li>
+        <li class="priv rev"><svg class="ico" aria-hidden="true"><use href="#i-eyeoff"/></svg><b>Nada del contenido en bitácoras.</b><span>Los registros técnicos guardan identificadores y conteos, nunca el texto de un documento.</span></li>
       </ul>
     </div>
   </section>
@@ -478,12 +605,12 @@ a:hover{text-decoration:underline}
       <div class="encabezado centro rev">
         <p class="pre">Método</p>
         <h2 class="titulo" id="t-metodo">Primero entendemos.<br>Luego construimos.</h2>
-        <p class="sub">La tecnología sin diagnóstico solo automatiza el desorden.</p>
+        <p class="sub">La tecnología sin diagnóstico solo automatiza el desorden. Por eso el diagnóstico decide por qué plataforma empezar.</p>
       </div>
       <ol class="metodo">
         <li class="paso rev"><span class="num">Paso 1</span><h3>Mapear</h3><p>Quién pide, quién aprueba y dónde se atora cada solicitud y cada contrato.</p><p class="recibes">Recibes el mapa del flujo.</p></li>
         <li class="paso rev"><span class="num">Paso 2</span><h3>Medir</h3><p>Tiempos, volumen y riesgo reales, para saber de dónde partimos.</p><p class="recibes">Recibes la línea base.</p></li>
-        <li class="paso rev"><span class="num">Paso 3</span><h3>Automatizar</h3><p>Reglas, plantillas, flujos y firma en la plataforma que tu operación necesita.</p><p class="recibes">Recibes la plataforma configurada.</p></li>
+        <li class="paso rev"><span class="num">Paso 3</span><h3>Automatizar</h3><p>Reglas, plantillas, flujos y firma en las plataformas que tu operación necesita.</p><p class="recibes">Recibes las plataformas configuradas.</p></li>
         <li class="paso rev"><span class="num">Paso 4</span><h3>Operar</h3><p>Acompañamiento y tablero hasta que tu equipo lo opere por su cuenta.</p><p class="recibes">Recibes un equipo autónomo.</p></li>
       </ol>
     </div>
@@ -497,7 +624,7 @@ a:hover{text-decoration:underline}
       </blockquote>
       <div class="relato rev">
         <p>Qlaro nace de años dentro de áreas legales de empresas multinacionales de consumo, logística y consultoría, dirigiendo un equipo jurídico repartido en cinco países de Latinoamérica.</p>
-        <p>Ahí aprendimos que un contrato no se atora por una cláusula difícil; se atora porque nadie sabe en qué escritorio está. Por eso construimos nuestras propias herramientas, y hoy llevamos esa forma de trabajar a tu empresa.</p>
+        <p>Ahí aprendimos que un contrato no se atora por una cláusula difícil; se atora porque nadie sabe en qué escritorio está. Por eso construimos nuestras propias plataformas, y hoy llevamos esa forma de trabajar a tu empresa.</p>
       </div>
     </div>
   </section>
@@ -508,10 +635,10 @@ a:hover{text-decoration:underline}
         <h2 class="titulo" id="t-preguntas">Preguntas frecuentes.</h2>
       </div>
       <div class="preguntas">
-        <details><summary>¿Qué hace Qlaro?<svg class="ico" aria-hidden="true"><use href="#i-chev"/></svg></summary><p>Diseñamos, construimos y operamos plataformas con IA para áreas legales: gestión de contratos, intake legal, generación de documentos, expedientes corporativos y tableros.</p></details>
-        <details><summary>¿Qué tan seguros están mis contratos?<svg class="ico" aria-hidden="true"><use href="#i-chev"/></svg></summary><p>Se guardan cifrados en reposo y en tránsito, en infraestructura con certificaciones SOC 2 Tipo 2 e ISO 27001. Cada empresa está separada en la base de datos.</p></details>
-        <details><summary>¿La IA aprende con mis contratos?<svg class="ico" aria-hidden="true"><use href="#i-chev"/></svg></summary><p>No. Usamos Claude por la API de Anthropic, y lo que se envía por su API no se usa para entrenar sus modelos, salvo que el cliente lo autorice.</p></details>
-        <details><summary>¿Puedo contratar solo una plataforma?<svg class="ico" aria-hidden="true"><use href="#i-chev"/></svg></summary><p>Cada plataforma funciona sola o conectada con las demás. En el diagnóstico vemos por cuál conviene empezar.</p></details>
+        <details><summary>¿Qué plataformas tiene Qlaro?<svg class="ico" aria-hidden="true"><use href="#i-chev"/></svg></summary><p>Cinco: intake legal, generación de documentos, gestión de contratos, expedientes corporativos y tableros legales. Las diseñamos, construimos y operamos para tu área legal.</p></details>
+        <details><summary>¿Puedo contratar solo una plataforma?<svg class="ico" aria-hidden="true"><use href="#i-chev"/></svg></summary><p>Sí. Cada plataforma funciona sola o conectada con las demás. En el diagnóstico vemos por cuál conviene empezar.</p></details>
+        <details><summary>¿Qué tan segura está mi información?<svg class="ico" aria-hidden="true"><use href="#i-chev"/></svg></summary><p>Se guarda cifrada en reposo y en tránsito, en infraestructura con certificaciones SOC 2 Tipo 2 e ISO 27001. Cada empresa está separada en la base de datos.</p></details>
+        <details><summary>¿La IA aprende con mis documentos?<svg class="ico" aria-hidden="true"><use href="#i-chev"/></svg></summary><p>No. Usamos Claude por la API de Anthropic, y lo que se envía por su API no se usa para entrenar sus modelos, salvo que el cliente lo autorice.</p></details>
         <details><summary>¿Hacen plataformas a la medida?<svg class="ico" aria-hidden="true"><use href="#i-chev"/></svg></summary><p>Sí. Si tu proceso no encaja en ninguna, lo mapeamos y construimos la que le falta a tu área legal.</p></details>
       </div>
     </div>
@@ -523,7 +650,7 @@ a:hover{text-decoration:underline}
         <div class="rev">
           <p class="pre">Diagnóstico</p>
           <h2 class="titulo" id="t-contacto">Empecemos por entender tu operación.</h2>
-          <p class="sub">Cuéntanos dónde se atora hoy tu área legal. Te respondemos con una propuesta para mapear y medir.</p>
+          <p class="sub">Cuéntanos dónde se atora hoy tu área legal. Te respondemos con una propuesta para mapear, medir y elegir por qué plataforma empezar.</p>
         </div>
         <form class="formulario rev" id="pedido" novalidate aria-labelledby="t-contacto">
           <div class="campos">
@@ -533,6 +660,16 @@ a:hover{text-decoration:underline}
             <div class="campo"><label for="f-volumen">Contratos al mes <span class="ayuda">(opcional)</span></label>
               <select id="f-volumen" name="volumen"><option value="">Elige un rango</option><option>Menos de 10</option><option>De 10 a 50</option><option>De 50 a 200</option><option>Más de 200</option></select>
             </div>
+            <fieldset class="campo ancho"><legend>¿Qué te interesa? <span class="ayuda">(opcional)</span></legend>
+              <div class="opciones">
+                <label><input type="checkbox" id="o-intake" name="interes" value="Intake legal"><span>Intake legal</span></label>
+                <label><input type="checkbox" id="o-documentos" name="interes" value="Generación de documentos"><span>Documentos</span></label>
+                <label><input type="checkbox" id="o-contratos" name="interes" value="Gestión de contratos"><span>Contratos</span></label>
+                <label><input type="checkbox" id="o-expedientes" name="interes" value="Expedientes corporativos"><span>Expedientes</span></label>
+                <label><input type="checkbox" id="o-tableros" name="interes" value="Tableros legales"><span>Tableros</span></label>
+                <label><input type="checkbox" id="o-nose" name="interes" value="Aún no lo sé"><span>Aún no lo sé</span></label>
+              </div>
+            </fieldset>
             <div class="campo ancho"><label for="f-atora">¿Dónde se atora hoy tu área legal? <span class="ayuda">(opcional)</span></label><textarea id="f-atora" name="atora" rows="3"></textarea></div>
           </div>
           <button type="submit" class="btn btn-acento">Preparar mi mensaje</button>
@@ -560,8 +697,8 @@ a:hover{text-decoration:underline}
         <svg class="logo" viewBox="0 0 371.7 152.2" role="img" aria-label="Qlaro"><use href="#lockup"/></svg>
         <p>Plataformas con IA para áreas legales.</p>
       </div>
-      <div><h4>Explorar</h4><ul><li><a href="#ia">La IA</a></li><li><a href="#plataformas">Plataformas</a></li><li><a href="#demo">Demo</a></li><li><a href="#privacidad">Privacidad</a></li></ul></div>
-      <div><h4>Contacto</h4><ul><li><a href="#contacto">Agenda un diagnóstico</a></li><li><a href="mailto:contacto@qlaro.mx">contacto@qlaro.mx</a></li></ul></div>
+      <div><h4>Plataformas</h4><ul><li><a href="#intake">Intake legal</a></li><li><a href="#documentos">Generación de documentos</a></li><li><a href="#contratos">Gestión de contratos</a></li><li><a href="#expedientes">Expedientes corporativos</a></li><li><a href="#tableros">Tableros legales</a></li></ul></div>
+      <div><h4>Qlaro</h4><ul><li><a href="#ia">La IA</a></li><li><a href="#privacidad">Privacidad</a></li><li><a href="#contacto">Agenda un diagnóstico</a></li><li><a href="mailto:contacto@qlaro.mx">contacto@qlaro.mx</a></li></ul></div>
     </div>
     <div class="pie-legal"><span>© 2026 Qlaro. Ciudad de México.</span><span>Capturas con datos de demostración.</span></div>
   </div>
@@ -578,12 +715,14 @@ a:hover{text-decoration:underline}
   menu.addEventListener('click',function(e){if(e.target.closest('a'))cerrar();});
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!menu.hidden){cerrar();mb.focus();}});
 
-  // Control segmentado (patrón de pestañas ARIA)
-  var tabs=[].slice.call(document.querySelectorAll('.segmentos [role="tab"]'));
-  function abrir(t,foco){tabs.forEach(function(o){var on=o===t;o.setAttribute('aria-selected',on?'true':'false');o.tabIndex=on?0:-1;document.getElementById(o.getAttribute('aria-controls')).hidden=!on;});if(foco)t.focus();}
-  tabs.forEach(function(t,i){
-    t.addEventListener('click',function(){abrir(t)});
-    t.addEventListener('keydown',function(e){var n=tabs.length,j=null;if(e.key==='ArrowRight')j=(i+1)%n;else if(e.key==='ArrowLeft')j=(i-1+n)%n;else if(e.key==='Home')j=0;else if(e.key==='End')j=n-1;if(j!==null){e.preventDefault();abrir(tabs[j],true);}});
+  // Pestañas accesibles: explorador de plataformas y revisión de contratos
+  [].slice.call(document.querySelectorAll('[role="tablist"]')).forEach(function(lista){
+    var tabs=[].slice.call(lista.querySelectorAll('[role="tab"]'));
+    function abrir(t,foco){tabs.forEach(function(o){var on=o===t;o.setAttribute('aria-selected',on?'true':'false');o.tabIndex=on?0:-1;document.getElementById(o.getAttribute('aria-controls')).hidden=!on;});if(foco)t.focus();t.scrollIntoView({block:'nearest',inline:'nearest',behavior:reduce?'auto':'smooth'});}
+    tabs.forEach(function(t,i){
+      t.addEventListener('click',function(){abrir(t)});
+      t.addEventListener('keydown',function(e){var n=tabs.length,j=null;if(e.key==='ArrowRight')j=(i+1)%n;else if(e.key==='ArrowLeft')j=(i-1+n)%n;else if(e.key==='Home')j=0;else if(e.key==='End')j=n-1;if(j!==null){e.preventDefault();abrir(tabs[j],true);}});
+    });
   });
 
   // Entrada suave al hacer scroll
@@ -606,7 +745,8 @@ a:hover{text-decoration:underline}
     var a=marcar('f-nombre'),b=marcar('f-empresa');
     if(!a){document.getElementById('f-nombre').focus();return}
     if(!b){document.getElementById('f-empresa').focus();return}
-    var t='Hola, equipo de Qlaro:\n\nMe interesa agendar un diagnóstico.\n\nNombre: '+v('f-nombre')+'\nEmpresa: '+v('f-empresa')+(v('f-puesto')?'\nPuesto: '+v('f-puesto'):'')+(v('f-volumen')?'\nContratos al mes: '+v('f-volumen'):'')+(v('f-atora')?'\n\nDónde se atora hoy nuestra área legal:\n'+v('f-atora'):'')+'\n\nGracias.';
+    var intereses=[].slice.call(f.querySelectorAll('input[name="interes"]:checked')).map(function(c){return c.value}).join(', ');
+    var t='Hola, equipo de Qlaro:\n\nMe interesa agendar un diagnóstico.\n\nNombre: '+v('f-nombre')+'\nEmpresa: '+v('f-empresa')+(v('f-puesto')?'\nPuesto: '+v('f-puesto'):'')+(v('f-volumen')?'\nContratos al mes: '+v('f-volumen'):'')+(intereses?'\nMe interesa: '+intereses:'')+(v('f-atora')?'\n\nDónde se atora hoy nuestra área legal:\n'+v('f-atora'):'')+'\n\nGracias.';
     msg.textContent=t;listo.hidden=false;ok.textContent='';
     document.getElementById('abrir-correo').href='mailto:contacto@qlaro.mx?subject='+encodeURIComponent('Diagnóstico Qlaro: '+v('f-empresa'))+'&body='+encodeURIComponent(t);
     listo.focus({preventScroll:true});listo.scrollIntoView({behavior:reduce?'auto':'smooth',block:'nearest'});
