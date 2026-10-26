@@ -235,26 +235,8 @@ a{color:var(--mandarina-text)}
 .conf-puntos li{display:grid;gap:4px;padding-left:var(--s6);border-left:2px solid var(--mandarina)}
 .conf-puntos b{font:800 20px/26px var(--sans);letter-spacing:-.01em}
 .conf-puntos span{color:var(--ink-muted);font-size:15px;line-height:23px}
-.bitacora{margin:0;background:#0B0D10;border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;min-width:0}
-.bit-cab{display:flex;justify-content:space-between;align-items:center;gap:var(--s2);padding:14px 18px;border-bottom:1px solid var(--line);flex-wrap:wrap}
-.bit-cab .label{color:var(--ink-muted)}
-.bit-vivo{display:inline-flex;align-items:center;gap:8px;font:500 12px/16px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
-.bit-vivo i{width:8px;height:8px;border-radius:50%;background:var(--mandarina);animation:late 1.6s ease-in-out infinite}
-@keyframes late{50%{opacity:.25}}
-.bit-lineas{padding:8px 0;font:400 14px/20px var(--mono)}
-.bit-lineas li{display:grid;grid-template-columns:52px minmax(0,1fr);gap:2px var(--s3);padding:10px 18px;border-bottom:1px dashed var(--line);transition:opacity .4s,transform .4s,background-color .4s}
-.bit-lineas li:last-child{border-bottom:0}
-@media (min-width:640px){.bit-lineas li{grid-template-columns:52px minmax(0,1fr) minmax(0,1.3fr)}}
-.bit-lineas time{color:var(--ink-muted)}
-.bit-lineas .quien{color:var(--ink);font-weight:500}
-.bit-lineas .que{color:var(--ink-muted);grid-column:2/-1}
-@media (min-width:640px){.bit-lineas .que{grid-column:auto}}
-.bit-lineas code{color:var(--mandarina-text);font:inherit}
-.bit-lineas li.negado{background:color-mix(in srgb,var(--riesgo) 12%,transparent)}
-.bit-lineas li.negado .que{color:var(--riesgo);font-weight:500}
-.bit-lineas li.nueva{background:color-mix(in srgb,var(--mandarina) 14%,transparent)}
-.js-bit .bit-lineas li.oculta{opacity:0;transform:translateY(-8px)}
-.bit-pie{padding:12px 18px;border-top:1px solid var(--line);font-size:13px;color:var(--ink-muted)}
+.video-conf{position:relative;margin:0;aspect-ratio:16/9;border-radius:var(--r-md);overflow:hidden;background:#121418;border:1px solid var(--line);min-width:0}
+.video-conf video{display:block;width:100%;height:100%;object-fit:cover}
 
 .paso-panel .recibes code.var{display:block;font:400 13px/18px var(--mono);color:var(--mandarina-text);margin-bottom:2px}
 
@@ -583,20 +565,14 @@ a{color:var(--mandarina-text)}
         <ul class="conf-puntos">
           <li><b>Cada quien ve lo que le toca.</b><span>Permisos por perfil y por área. Compras no ve los contratos de Recursos Humanos, y solo la dirección jurídica cambia las reglas.</span></li>
           <li><b>Cada apertura queda registrada.</b><span>Quién abrió o cambió cada documento, y cuándo. La bitácora guarda identificadores, nunca el texto del contrato.</span></li>
-          <li><b>Tus contratos no entrenan a ningún modelo.</b><span>Usamos Claude por la API de Anthropic: lo que se envía no se usa para entrenar. Cifrado en reposo y en tránsito, en infraestructura con SOC 2 Tipo 2 e ISO 27001.</span></li>
+          <li><b>Ninguna IA se entrena ni guarda tus contratos.</b><span>La IA lee el documento para darte el análisis y nada más: no aprende de él ni conserva una copia. Cifrado en reposo y en tránsito, en infraestructura con SOC 2 Tipo 2 e ISO 27001.</span></li>
         </ul>
       </div>
-      <figure class="bitacora rev" aria-label="Ejemplo de bitácora de acceso, con datos de demostración">
-        <div class="bit-cab"><span class="label">Bitácora · Contrato de suministro</span><span class="bit-vivo"><i></i>En vivo</span></div>
-        <ol class="bit-lineas" id="bitacora">
-          <li><time>10:14</time><span class="quien">Laura Méndez · Legal</span><span class="que">abrió la versión 3</span></li>
-          <li><time>10:16</time><span class="quien">IA · Claude por API</span><span class="que">analizó el documento <code>8f3a…c21</code></span></li>
-          <li><time>10:21</time><span class="quien">Laura Méndez · Legal</span><span class="que">validó 7 hallazgos</span></li>
-          <li class="negado"><time>10:32</time><span class="quien">Usuario de Recursos Humanos</span><span class="que">sin permiso: acceso negado</span></li>
-          <li><time>10:40</time><span class="quien">Carlos Rivas · Compras</span><span class="que">vio el resumen para el negocio</span></li>
-          <li><time>11:05</time><span class="quien">Mifiel</span><span class="que">firma con e.firma y constancia NOM-151</span></li>
-        </ol>
-        <figcaption class="bit-pie">Datos de demostración. El texto del contrato nunca entra a la bitácora.</figcaption>
+      <figure class="video-conf rev">
+        <video id="video-conf" muted loop playsinline preload="metadata" poster="video/confidencialidad-poster.jpg" width="1280" height="720" aria-label="Video sin audio: permisos por área, bitácora de accesos, la IA no se entrena ni guarda tus contratos, y cifrado en reposo y en tránsito">
+          <source src="video/confidencialidad.mp4" type="video/mp4">
+        </video>
+        <button type="button" class="video-control" id="control-conf" aria-pressed="false" aria-label="Pausar video"><svg class="ico" aria-hidden="true"><use href="#i-pausa"/></svg></button>
       </figure>
     </div>
   </section>
@@ -728,21 +704,13 @@ a{color:var(--mandarina-text)}
   dols.forEach(function(d,i){d.addEventListener('click',function(){vp.currentTime=i*DUR+(vp.paused?1.8:0.05);marcarDolor(i,0);if(!reduce&&!pausaUsuario){var p=vp.play();if(p&&p.catch)p.catch(function(){});}});});
   if('IntersectionObserver' in window){new IntersectionObserver(function(es){if(reduce||pausaUsuario)return;if(es[0].isIntersecting){var p=vp.play();if(p&&p.catch)p.catch(function(){});}else vp.pause();},{threshold:.35}).observe(vp);}
 
-  // Video de plataformas: se reproduce al estar en pantalla, con botón de pausa
-  (function(){var v=document.getElementById('video-producto'),c=document.getElementById('control-producto'),manual=false;
+  // Videos de plataformas y confidencialidad: se reproducen al estar en pantalla, con botón de pausa
+  [['video-producto','control-producto'],['video-conf','control-conf']].forEach(function(par){var v=document.getElementById(par[0]),c=document.getElementById(par[1]),manual=false;
     function ic(){var p=v.paused;c.setAttribute('aria-pressed',p?'true':'false');c.setAttribute('aria-label',p?'Reproducir video':'Pausar video');c.querySelector('use').setAttribute('href',p?'#i-play':'#i-pausa');}
     v.addEventListener('play',ic);v.addEventListener('pause',ic);ic();
     c.addEventListener('click',function(){if(v.paused){manual=false;var p=v.play();if(p&&p.catch)p.catch(function(){});}else{manual=true;v.pause();}});
     if('IntersectionObserver' in window){new IntersectionObserver(function(es){if(reduce||manual)return;if(es[0].isIntersecting){var p=v.play();if(p&&p.catch)p.catch(function(){});}else v.pause();},{threshold:.35}).observe(v);}
-  })();
-
-  // Bitácora: las entradas aparecen una por una al entrar en pantalla
-  (function(){var lista=document.getElementById('bitacora');if(!lista||reduce||!('IntersectionObserver' in window))return;
-    var li=[].slice.call(lista.children);document.documentElement.classList.add('js-bit');li.forEach(function(x){x.classList.add('oculta');});
-    var hecho=false;new IntersectionObserver(function(es){if(hecho||!es[0].isIntersecting)return;hecho=true;
-      li.forEach(function(x,i){setTimeout(function(){x.classList.remove('oculta');x.classList.add('nueva');setTimeout(function(){x.classList.remove('nueva');},900);},400+i*650);});
-    },{threshold:.15}).observe(lista);
-  })();
+  });
 
   // Pestañas accesibles (producto y método)
   function pestanas(lista,alCambiar){
