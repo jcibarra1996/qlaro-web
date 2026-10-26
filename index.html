@@ -249,35 +249,61 @@ a{color:var(--mandarina-text)}
 @keyframes late{50%{opacity:.3}}
 .hero-lead{max-width:30em}
 /* ---------------- Qué contratas */
-.contratas{margin-top:var(--s12);display:grid;gap:var(--s6);border-top:1px solid var(--line);padding-top:var(--s8)}
-@media (min-width:1000px){.contratas{grid-template-columns:4fr 9fr;gap:var(--s8)}}
-.contratas h3{font:800 28px/1.15 var(--sans);letter-spacing:-.02em}
-.contratas dl{margin:0;display:grid;gap:var(--s6)}
-@media (min-width:760px){.contratas dl{grid-template-columns:repeat(3,1fr)}}
-.contratas dt{font:800 18px/24px var(--sans);margin-bottom:6px}
-.contratas dd{margin:0;color:var(--ink-muted);font-size:15px;line-height:23px}
-/* ---------------- Caso real */
-.caso{display:grid;gap:var(--s12);align-items:center}
-@media (min-width:1000px){.caso{grid-template-columns:6fr 5fr;gap:var(--s16)}}
-.caso-texto{display:grid;gap:var(--s4)}
-.caso-texto .label{color:var(--mandarina-text)}
-.caso-datos{display:grid;gap:var(--s4);margin-top:var(--s4)}
-.caso-datos li{display:grid;grid-template-columns:20px 1fr;column-gap:var(--s3)}
-.caso-datos li::before{content:"";width:10px;height:10px;margin-top:8px;background:var(--mandarina);grid-row:span 2}
-.caso-datos b{font:800 18px/26px var(--sans)}
-.caso-datos span{color:var(--ink-muted);font-size:15px;line-height:23px}
-.caso-flujo{margin:0;background:var(--mandarina);color:var(--on-mandarina);border-radius:0;padding:var(--s8);display:grid;gap:var(--s6)}
-.cf-cab{display:flex;justify-content:space-between;align-items:center;gap:var(--s2);flex-wrap:wrap}
-.cf-vivo{display:inline-flex;align-items:center;gap:8px;font:500 12px/16px var(--mono);letter-spacing:.08em;text-transform:uppercase}
-.cf-vivo i{width:8px;height:8px;border-radius:50%;background:#FFFFFF;animation:late 1.6s ease-in-out infinite}
-.caso-flujo ol{display:grid;gap:var(--s2)}
-.caso-flujo li{display:grid;grid-template-columns:44px 1fr;column-gap:var(--s3);background:rgba(255,255,255,.92);border-radius:var(--r-md);padding:14px 16px;color:#121418}
-.caso-flujo li.cf-activo{background:#121418;color:#FFFFFF}
-.caso-flujo li.cf-activo span{color:#C9CDD4}
-.cf-n{font:500 13px/24px var(--mono);grid-row:span 2}
-.caso-flujo li b{font:800 18px/24px var(--sans)}
-.caso-flujo li span:last-child{font-size:14px;line-height:20px;color:#5B6270}
-.caso-flujo figcaption{font:800 18px/24px var(--sans)}
+.contratas{margin-top:var(--s16);display:grid;gap:var(--s6)}
+.contratas h3{font:800 clamp(26px,2.6vw,34px)/1.1 var(--sans);letter-spacing:-.02em}
+.contratas-grid{display:grid;gap:var(--s4)}
+@media (min-width:860px){.contratas-grid{grid-template-columns:repeat(3,1fr)}}
+.contratas-grid li{background:var(--surface-raised);border-radius:var(--r-md);padding:var(--s8) var(--s6);display:grid;gap:var(--s3);align-content:start}
+.c-icono{width:52px;height:52px;background:var(--mandarina);color:var(--on-mandarina);display:grid;place-items:center;margin-bottom:var(--s2)}
+.c-icono .ico{width:26px;height:26px}
+.contratas-grid b{font:800 20px/26px var(--sans);letter-spacing:-.01em}
+.contratas-grid span:last-child{color:var(--ink-muted);font-size:15px;line-height:23px}
+/* ---------------- Caso real: banda mandarina */
+.caso-banda{background:linear-gradient(135deg,var(--mandarina-light),var(--mandarina) 58%);color:var(--on-mandarina)}
+.caso-cab{display:grid;gap:var(--s4);max-width:820px;margin-bottom:var(--s12)}
+.caso-cab .label{color:var(--on-mandarina)}
+.caso-cab h2{font:800 clamp(38px,5vw,64px)/1.02 var(--sans);letter-spacing:-.035em;color:#FFFFFF}
+.caso-cab p:last-child{font-size:clamp(17px,1.5vw,20px);line-height:1.5;max-width:40em}
+.portal{margin:0;background:#FFFFFF;color:#121418;border-radius:var(--r-md);overflow:hidden;border:1px solid rgba(18,20,24,.18)}
+.portal-barra{display:flex;align-items:center;gap:8px;padding:12px 16px;background:#F5F6F8;border-bottom:1px solid #E3E5EA}
+.portal-barra i{width:10px;height:10px;border-radius:50%;background:#C9CDD4}
+.portal-barra span{margin-left:8px;font:500 12px/16px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:#5B6270}
+.portal-cuerpo{display:grid}
+@media (min-width:760px){.portal-cuerpo{grid-template-columns:200px 1fr}}
+.portal-lado{background:#121418;color:#F4F5F7;padding:var(--s6) var(--s4);display:none;gap:var(--s2);align-content:start}
+@media (min-width:760px){.portal-lado{display:grid}}
+.pl-titulo{font:500 11px/16px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#9AA0AB;margin-bottom:var(--s2)}
+.pl-item{padding:10px 12px;border-radius:8px;font-weight:600;font-size:15px;color:#C9CDD4}
+.pl-item.activo{background:#FF5C00;color:#121418}
+.portal-main{padding:var(--s6);display:grid;gap:var(--s4);min-width:0}
+.pm-cab{display:flex;justify-content:space-between;align-items:center;gap:var(--s2);flex-wrap:wrap}
+.pm-cab b{font:800 20px/26px var(--sans)}
+.pm-chip{font:500 12px/16px var(--mono);letter-spacing:.06em;text-transform:uppercase;background:#FFE7D6;color:#B83A00;padding:4px 10px;border-radius:999px}
+.pm-tabla{border:1px solid #E3E5EA;border-radius:10px;overflow:hidden;font-size:14px}
+.pm-fila{display:grid;grid-template-columns:1.2fr 1fr auto;gap:4px 12px;padding:12px 14px;border-bottom:1px solid #E3E5EA;align-items:center}
+.pm-fila:last-child{border-bottom:0}
+@media (min-width:640px){.pm-fila{grid-template-columns:1.4fr 1fr 1fr 1fr}}
+.pm-fila span:nth-child(3){display:none}
+@media (min-width:640px){.pm-fila span:nth-child(3){display:block}}
+.pm-th{background:#F5F6F8;font:500 11px/16px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:#5B6270}
+.pm-th span:nth-child(4),.pm-fila span:nth-child(4){grid-column:auto}
+.st{font-style:normal;font:500 11px/16px var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:999px;white-space:nowrap}
+.st-pend{background:#FFE7D6;color:#B83A00}
+.st-ok{background:#E3F4E8;color:#1A7F37}
+.pm-chat{display:grid;gap:var(--s2);max-width:520px}
+.pm-chat p{margin:0;padding:10px 14px;border-radius:12px;font-size:14px;line-height:20px}
+.pc-yo{justify-self:end;background:#F5F6F8}
+.pc-ia{background:#121418;color:#F4F5F7}
+.pc-ia span{display:block;font:500 11px/16px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:#FF7A26;margin-bottom:2px}
+.portal figcaption{padding:10px 16px;border-top:1px solid #E3E5EA;font-size:12px;color:#5B6270}
+.caso-datos{display:grid;gap:var(--s6);margin-top:var(--s12)}
+@media (min-width:860px){.caso-datos{grid-template-columns:repeat(3,1fr)}}
+.caso-datos li{display:grid;gap:6px;padding-top:var(--s4);border-top:2px solid var(--on-mandarina)}
+.caso-datos b{font:800 22px/28px var(--sans);letter-spacing:-.01em}
+.caso-datos span{font-size:15px;line-height:23px}
+.caso-cierre{margin-top:var(--s12);font:800 clamp(22px,2.4vw,30px)/1.2 var(--sans);letter-spacing:-.02em;color:#FFFFFF}
+.caso-cierre a{display:inline-flex;align-items:center;min-height:44px;margin-left:var(--s3);padding:10px 18px;border-radius:var(--r-md);background:#121418;color:#FFFFFF;text-decoration:none;font-size:16px;vertical-align:middle}
+
 /* ---------------- Agenda */
 .columna-cierre{display:grid;gap:var(--s4);min-width:0}
 .agenda{background:#FFFFFF;color:#121418;border-radius:var(--r-md);padding:var(--s8);display:grid;gap:var(--s6);color-scheme:light}
@@ -296,7 +322,10 @@ a{color:var(--mandarina-text)}
 .dia[aria-checked="true"],.hora[aria-checked="true"]{background:#FF5C00;border-color:#FF5C00;color:#121418}
 .dia[aria-checked="true"] small{color:#121418}
 .agenda-listo{display:grid;gap:var(--s3);border-top:1px dashed #8A909B;padding-top:var(--s4)}
-.agenda-resumen{font:800 18px/24px var(--sans)}
+.agenda-titulo{font:800 24px/30px var(--sans);letter-spacing:-.015em;margin-top:calc(var(--s2) * -1)}
+.agenda .campo legend{font:500 12px/16px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#5B6270;margin-bottom:var(--s2)}
+.agenda-resumen{font:800 20px/26px var(--sans);display:flex;align-items:center;gap:10px}
+.agenda-resumen::before{content:"";width:12px;height:12px;background:#FF5C00;flex:none}
 .agenda-listo .fila{display:flex;flex-wrap:wrap;gap:var(--s2)}
 .agenda-listo .btn{min-height:44px;padding:10px 16px;font-size:15px}
 .agenda .b-copiar{background:#FFFFFF;color:#121418;border-color:#121418}
@@ -387,6 +416,8 @@ a{color:var(--mandarina-text)}
     <symbol id="i-flecha" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
     <symbol id="i-pausa" viewBox="0 0 24 24"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></symbol>
     <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15l12-7.5z"/></symbol>
+    <symbol id="i-paquete" viewBox="0 0 24 24"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><path d="m3.3 7 8.7 5 8.7-5"/></symbol>
+    <symbol id="i-nube" viewBox="0 0 24 24"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></symbol>
     <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
     <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
     <symbol id="i-menos" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
@@ -532,13 +563,13 @@ a{color:var(--mandarina-text)}
           <a class="btn btn-linea" href="#diagnostico">Hablar de operación</a>
         </article>
       </div>
-      <div class="contratas rev">
-        <h3>Qué contratas exactamente.</h3>
-        <dl>
-          <div><dt>Un servicio con plataforma incluida.</dt><dd>No compras licencias por separado: implementamos la plataforma, la configuramos con tus reglas y te acompañamos hasta que tu equipo la usa solo.</dd></div>
-          <div><dt>Tus datos son tuyos.</dt><dd>Si un día terminas, te entregamos toda tu información en formatos estándar (Word, PDF y Excel) para que la lleves a donde quieras.</dd></div>
-          <div><dt>Dónde vive tu información.</dt><dd>En la nube, separada por empresa y cifrada, en infraestructura con SOC 2 Tipo 2 e ISO 27001.</dd></div>
-        </dl>
+      <div class="contratas">
+        <h3 class="rev">Qué contratas exactamente.</h3>
+        <ul class="contratas-grid">
+          <li class="rev"><span class="c-icono"><svg class="ico" aria-hidden="true"><use href="#i-paquete"/></svg></span><b>Servicio con plataforma incluida.</b><span>No compras licencias por separado. Implementamos la plataforma, la configuramos con tus reglas y te acompañamos hasta que tu equipo la usa solo.</span></li>
+          <li class="rev"><span class="c-icono"><svg class="ico" aria-hidden="true"><use href="#i-llave"/></svg></span><b>Tus datos son tuyos.</b><span>Si un día terminas, te entregamos toda tu información en Word, PDF y Excel para que la lleves a donde quieras.</span></li>
+          <li class="rev"><span class="c-icono"><svg class="ico" aria-hidden="true"><use href="#i-nube"/></svg></span><b>En la nube, separada por empresa.</b><span>Cifrada en reposo y en tránsito, en infraestructura con SOC 2 Tipo 2 e ISO 27001.</span></li>
+        </ul>
       </div>
     </div>
   </section>
@@ -572,28 +603,44 @@ a{color:var(--mandarina-text)}
   </section>
 
   <!-- Caso real -->
-  <section class="sec" id="caso" aria-labelledby="t-caso">
-    <div class="wrap caso">
-      <div class="caso-texto rev">
+  <section class="sec caso-banda" id="caso" aria-labelledby="t-caso">
+    <div class="wrap">
+      <div class="caso-cab rev">
         <p class="label">Caso real · En producción</p>
-        <h2 class="display" id="t-caso">Portal de Crédito de Savino del Bene México.</h2>
-        <p class="lead">Diseñamos y pusimos en operación el portal con el que el área de crédito de una empresa de logística internacional gestiona cada solicitud, del análisis a la autorización y la cobranza.</p>
-        <ul class="caso-datos">
-          <li><b>Un portal por perfil.</b><span>Análisis, Dirección y Cobranza ven y hacen solo lo que les corresponde.</span></li>
-          <li><b>Asistente con IA integrado.</b><span>El equipo consulta expedientes y estatus en lenguaje natural.</span></li>
-          <li><b>En uso diario, con dominio propio.</b><span>Construido sobre la misma base técnica de las plataformas de Qlaro.</span></li>
-        </ul>
+        <h2 id="t-caso">Portal de Crédito de Savino del Bene México.</h2>
+        <p>Diseñamos y pusimos en operación el portal con el que el área de crédito de una empresa de logística internacional gestiona cada solicitud, del análisis a la autorización y la cobranza.</p>
       </div>
-      <figure class="caso-flujo rev" aria-label="Flujo del Portal de Crédito por perfil">
-        <div class="cf-cab"><span class="label">Portal de Crédito</span><span class="cf-vivo"><i></i>En producción</span></div>
-        <ol>
-          <li><span class="cf-n">01</span><b>Solicitud</b><span>Ingresa la solicitud de crédito del cliente.</span></li>
-          <li><span class="cf-n">02</span><b>Análisis</b><span>El analista revisa el expediente y propone condiciones.</span></li>
-          <li class="cf-activo"><span class="cf-n">03</span><b>Dirección</b><span>Autoriza o ajusta desde su propio portal.</span></li>
-          <li><span class="cf-n">04</span><b>Cobranza</b><span>Da seguimiento a cada cuenta autorizada.</span></li>
-        </ol>
-        <figcaption>Si lo hicimos para crédito, lo hacemos para tu área legal: el mismo método, la misma base.</figcaption>
+      <figure class="portal rev" aria-label="Recreación del Portal de Crédito con datos de demostración">
+        <div class="portal-barra" aria-hidden="true"><i></i><i></i><i></i><span>Portal de Crédito · Dirección</span></div>
+        <div class="portal-cuerpo">
+          <aside class="portal-lado" aria-hidden="true">
+            <p class="pl-titulo">Perfiles</p>
+            <span class="pl-item">Análisis</span>
+            <span class="pl-item activo">Dirección</span>
+            <span class="pl-item">Cobranza</span>
+          </aside>
+          <div class="portal-main">
+            <div class="pm-cab"><b>Solicitudes por autorizar</b><span class="pm-chip">3 pendientes</span></div>
+            <div class="pm-tabla" role="table" aria-label="Solicitudes de demostración">
+              <div class="pm-fila pm-th" role="row"><span role="columnheader">Cliente</span><span role="columnheader">Línea solicitada</span><span role="columnheader">Análisis</span><span role="columnheader">Estatus</span></div>
+              <div class="pm-fila" role="row"><span role="cell">Cliente Demo A</span><span role="cell">$500,000</span><span role="cell">Favorable</span><span role="cell"><em class="st st-pend">Por autorizar</em></span></div>
+              <div class="pm-fila" role="row"><span role="cell">Cliente Demo B</span><span role="cell">$1,200,000</span><span role="cell">Con condiciones</span><span role="cell"><em class="st st-pend">Por autorizar</em></span></div>
+              <div class="pm-fila" role="row"><span role="cell">Cliente Demo C</span><span role="cell">$250,000</span><span role="cell">Favorable</span><span role="cell"><em class="st st-ok">Autorizada</em></span></div>
+            </div>
+            <div class="pm-chat" aria-hidden="true">
+              <p class="pc-yo">¿Qué solicitudes llevan más de 5 días sin autorizar?</p>
+              <p class="pc-ia"><span>Asistente IA</span>Dos: Cliente Demo A y Cliente Demo B, ambas con análisis completo.</p>
+            </div>
+          </div>
+        </div>
+        <figcaption>Recreación con datos de demostración.</figcaption>
       </figure>
+      <ul class="caso-datos">
+        <li class="rev"><b>Un portal por perfil.</b><span>Análisis, Dirección y Cobranza ven y hacen solo lo que les corresponde.</span></li>
+        <li class="rev"><b>Asistente con IA integrado.</b><span>El equipo consulta expedientes y estatus en lenguaje natural.</span></li>
+        <li class="rev"><b>En uso diario.</b><span>Con dominio propio, sobre la misma base técnica de las plataformas de Qlaro.</span></li>
+      </ul>
+      <p class="caso-cierre rev">Si lo hicimos para crédito, lo hacemos para tu área legal. <a href="#agenda">Agenda una llamada</a></p>
     </div>
   </section>
 
@@ -723,8 +770,9 @@ a{color:var(--mandarina-text)}
       <div class="columna-cierre">
       <div class="agenda" id="agenda" aria-labelledby="t-agenda">
         <p class="tope"><span id="t-agenda">Agenda una llamada · 30 min</span><span>Hora de Ciudad de México</span></p>
-        <fieldset class="campo"><legend>Elige el día</legend><div class="dias-agenda" id="dias-agenda" role="radiogroup" aria-label="Día"></div></fieldset>
-        <fieldset class="campo"><legend>Elige la hora</legend><div class="horas-agenda" id="horas-agenda" role="radiogroup" aria-label="Hora"></div></fieldset>
+        <p class="agenda-titulo">Elige día y hora para una llamada de 30 minutos.</p>
+        <fieldset class="campo"><legend>Día</legend><div class="dias-agenda" id="dias-agenda" role="radiogroup" aria-label="Día"></div></fieldset>
+        <fieldset class="campo"><legend>Hora</legend><div class="horas-agenda" id="horas-agenda" role="radiogroup" aria-label="Hora"></div></fieldset>
         <div class="agenda-listo" id="agenda-listo" hidden>
           <p class="agenda-resumen" id="agenda-resumen"></p>
           <div class="fila">
