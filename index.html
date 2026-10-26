@@ -131,14 +131,22 @@ a{color:var(--mandarina-text)}
 @media (prefers-reduced-motion: reduce){.cinta-pista{width:auto;flex-wrap:wrap}.cinta ul+ul{display:none}.cinta ul{flex-wrap:wrap}}
 
 /* ---------------- Dolor (Noche) */
-.dolores{display:grid;gap:var(--s4)}
-@media (min-width:700px){.dolores{grid-template-columns:repeat(2,1fr)}}
-@media (min-width:1040px){.dolores{grid-template-columns:repeat(3,1fr)}}
-.dolor{background:var(--surface-raised);border-radius:var(--r-md);padding:var(--s6);display:grid;gap:var(--s2);align-content:start}
-.dolor .label{color:var(--riesgo);display:flex;gap:8px;align-items:center}
+.problema{display:grid;gap:var(--s6);align-items:start}
+@media (min-width:1000px){.problema{grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:var(--s8)}.video-problema{position:sticky;top:96px}}
+.video-problema{position:relative;margin:0;aspect-ratio:16/9;border-radius:var(--r-md);overflow:hidden;background:#121418;border:1px solid var(--line)}
+.video-problema video{display:block;width:100%;height:100%;object-fit:cover}
+.dolores{display:grid;gap:var(--s2)}
+@media (min-width:640px) and (max-width:999px){.dolores{grid-template-columns:repeat(2,1fr)}}
+.dolor{position:relative;overflow:hidden;width:100%;text-align:left;display:grid;gap:4px;padding:14px 18px 16px;border-radius:var(--r-md);border:1px solid var(--line);background:transparent;color:var(--ink);font:inherit;cursor:pointer;transition:background-color .25s,border-color .25s}
+.dolor:hover{border-color:var(--line-strong)}
+.dolor[aria-pressed="true"]{background:var(--surface-raised);border-color:var(--riesgo)}
+.dolor .label{color:var(--ink-muted);display:flex;gap:8px;align-items:center;transition:color .25s}
+.dolor[aria-pressed="true"] .label{color:var(--riesgo)}
 .dolor .label .ico{width:16px;height:16px}
-.dolor b{font:800 20px/26px var(--sans);letter-spacing:-.01em}
-.dolor span{color:var(--ink-muted);font-size:15px;line-height:22px}
+.dolor b{font:800 18px/24px var(--sans);letter-spacing:-.01em}
+.dolor .txt{color:var(--ink-muted);font-size:15px;line-height:22px}
+.dolor .avance{position:absolute;left:0;bottom:0;height:3px;width:100%;background:var(--riesgo);transform-origin:left;transform:scaleX(0)}
+.dolor[aria-pressed="false"] .avance{transform:scaleX(0)!important}
 .cierre-dolor{margin-top:var(--s12);display:flex;flex-wrap:wrap;gap:var(--s6);align-items:center;justify-content:space-between;border-top:1px solid var(--line);padding-top:var(--s8)}
 .cierre-dolor p{font:800 clamp(22px,2.4vw,30px)/1.2 var(--sans);letter-spacing:-.02em;max-width:24em}
 
@@ -475,14 +483,22 @@ a{color:var(--mandarina-text)}
         <p class="label">El problema</p>
         <h2 class="display" id="t-problema">¿Tu área legal se ve así?</h2>
       </div>
-      <ul class="dolores">
-        <li class="dolor rev"><p class="label"><svg class="ico" aria-hidden="true"><use href="#i-alerta"/></svg>Solicitudes</p><b>Todo entra por correo y WhatsApp.</b><span>Nadie sabe cuántas solicitudes hay ni en qué va cada una.</span></li>
-        <li class="dolor rev"><p class="label"><svg class="ico" aria-hidden="true"><use href="#i-alerta"/></svg>Contratos</p><b>Cada contrato se redacta desde cero.</b><span>Tres versiones del mismo documento y ninguna es la vigente.</span></li>
-        <li class="dolor rev"><p class="label"><svg class="ico" aria-hidden="true"><use href="#i-alerta"/></svg>Vencimientos</p><b>Una renovación automática que nadie vio.</b><span>El aviso de no renovación vivía en una hoja de cálculo.</span></li>
-        <li class="dolor rev"><p class="label"><svg class="ico" aria-hidden="true"><use href="#i-alerta"/></svg>Poderes y expedientes</p><b>Se busca el acta en carpetas.</b><span>Poderes vencidos y datos de la contraparte sin validar.</span></li>
-        <li class="dolor rev"><p class="label"><svg class="ico" aria-hidden="true"><use href="#i-alerta"/></svg>Litigios</p><b>El despacho externo reporta cuando quiere.</b><span>No hay un lugar con el estado de cada asunto y su siguiente fecha.</span></li>
-        <li class="dolor rev"><p class="label"><svg class="ico" aria-hidden="true"><use href="#i-alerta"/></svg>Reportes</p><b>La junta pide números que no existen.</b><span>Tiempos, volumen y riesgo se arman a mano cada mes.</span></li>
-      </ul>
+      <div class="problema">
+        <figure class="video-problema">
+          <video id="video-problema" muted loop playsinline preload="metadata" poster="video/problema-poster.jpg" width="1280" height="720" aria-label="Video sin audio con los seis síntomas: solicitudes por correo y WhatsApp, versiones de contratos, renovaciones no vistas, poderes vencidos, litigios sin seguimiento y reportes a mano">
+            <source src="video/problema.mp4" type="video/mp4">
+          </video>
+          <button type="button" class="video-control" id="control-problema" aria-pressed="false" aria-label="Pausar video"><svg class="ico" aria-hidden="true"><use href="#i-pausa"/></svg></button>
+        </figure>
+        <ul class="dolores" aria-label="Síntomas; elige uno para verlo en el video">
+          <li><button type="button" class="dolor" data-escena="0" aria-pressed="true"><span class="label"><svg class="ico" aria-hidden="true"><use href="#i-alerta"/></svg>Solicitudes</span><b>Todo entra por correo y WhatsApp.</b><span class="txt">Nadie sabe cuántas solicitudes hay ni en qué va cada una.</span><i class="avance" aria-hidden="true"></i></button></li>
+          <li><button type="button" class="dolor" data-escena="1" aria-pressed="false"><span class="label"><svg class="ico" aria-hidden="true"><use href="#i-alerta"/></svg>Contratos</span><b>Cada contrato se redacta desde cero.</b><span class="txt">Tres versiones del mismo documento y ninguna es la vigente.</span><i class="avance" aria-hidden="true"></i></button></li>
+          <li><button type="button" class="dolor" data-escena="2" aria-pressed="false"><span class="label"><svg class="ico" aria-hidden="true"><use href="#i-alerta"/></svg>Vencimientos</span><b>Una renovación automática que nadie vio.</b><span class="txt">El aviso de no renovación vivía en una hoja de cálculo.</span><i class="avance" aria-hidden="true"></i></button></li>
+          <li><button type="button" class="dolor" data-escena="3" aria-pressed="false"><span class="label"><svg class="ico" aria-hidden="true"><use href="#i-alerta"/></svg>Poderes y expedientes</span><b>Se busca el acta en carpetas.</b><span class="txt">Poderes vencidos y datos de la contraparte sin validar.</span><i class="avance" aria-hidden="true"></i></button></li>
+          <li><button type="button" class="dolor" data-escena="4" aria-pressed="false"><span class="label"><svg class="ico" aria-hidden="true"><use href="#i-alerta"/></svg>Litigios</span><b>El despacho externo reporta cuando quiere.</b><span class="txt">No hay un lugar con el estado de cada asunto y su siguiente fecha.</span><i class="avance" aria-hidden="true"></i></button></li>
+          <li><button type="button" class="dolor" data-escena="5" aria-pressed="false"><span class="label"><svg class="ico" aria-hidden="true"><use href="#i-alerta"/></svg>Reportes</span><b>La junta pide números que no existen.</b><span class="txt">Tiempos, volumen y riesgo se arman a mano cada mes.</span><i class="avance" aria-hidden="true"></i></button></li>
+        </ul>
+      </div>
       <div class="cierre-dolor rev">
         <p>Mapeamos dónde se atora, lo medimos y automatizamos lo que el dato justifique.</p>
         <a class="btn btn-primario" href="#diagnostico">Agenda tu diagnóstico <svg class="ico" aria-hidden="true"><use href="#i-flecha"/></svg></a>
@@ -878,6 +894,16 @@ a{color:var(--mandarina-text)}
   iconoVideo();
   // Se detiene cuando sale de la pantalla y sigue al volver
   if('IntersectionObserver' in window){var porUsuario=false;vc.addEventListener('click',function(){porUsuario=vh.paused;});new IntersectionObserver(function(es){if(reduce||porUsuario)return;if(es[0].isIntersecting){var p=vh.play();if(p&&p.catch)p.catch(function(){});}else vh.pause();},{threshold:.2}).observe(vh);}
+
+  // Video del problema: la tarjeta del síntoma en pantalla se marca; al elegir una, el video salta a esa escena
+  var vp=document.getElementById('video-problema'),cp=document.getElementById('control-problema'),dols=[].slice.call(document.querySelectorAll('.dolor')),DUR=3,actualD=0,pausaUsuario=false;
+  function marcarDolor(i,frac){dols.forEach(function(d,j){d.setAttribute('aria-pressed',j===i?'true':'false');});var a=dols[i].querySelector('.avance');a.style.transform='scaleX('+(frac||0)+')';}
+  vp.addEventListener('timeupdate',function(){var t=vp.currentTime,i=Math.min(5,Math.floor(t/DUR));if(i!==actualD){actualD=i;}marcarDolor(i,(t-i*DUR)/DUR);});
+  function iconoP(){var p=vp.paused;cp.setAttribute('aria-pressed',p?'true':'false');cp.setAttribute('aria-label',p?'Reproducir video':'Pausar video');cp.querySelector('use').setAttribute('href',p?'#i-play':'#i-pausa');}
+  vp.addEventListener('play',iconoP);vp.addEventListener('pause',iconoP);iconoP();
+  cp.addEventListener('click',function(){if(vp.paused){pausaUsuario=false;var p=vp.play();if(p&&p.catch)p.catch(function(){});}else{pausaUsuario=true;vp.pause();}});
+  dols.forEach(function(d,i){d.addEventListener('click',function(){vp.currentTime=i*DUR+(vp.paused?1.8:0.05);marcarDolor(i,0);if(!reduce&&!pausaUsuario){var p=vp.play();if(p&&p.catch)p.catch(function(){});}});});
+  if('IntersectionObserver' in window){new IntersectionObserver(function(es){if(reduce||pausaUsuario)return;if(es[0].isIntersecting){var p=vp.play();if(p&&p.catch)p.catch(function(){});}else vp.pause();},{threshold:.35}).observe(vp);}
 
   // Pestañas accesibles (producto y método)
   function pestanas(lista,alCambiar){
