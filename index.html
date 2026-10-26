@@ -191,6 +191,21 @@ a{color:var(--mandarina-text)}
 .sol.medida a{color:var(--surface);font-weight:800}
 
 /* ---------------- Producto (Noche) */
+.video-producto{position:relative;margin:0 0 var(--s12);aspect-ratio:16/9;border-radius:var(--r-md);overflow:hidden;background:#121418;border:1px solid var(--line)}
+.video-producto video{display:block;width:100%;height:100%;object-fit:cover}
+.beneficios{display:grid;gap:var(--s4)}
+@media (min-width:700px){.beneficios{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1040px){.beneficios{grid-template-columns:repeat(3,1fr)}}
+.beneficio{background:var(--surface-raised);border-radius:var(--r-md);padding:var(--s8) var(--s6);display:grid;gap:var(--s3);align-content:start}
+.beneficio .label{color:var(--mandarina-text);display:flex;align-items:center;gap:8px}
+.beneficio .label::before{content:"";width:8px;height:8px;background:var(--mandarina)}
+.beneficio b{font:800 clamp(24px,2.3vw,30px)/1.1 var(--sans);letter-spacing:-.025em}
+.beneficio span{color:var(--ink-muted);font-size:16px;line-height:24px}
+.beneficio.fuerte{background:var(--mandarina);color:var(--on-mandarina)}
+.beneficio.fuerte .label{color:var(--on-mandarina)}
+.beneficio.fuerte .label::before{background:var(--on-mandarina)}
+.beneficio.fuerte span{color:var(--on-mandarina)}
+
 .producto-tabs{display:flex;gap:var(--s2);overflow-x:auto;scrollbar-width:none;margin-bottom:var(--s6);padding-bottom:4px}
 .producto-tabs::-webkit-scrollbar{display:none}
 .producto-tabs button{flex:none;min-height:44px;padding:10px 16px;border-radius:var(--r-md);border:1px solid var(--line-strong);background:transparent;color:var(--ink);font:600 15px var(--sans);cursor:pointer;transition:background-color .2s,color .2s,border-color .2s}
@@ -591,6 +606,27 @@ a{color:var(--mandarina-text)}
       <div class="cabeza rev">
         <p class="label">Producto</p>
         <h2 class="display" id="t-producto">Así se ve tu área legal con Qlaro.</h2>
+        <p class="lead">Todas las plataformas trabajando juntas, con la misma IA y la misma base. Esto es lo que gana tu área legal en cuanto las implementamos.</p>
+      </div>
+      <figure class="video-producto rev">
+        <video id="video-producto" muted loop playsinline preload="metadata" poster="video/plataformas-poster.jpg" width="1280" height="720" aria-label="Video sin audio con las plataformas de Qlaro y sus beneficios: intake, revisión con IA, plantillas, firma electrónica, vencimientos, expedientes y tableros">
+          <source src="video/plataformas.mp4" type="video/mp4">
+        </video>
+        <button type="button" class="video-control" id="control-producto" aria-pressed="false" aria-label="Pausar video"><svg class="ico" aria-hidden="true"><use href="#i-pausa"/></svg></button>
+      </figure>
+      <ul class="beneficios">
+        <li class="beneficio rev fuerte"><p class="label">Intake legal</p><b>Se acabó el «¿en qué va?».</b><span>Quien pide ve el estatus de su solicitud sin escribirle a legal.</span></li>
+        <li class="beneficio rev"><p class="label">Revisión con IA</p><b>El análisis de cada contrato, en minutos.</b><span>La IA lee el contrato completo y lo compara con tus reglas.</span></li>
+        <li class="beneficio rev"><p class="label">Revisión con IA</p><b>Ningún hallazgo sin su cita.</b><span>Cada riesgo trae el texto exacto del contrato. Legal decide.</span></li>
+        <li class="beneficio rev"><p class="label">Plantillas</p><b>Contratos sin redactar desde cero.</b><span>Un formulario y una plantilla aprobada por tu dirección jurídica.</span></li>
+        <li class="beneficio rev"><p class="label">Firma electrónica</p><b>Firma desde el contrato aprobado.</b><span>e.firma con Mifiel y constancia NOM-151, sin imprimir ni escanear.</span></li>
+        <li class="beneficio rev"><p class="label">Vencimientos</p><b>Ninguna renovación por sorpresa.</b><span>Cada fecha límite con responsable y avisos a 90, 60, 30 y 7 días.</span></li>
+        <li class="beneficio rev"><p class="label">Expedientes y poderes</p><b>Los datos de cada parte, una sola vez.</b><span>Validados por Legal y reutilizados en cada contrato.</span></li>
+        <li class="beneficio rev"><p class="label">Tableros</p><b>El reporte de la junta, sin hoja de cálculo.</b><span>Tiempos, volumen y riesgo calculados con lo que ya está en Qlaro.</span></li>
+        <li class="beneficio rev"><p class="label">Seguridad</p><b>Tus documentos no entrenan a la IA.</b><span>Información cifrada y separada por empresa.</span></li>
+      </ul>
+      <div class="cabeza" style="margin-top:96px;margin-bottom:32px">
+        <h3 class="display" style="font-size:clamp(28px,3vw,40px)">Recorre cada pantalla.</h3>
         <p class="lead">Capturas reales de nuestras plataformas, con datos de demostración.</p>
       </div>
       <div class="producto-tabs" role="tablist" aria-label="Pantallas del producto">
@@ -905,6 +941,14 @@ a{color:var(--mandarina-text)}
   dols.forEach(function(d,i){d.addEventListener('click',function(){vp.currentTime=i*DUR+(vp.paused?1.8:0.05);marcarDolor(i,0);if(!reduce&&!pausaUsuario){var p=vp.play();if(p&&p.catch)p.catch(function(){});}});});
   if('IntersectionObserver' in window){new IntersectionObserver(function(es){if(reduce||pausaUsuario)return;if(es[0].isIntersecting){var p=vp.play();if(p&&p.catch)p.catch(function(){});}else vp.pause();},{threshold:.35}).observe(vp);}
 
+  // Video de plataformas: se reproduce al estar en pantalla, con botón de pausa
+  (function(){var v=document.getElementById('video-producto'),c=document.getElementById('control-producto'),manual=false;
+    function ic(){var p=v.paused;c.setAttribute('aria-pressed',p?'true':'false');c.setAttribute('aria-label',p?'Reproducir video':'Pausar video');c.querySelector('use').setAttribute('href',p?'#i-play':'#i-pausa');}
+    v.addEventListener('play',ic);v.addEventListener('pause',ic);ic();
+    c.addEventListener('click',function(){if(v.paused){manual=false;var p=v.play();if(p&&p.catch)p.catch(function(){});}else{manual=true;v.pause();}});
+    if('IntersectionObserver' in window){new IntersectionObserver(function(es){if(reduce||manual)return;if(es[0].isIntersecting){var p=v.play();if(p&&p.catch)p.catch(function(){});}else v.pause();},{threshold:.35}).observe(v);}
+  })();
+
   // Pestañas accesibles (producto y método)
   function pestanas(lista,alCambiar){
     var tabs=[].slice.call(lista.querySelectorAll('[role="tab"]'));
@@ -954,7 +998,8 @@ a{color:var(--mandarina-text)}
 
     // 3. Producto: la pantalla crece al entrar, como si se acercara
     g.fromTo('#producto [role="tabpanel"] .marco',{scale:.9},{scale:1,ease:'none',scrollTrigger:{trigger:'#producto .producto-tabs',start:'top 90%',end:'top 30%',scrub:true}});
-    g.fromTo('#producto video',{scale:.9},{scale:1,ease:'none',scrollTrigger:{trigger:'#producto video',start:'top 95%',end:'top 45%',scrub:true}});
+    g.fromTo('#video-producto',{scale:.92},{scale:1,ease:'none',scrollTrigger:{trigger:'.video-producto',start:'top 95%',end:'top 35%',scrub:true}});
+    g.fromTo('#producto .demo video',{scale:.9},{scale:1,ease:'none',scrollTrigger:{trigger:'#producto video',start:'top 95%',end:'top 45%',scrub:true}});
 
     // 4. Método: en escritorio la sección se fija y el scroll recorre los cuatro pasos
     window.qlaroNumero=function(){g.fromTo('#numero-cifra',{yPercent:55,opacity:0},{yPercent:0,opacity:1,duration:.55,ease:'expo.out',overwrite:true});};
