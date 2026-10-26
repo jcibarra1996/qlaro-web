@@ -119,12 +119,10 @@ a{color:var(--mandarina-text)}
 .bloque{position:relative;overflow:hidden;background:linear-gradient(135deg,var(--mandarina-light),var(--mandarina) 62%);min-height:420px;display:grid;align-items:end;padding:48px max(20px,env(safe-area-inset-right,0px)) 0 max(20px,env(safe-area-inset-left,0px))}
 @media (min-width:760px){.bloque{padding:56px 32px 0}}
 @media (max-width:599px){.pantalla{width:80%}.q-gigante{width:58%;right:-14%;top:-2%}}
-.q-gigante{position:absolute;right:-10%;top:-4%;width:min(60%,420px);height:auto;fill:#FFFFFF;pointer-events:none;animation:sube-q 1.1s cubic-bezier(.2,.7,.2,1) both}
-@keyframes sube-q{from{transform:translateY(18%)}to{transform:none}}
-.pantalla{position:relative;margin:0;width:72%;max-width:540px;justify-self:start;border-radius:var(--r-md) var(--r-md) 0 0;overflow:hidden;background:#FFFFFF;border:1px solid rgba(18,20,24,.12);border-bottom:0;animation:sube-p .9s .25s cubic-bezier(.2,.7,.2,1) both}
-@keyframes sube-p{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
+.q-gigante{position:absolute;right:-10%;top:-4%;width:min(60%,420px);height:auto;fill:#FFFFFF;pointer-events:none}
+.pantalla{position:relative;margin:0;width:72%;max-width:540px;justify-self:start;border-radius:var(--r-md) var(--r-md) 0 0;overflow:hidden;background:#FFFFFF;border:1px solid rgba(18,20,24,.12);border-bottom:0}
 .pantalla img{display:block;width:100%;height:auto;aspect-ratio:16/11;object-fit:cover;object-position:left top}
-.ficha{position:absolute;left:max(20px,env(safe-area-inset-left,0px));top:32px;background:#FFFFFF;color:#121418;border-radius:var(--r-md);padding:14px 16px;display:grid;gap:6px;max-width:280px;animation:sube-p .7s .8s cubic-bezier(.2,.7,.2,1) both}
+.ficha{position:absolute;left:max(20px,env(safe-area-inset-left,0px));top:32px;background:#FFFFFF;color:#121418;border-radius:var(--r-md);padding:14px 16px;display:grid;gap:6px;max-width:280px}
 @media (min-width:760px){.ficha{left:32px;top:40px}}
 .ficha .label{color:#5B6270}
 .ficha p{font-size:14px;line-height:20px}
@@ -210,7 +208,7 @@ a{color:var(--mandarina-text)}
 .vista-texto li::before{content:"";width:8px;height:8px;margin-top:7px;background:var(--mandarina)}
 .marco{margin:0;border-radius:var(--r-md);overflow:hidden;background:#FFFFFF;border:1px solid var(--line);min-width:0}
 .marco img{display:block;width:100%;height:auto}
-.vista:not([hidden]) .marco{animation:aparece .5s cubic-bezier(.2,.7,.2,1)}
+.vista:not([hidden]) .marco,.paso-panel:not([hidden]){animation:aparece .5s cubic-bezier(.2,.7,.2,1)}
 @keyframes aparece{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 .demo{margin-top:96px;display:grid;gap:var(--s8);align-items:center}
 @media (min-width:1000px){.demo{grid-template-columns:4fr 7fr;gap:var(--s12)}}
@@ -237,6 +235,24 @@ a{color:var(--mandarina-text)}
 .paso-panel .recibes .label{color:var(--mandarina-text)}
 .paso-panel .recibes li{display:grid;grid-template-columns:20px 1fr;gap:var(--s2);padding-bottom:var(--s3);border-bottom:1px solid var(--line)}
 .paso-panel .recibes li::before{content:"";width:8px;height:8px;margin-top:8px;background:var(--mandarina)}
+
+
+/* Titular por líneas: cada línea sube desde su máscara al cargar */
+.titular .linea{display:block;overflow:hidden;padding-bottom:.06em;margin-bottom:-.06em}
+.titular .linea>span{display:inline-block;will-change:transform}
+
+/* Método: bloque mandarina con el número del paso */
+.metodo-cuerpo{display:grid;gap:var(--s4)}
+@media (min-width:900px){.metodo-cuerpo{grid-template-columns:5fr 7fr;align-items:stretch}.numero{grid-row:span 2}.metodo-cuerpo .metodo-pasos{margin-bottom:0}}
+.numero{position:relative;overflow:hidden;background:var(--mandarina);color:var(--on-mandarina);padding:var(--s8);display:flex;flex-direction:column;justify-content:space-between;gap:var(--s6);min-height:220px}
+.numero-cifra{font:800 clamp(120px,16vw,240px)/.8 var(--sans);letter-spacing:-.06em;color:#FFFFFF;display:block}
+.numero-nombre{font:800 clamp(28px,3vw,40px)/1 var(--sans);letter-spacing:-.025em}
+.numero-progreso{width:100%;height:4px;display:block;background:rgba(18,20,24,.18)}
+.numero-progreso rect{fill:var(--on-mandarina);transition:width .4s cubic-bezier(.2,.7,.2,1)}
+.paneles{display:grid;min-width:0}
+.paneles .paso-panel{height:100%}
+@media (min-width:900px){.paneles .paso-panel{grid-template-columns:1fr;align-content:center}}
+.metodo.fijo .metodo-pasos .barra{display:none}
 
 /* ---------------- Qué medimos */
 .metricas{display:grid;gap:var(--s4)}
@@ -434,15 +450,14 @@ a{color:var(--mandarina-text)}
   <!-- Hero -->
   <section class="hero" id="inicio" aria-labelledby="t-hero">
     <div class="hero-texto">
-      <p class="label">LegalOps y LegalTech para áreas legales</p>
-      <h1 class="display-xl" id="t-hero">Lo legal, sin vueltas.</h1>
+      <h1 class="display-xl titular" id="t-hero"><span class="linea"><span>Lo legal,</span></span> <span class="linea"><span>sin vueltas.</span></span></h1>
       <p class="lead">Diseñamos, implementamos y operamos la parte operativa de tu área legal: cómo entra una solicitud, cómo se genera y aprueba un contrato, cómo se mide el trabajo y qué se automatiza. <b>Vendemos sistemas y resultados medibles, no horas de abogado.</b></p>
       <div class="acciones">
         <a class="btn btn-primario" href="#diagnostico">Agenda tu diagnóstico <svg class="ico" aria-hidden="true"><use href="#i-flecha"/></svg></a>
         <a class="btn btn-linea" href="#servicios">Ver qué hacemos</a>
       </div>
       <ul class="promesas">
-        <li><b>Por proyecto.</b><span>Alcance y entregables cerrados, no horas.</span></li>
+        <li><b>Operado contigo.</b><span>Te acompañamos hasta que tu equipo lo opere solo.</span></li>
         <li><b>Con tus reglas.</b><span>La IA aplica los criterios de tu dirección jurídica.</span></li>
         <li><b>Medido.</b><span>Línea base antes, tablero después.</span></li>
       </ul>
@@ -473,7 +488,7 @@ a{color:var(--mandarina-text)}
     <div class="wrap">
       <div class="cabeza rev">
         <p class="label">El problema</p>
-        <h2 class="display" id="t-problema">Tu área legal no se atora por el derecho. Se atora por la operación.</h2>
+        <h2 class="display" id="t-problema">¿Tu área legal se ve así?</h2>
         <p class="lead">Si reconoces tres o más de estos síntomas, hay horas de tu equipo que se pueden recuperar.</p>
       </div>
       <ul class="dolores">
@@ -534,7 +549,6 @@ a{color:var(--mandarina-text)}
           <a class="btn btn-linea" href="#diagnostico">Hablar de operación</a>
         </article>
       </div>
-      <p class="nota-oferta"><span>Precio por proyecto, no por hora</span><span>Para direcciones jurídicas de empresa</span><span>Desde Ciudad de México</span></p>
     </div>
   </section>
 
@@ -637,6 +651,9 @@ a{color:var(--mandarina-text)}
         <p class="lead">La tecnología sin diagnóstico solo automatiza el desorden.</p>
       </div>
       <div class="metodo" id="metodo-ui">
+        <div class="metodo-cuerpo">
+        <div class="numero" aria-hidden="true"><span class="numero-cifra" id="numero-cifra">01</span><span class="numero-nombre" id="numero-nombre">Mapear</span><svg class="numero-progreso" viewBox="0 0 100 4" preserveAspectRatio="none"><rect id="numero-barra" width="25" height="4"/></svg></div>
+        <div class="paneles">
         <div class="metodo-pasos" role="tablist" aria-label="Pasos del método">
           <button role="tab" id="mt-1" aria-controls="mp-1" aria-selected="true">01 / Mapear<span class="barra"></span></button>
           <button role="tab" id="mt-2" aria-controls="mp-2" aria-selected="false" tabindex="-1">02 / Medir<span class="barra"></span></button>
@@ -658,6 +675,8 @@ a{color:var(--mandarina-text)}
         <div class="paso-panel" role="tabpanel" id="mp-4" aria-labelledby="mt-4" tabindex="0" hidden>
           <div><h3>Operamos contigo hasta que tu equipo lo haga solo.</h3><p>Tablero mensual, ajuste de reglas y acompañamiento. Comparamos contra la línea base del paso 02.</p></div>
           <ul class="recibes"><li class="label" style="display:block;padding:0;border:0">Recibes</li><li>Tablero de tiempos, volumen y riesgo.</li><li>Reglas y plantillas al día.</li><li>Un equipo que opera por su cuenta.</li></ul>
+        </div>
+        </div>
         </div>
       </div>
     </div>
@@ -854,6 +873,8 @@ a{color:var(--mandarina-text)}
   </div>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
 (function(){
   var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -879,7 +900,9 @@ a{color:var(--mandarina-text)}
 
   // Método: avanza solo cada 6 s mientras está a la vista; se detiene al interactuar
   var mUI=document.getElementById('metodo-ui'),actual=0,timer=null,detenido=reduce,visible=false;
-  var M=pestanas(mUI.querySelector('.metodo-pasos'),function(i,porUsuario){actual=i;if(porUsuario){detenido=true;parar();mUI.classList.add('pausado');}});
+  var nombresPaso=['Mapear','Medir','Automatizar','Operar'];
+  function pintarNumero(i){document.getElementById('numero-cifra').textContent='0'+(i+1);document.getElementById('numero-nombre').textContent=nombresPaso[i];document.getElementById('numero-barra').setAttribute('width',String((i+1)*25));if(window.qlaroNumero)window.qlaroNumero();}
+  var M=pestanas(mUI.querySelector('.metodo-pasos'),function(i,porUsuario){actual=i;pintarNumero(i);if(window.qlaroIrAPaso&&porUsuario){window.qlaroIrAPaso(i);return;}if(porUsuario){detenido=true;parar();mUI.classList.add('pausado');}});
   function parar(){clearTimeout(timer);timer=null;}
   function programar(){parar();if(detenido||!visible)return;timer=setTimeout(function(){actual=(actual+1)%4;M.abrir(M.tabs[actual],false);reiniciarBarra();programar();},6000);}
   function reiniciarBarra(){var b=M.tabs[actual].querySelector('.barra');b.style.animation='none';void b.offsetWidth;b.style.animation='';}
@@ -888,6 +911,49 @@ a{color:var(--mandarina-text)}
   mUI.addEventListener('mouseleave',function(){if(!detenido){mUI.classList.remove('pausado');reiniciarBarra();programar();}});
   mUI.addEventListener('focusin',function(){detenido=true;parar();mUI.classList.add('pausado');});
   if('IntersectionObserver' in window){new IntersectionObserver(function(es){visible=es[0].isIntersecting;if(visible){reiniciarBarra();programar();}else parar();},{threshold:.4}).observe(mUI);}
+
+
+  // Animación con GSAP + ScrollTrigger (presets de ui-ux-pro-max). Sin GSAP o con movimiento reducido, la página queda estática y completa.
+  if(window.gsap&&window.ScrollTrigger&&!reduce){
+    var g=window.gsap,ST=window.ScrollTrigger;g.registerPlugin(ST);
+
+    // 1. Entrada del hero: el titular sube línea por línea, la q entra por el borde y la pantalla sube
+    var tl=g.timeline({defaults:{ease:'expo.out'}});
+    tl.from('.titular .linea>span',{yPercent:110,duration:1.1,stagger:.12})
+      .from('.hero-texto .lead, .hero-texto .acciones, .promesas li',{y:16,opacity:0,duration:.6,stagger:.07,ease:'power2.out'},'-=.7')
+      .from('.q-gigante',{xPercent:45,duration:1.4},.05)
+      .from('.pantalla',{y:80,opacity:0,duration:1},.3)
+      .from('.ficha',{y:-16,opacity:0,duration:.6,ease:'power2.out'},.85);
+    // La q se desplaza un poco con el scroll (solo traslación: el manual no permite rotarla)
+    g.to('.q-gigante',{yPercent:14,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+    g.to('.pantalla',{yPercent:-6,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+
+    // 2. Cinta de soluciones: corre sola y acelera con la velocidad del scroll
+    var pista=document.querySelector('.cinta-pista');
+    pista.style.animation='none';
+    var cinta=g.to(pista,{xPercent:-50,ease:'none',duration:40,repeat:-1}),impulso=1,enPausa=false;
+    ST.create({onUpdate:function(st){impulso=1+Math.min(Math.abs(st.getVelocity())/350,6);}});
+    g.ticker.add(function(){if(enPausa)return;var t=cinta.timeScale();cinta.timeScale(t+(impulso-t)*.08);impulso+=(1-impulso)*.04;});
+    var cintaEl=document.querySelector('.cinta');
+    cintaEl.addEventListener('mouseenter',function(){enPausa=true;cinta.pause();});
+    cintaEl.addEventListener('mouseleave',function(){enPausa=false;cinta.play();});
+
+    // 3. Producto: la pantalla crece al entrar, como si se acercara
+    g.fromTo('#producto [role="tabpanel"] .marco',{scale:.9},{scale:1,ease:'none',scrollTrigger:{trigger:'#producto .producto-tabs',start:'top 90%',end:'top 30%',scrub:true}});
+    g.fromTo('#producto video',{scale:.9},{scale:1,ease:'none',scrollTrigger:{trigger:'#producto video',start:'top 95%',end:'top 45%',scrub:true}});
+
+    // 4. Método: en escritorio la sección se fija y el scroll recorre los cuatro pasos
+    window.qlaroNumero=function(){g.fromTo('#numero-cifra',{yPercent:55,opacity:0},{yPercent:0,opacity:1,duration:.55,ease:'expo.out',overwrite:true});};
+    var mm=g.matchMedia();
+    mm.add('(min-width: 900px) and (min-height: 700px)',function(){
+      detenido=true;parar();mUI.classList.add('fijo','pausado');
+      var st=ST.create({trigger:mUI,start:'top 96px',end:'+=220%',pin:true,anticipatePin:1,
+        onUpdate:function(self){var i=Math.min(3,Math.floor(self.progress*4));if(i!==actual)M.abrir(M.tabs[i],false);}});
+      window.qlaroIrAPaso=function(i){window.scrollTo({top:st.start+(st.end-st.start)*(i+.5)/4,behavior:'smooth'});};
+      return function(){window.qlaroIrAPaso=null;mUI.classList.remove('fijo');};
+    });
+    window.addEventListener('load',function(){ST.refresh();});
+  }
 
   // Filtros del catálogo
   var fbtn=[].slice.call(document.querySelectorAll('.catalogo-filtros button')),sols=[].slice.call(document.querySelectorAll('#catalogo .sol'));
