@@ -239,10 +239,21 @@ figure.en-espera .video-control{display:none}
 /* ---------------- Caso real: banda mandarina */
 .caso-banda{background:linear-gradient(135deg,var(--mandarina-light),var(--mandarina) 58%);color:var(--on-mandarina)}
 .caso-wrap{display:grid;gap:var(--s12)}
-@media (min-width:1000px){.caso-wrap{grid-template-columns:7fr 5fr;column-gap:var(--s16);align-items:end}.caso-wrap .portal{grid-column:1/-1}}
-.caso-cab{display:grid;gap:var(--s4)}
+.caso-cab{display:grid;gap:var(--s6);max-width:900px}
+.caso-cliente{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s2) var(--s3)}
+.cc-nombre{font:800 18px/24px var(--sans);color:#121418;padding-right:var(--s3);border-right:2px solid rgba(18,20,24,.35)}
+.cc-tag{font:500 12px/16px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#121418;background:rgba(255,255,255,.55);padding:5px 10px;border-radius:999px}
+.caso-historia{display:grid;gap:var(--s4);counter-reset:none}
+@media (min-width:900px){.caso-historia{grid-template-columns:repeat(3,1fr)}}
+.caso-historia li{display:grid;gap:var(--s2);align-content:start;background:rgba(255,255,255,.92);color:#121418;border-radius:var(--r-md);padding:var(--s6)}
+.caso-historia li:last-child{background:#121418;color:#F4F5F7}
+.ch-paso{font:500 12px/16px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#B83A00}
+.caso-historia li:last-child .ch-paso{color:#FF7A26}
+.caso-historia b{font:800 22px/28px var(--sans);letter-spacing:-.015em}
+.caso-historia li span:last-child{font-size:15px;line-height:23px;color:#5B6270}
+.caso-historia li:last-child span:last-child{color:#C9CDD4}
 .caso-cab .label{color:var(--on-mandarina)}
-.caso-cab h2{font:800 clamp(38px,5vw,64px)/1.02 var(--sans);letter-spacing:-.035em;color:#FFFFFF}
+.caso-cab h2{font:800 clamp(40px,5.6vw,76px)/1 var(--sans);letter-spacing:-.035em;color:#FFFFFF}
 .caso-cab p:last-child{font-size:clamp(17px,1.5vw,20px);line-height:1.5;max-width:40em}
 .portal{position:relative;z-index:2;margin:0;background:#FFFFFF;color:#121418;border-radius:var(--r-md);overflow:hidden;border:1px solid rgba(18,20,24,.18)}
 .portal-barra{display:flex;align-items:center;gap:8px;padding:12px 16px;background:#F5F6F8;border-bottom:1px solid #E3E5EA}
@@ -282,10 +293,6 @@ figure.en-espera .video-control{display:none}
 .js-portal .pm-chat p{transition:opacity .4s,transform .4s}
 .js-portal .pm-chat p.oculto{opacity:0;transform:translateY(8px)}
 .portal figcaption{padding:10px 16px;border-top:1px solid #E3E5EA;font-size:12px;color:#5B6270}
-.caso-datos{display:grid;gap:var(--s6)}
-.caso-datos li{display:grid;gap:6px;padding-top:var(--s4);border-top:2px solid var(--on-mandarina)}
-.caso-datos b{font:800 22px/28px var(--sans);letter-spacing:-.01em}
-.caso-datos span{font-size:15px;line-height:23px}
 
 /* Profundidad: piezas que se montan sobre el borde de la sección siguiente (sin sombras) */
 @media (min-width:1000px){
@@ -585,15 +592,15 @@ figure.en-espera .video-control{display:none}
   <section class="sec caso-banda" id="caso" aria-labelledby="t-caso">
     <div class="wrap caso-wrap">
       <div class="caso-cab rev">
-        <p class="label">Caso real</p>
-        <h2 id="t-caso">Portal de Crédito de Savino del Bene México.</h2>
-        <p>Diseñamos y pusimos en operación el portal con el que el área de crédito de una empresa de logística internacional gestiona cada solicitud, del análisis a la autorización y la cobranza.</p>
+        <p class="caso-cliente"><span class="cc-nombre">Savino del Bene México</span><span class="cc-tag">Logística internacional</span><span class="cc-tag">Crédito y cobranza</span></p>
+        <h2 id="t-caso">Del análisis a la cobranza, cada crédito en un solo portal.</h2>
+        <p>Construimos para Savino del Bene México el portal donde Análisis, Dirección y Cobranza trabajan cada solicitud de crédito, con un asistente de IA que responde en lenguaje natural.</p>
       </div>
-      <ul class="caso-datos">
-        <li class="rev"><b>Un portal por perfil.</b><span>Análisis, Dirección y Cobranza ven y hacen solo lo que les corresponde.</span></li>
-        <li class="rev"><b>Asistente con IA integrado.</b><span>El equipo consulta expedientes y estatus en lenguaje natural.</span></li>
-        <li class="rev"><b>Lo usan todos los días.</b><span>El área de crédito trabaja ahí cada día, sobre la misma base de las plataformas de Qlaro.</span></li>
-      </ul>
+      <ol class="caso-historia">
+        <li class="rev"><span class="ch-paso">El reto</span><b>Tres áreas, una misma solicitud.</b><span>Análisis, Dirección y Cobranza necesitaban trabajar cada crédito sin perder de vista quién tenía qué.</span></li>
+        <li class="rev"><span class="ch-paso">Lo que construimos</span><b>Un portal para cada perfil.</b><span>Flujo de autorización de punta a punta y Conty, el asistente con IA del equipo.</span></li>
+        <li class="rev"><span class="ch-paso">El resultado</span><b>Cada crédito con responsable y estatus.</b><span>Las tres áreas ven en qué va cada solicitud. El portal es su herramienta de todos los días.</span></li>
+      </ol>
       <figure class="portal rev" aria-label="Recreación del Portal de Crédito con datos de demostración">
         <div class="portal-barra" aria-hidden="true"><i></i><i></i><i></i><span>Portal de Crédito · Dirección</span></div>
         <div class="portal-cuerpo">
@@ -613,7 +620,7 @@ figure.en-espera .video-control{display:none}
             </div>
             <div class="pm-chat" aria-hidden="true">
               <p class="pc-yo" id="pc-yo">¿Qué solicitudes llevan más de 5 días sin autorizar?</p>
-              <p class="pc-ia" id="pc-ia"><span>Asistente IA</span><em id="pc-ia-txt">Dos: Cliente Demo A y Cliente Demo B, ambas con análisis completo.</em></p>
+              <p class="pc-ia" id="pc-ia"><span>Conty · Asistente IA</span><em id="pc-ia-txt">Dos: Cliente Demo A y Cliente Demo B, ambas con análisis completo.</em></p>
             </div>
           </div>
         </div>
