@@ -1,6 +1,6 @@
-# Qlaro · sitio web
+# Veredo · sitio web
 
-Sitio de Qlaro: plataformas con IA para áreas legales. Es HTML, CSS y JavaScript estático, sin dependencias ni paso de compilación.
+Sitio de Veredo: plataformas con IA para áreas legales. Es HTML, CSS y JavaScript estático, sin dependencias ni paso de compilación.
 
 ## Estructura
 
@@ -23,5 +23,5 @@ Cualquier hosting estático sirve (Vercel, Netlify, GitHub Pages). En Vercel: im
 
 ## Pendientes antes de publicar
 
-- Confirmar que `contacto@qlaro.mx` existe y recibe correo.
+- Confirmar que `contacto@veredo.mx` existe y recibe correo.
 - El formulario arma el mensaje y abre el correo del visitante; no guarda datos. Para recibir solicitudes directamente hace falta un servicio de formularios o una función propia.
