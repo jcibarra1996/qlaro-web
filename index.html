@@ -48,10 +48,6 @@
     "@type": "PostalAddress",
     "addressCountry": "MX"
    },
-   "founder": {
-    "@type": "Person",
-    "name": "Juan Carlos Ibarra"
-   },
    "knowsAbout": [
     "CLM",
     "LegalTech",
@@ -614,7 +610,8 @@ figure.en-espera .video-control{display:none}
 .fundador{display:grid;gap:var(--s8);align-items:center}
 @media (min-width:1000px){.fundador{grid-template-columns:6fr 5fr;gap:var(--s16)}}
 .fundador blockquote{margin:0;font:800 clamp(28px,3.4vw,44px)/1.15 var(--sans);letter-spacing:-.025em}
-.fundador cite{display:block;margin-top:var(--s6);font:500 12px/16px var(--mono);letter-spacing:.08em;text-transform:uppercase;font-style:normal;color:var(--mandarina-text)}
+.fundador .sobre-label{color:var(--mandarina-text);margin-bottom:var(--s4)}
+.fundador .sobre-frase{margin:0;font:800 clamp(28px,3.4vw,44px)/1.15 var(--sans);letter-spacing:-.025em}
 .fundador .relato{display:grid;gap:var(--s4);color:var(--ink-muted)}
 
 /* ---------------- Preguntas */
@@ -1001,16 +998,17 @@ button[aria-busy="true"]{opacity:.6;pointer-events:none}
     </div>
   </section>
 
-  <!-- Fundador -->
-  <section class="sec" aria-label="Quién está detrás" style="background:var(--surface-raised)">
+  <!-- Sobre Veredo -->
+  <section class="sec" id="sobre" aria-labelledby="t-sobre" style="background:var(--surface-raised)">
     <div class="wrap fundador">
       <div class="rev">
-        <blockquote>Lo que frena a lo legal casi nunca es el derecho. Es la operación.</blockquote>
-        <cite>Juan Carlos Ibarra · Fundador de Veredo</cite>
+        <p class="label sobre-label">Sobre Veredo</p>
+        <h2 class="sobre-frase" id="t-sobre">Lo que frena a lo legal casi nunca es el derecho. Es la operación.</h2>
       </div>
       <div class="relato rev">
-        <p>Veredo nace de años dentro de áreas legales de empresas multinacionales de consumo, logística y consultoría, dirigiendo un equipo jurídico repartido en cinco países de Latinoamérica.</p>
-        <p>Ahí construimos nuestras propias herramientas: generación de contratos con IA, gestión de cartera, bóveda de poderes y seguimiento de litigios con despachos externos. Hoy llevamos esa forma de trabajar a tu empresa.</p>
+        <p>Veredo nació dentro de las áreas legales de empresas multinacionales de consumo, logística y consultoría, al frente de un equipo jurídico repartido en cinco países de Latinoamérica.</p>
+        <p>Ahí vimos que lo que más tiempo le quitaba al equipo no era el análisis jurídico, sino perseguir solicitudes, versiones de contratos, poderes y fechas. Para resolverlo construimos nuestras propias herramientas: generación de contratos con IA, gestión de cartera, bóveda de poderes y seguimiento de litigios con despachos externos.</p>
+        <p>Veredo es esa forma de trabajar convertida en plataformas, para que cualquier dirección jurídica pueda operar así sin construirlas desde cero.</p>
       </div>
     </div>
   </section>
