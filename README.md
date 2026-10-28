@@ -24,4 +24,4 @@ Cualquier hosting estático sirve (Vercel, Netlify, GitHub Pages). En Vercel: im
 ## Pendientes antes de publicar
 
 - Confirmar que `contacto@veredo.com.mx` existe y recibe correo.
-- El formulario arma el mensaje y abre el correo del visitante; no guarda datos. Para recibir solicitudes directamente hace falta un servicio de formularios o una función propia.
+- El formulario y la agenda guardan cada solicitud en Supabase (tabla `web.solicitudes`, función `solicitud_contacto_veredo`). Todavía no mandan aviso por correo: revisar la tabla o conectar un proveedor de correo.

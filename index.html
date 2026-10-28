@@ -237,18 +237,26 @@
     },
     {
      "@type": "Question",
-     "name": "¿En qué se diferencia Veredo de Legalario o de Harvey?",
+     "name": "¿Tengo que contratar todo?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Legalario es una plataforma mexicana de firma electrónica, creación de documentos y gestión de contratos. Harvey es un asistente de inteligencia artificial jurídica para grandes despachos y departamentos legales, que se licencia por abogado. Veredo implementa y opera las plataformas que tu área legal necesita (intake, contratos, poderes y litigios) con las reglas de tu dirección jurídica, y te acompaña hasta que tu equipo las usa solo."
+      "text": "No. Cada solución funciona sola. Muchos equipos empiezan por la ventanilla de solicitudes o por la gestión de contratos y suman lo demás después."
      }
     },
     {
      "@type": "Question",
-     "name": "¿Tengo que contratar todo?",
+     "name": "¿Quién responde si la IA no detecta un riesgo?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "No. Cada solución funciona sola. Muchos equipos empiezan por intake o por gestión de contratos y suman lo demás después."
+      "text": "La IA no sustituye la revisión de un abogado. Cada hallazgo lo valida alguien de tu equipo antes de usarse, y la plataforma no aprueba ni firma nada por sí sola. El criterio jurídico y la decisión final son de tu dirección jurídica. Lo que Veredo se compromete a entregar, y cómo responde por ello, queda por escrito en el contrato de servicio."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "¿Qué necesita mi equipo y cuánto tarda?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Una persona de tu dirección jurídica que defina las reglas y apruebe las plantillas, acceso a tus contratos y formatos actuales, y unas horas a la semana para revisar la configuración. El tiempo depende del alcance: la propuesta que recibes después del diagnóstico trae el calendario por etapas."
      }
     },
     {
@@ -651,6 +659,20 @@ figure.en-espera .video-control{display:none}
 .form .btn{justify-self:start}
 .aviso{font-size:13px;color:#5B6270}
 .listo{display:grid;gap:var(--s3);border-top:1px dashed #8A909B;padding-top:var(--s4)}
+.enviado{display:grid;gap:var(--s3);border-top:1px dashed #8A909B;padding-top:var(--s4)}
+.enviado h3{font:800 20px/26px var(--sans);display:flex;align-items:center;gap:10px}
+.enviado h3::before{content:"";width:12px;height:12px;background:#1E6B3A;flex:none}
+.enviado p{font-size:15px;color:#121418}
+.enviado .fila{display:flex;flex-wrap:wrap;gap:var(--s2)}
+.enviado .btn{min-height:44px;padding:10px 16px;font-size:15px}
+.enviado .b-copiar{background:#FFFFFF;color:#121418;border-color:#121418}
+.envio-error{color:#B4231B;font-weight:600}
+.envio-error a{color:#B4231B}
+.trampa{position:absolute!important;left:-9999px;width:1px;height:1px;overflow:hidden}
+.consiente{display:flex;gap:10px;align-items:flex-start;font-size:14px;cursor:pointer}
+.consiente input{width:18px;height:18px;min-height:0;margin-top:2px;accent-color:#B83A00;flex:none}
+.agenda-listo .campos{display:grid;gap:var(--s3)}
+button[aria-busy="true"]{opacity:.6;pointer-events:none}
 .listo h3{font:800 18px/24px var(--sans)}
 .listo pre{margin:0;white-space:pre-wrap;overflow-wrap:anywhere;font:400 13px/1.6 var(--mono);background:#F5F6F8;border-radius:var(--r-md);padding:14px;max-height:240px;overflow:auto;color:#121418}
 .listo .fila{display:flex;flex-wrap:wrap;gap:var(--s2)}
@@ -750,7 +772,7 @@ figure.en-espera .video-control{display:none}
     </div>
     <div class="bloque">
       <figure class="video-hero">
-        <video id="video-hero" muted loop playsinline preload="auto" poster="video/servicios-poster.jpg" width="1280" height="720" aria-label="Video sin audio: Diagnóstico LegalOps, Implementación y Operación, y las soluciones que implementamos">
+        <video id="video-hero" muted loop playsinline preload="auto" poster="video/servicios-poster.jpg" width="1280" height="720" aria-label="Video sin audio: Diagnóstico, Implementación y Operación, y las soluciones que implementamos">
           <source src="video/servicios.mp4" type="video/mp4">
         </video>
         <button type="button" class="video-control" id="video-control" aria-pressed="false" aria-label="Pausar video"><svg class="ico" aria-hidden="true"><use href="#i-pausa"/></svg></button>
@@ -797,7 +819,7 @@ figure.en-espera .video-control{display:none}
       <div class="ofertas">
         <article class="oferta rev">
           <p class="label">Pasos 01 y 02</p>
-          <h3>Diagnóstico LegalOps</h3>
+          <h3>Diagnóstico</h3>
           <p class="para muted">Para áreas legales que saben que algo no fluye, pero no tienen el dato de dónde ni cuánto cuesta.</p>
           <ul class="recibes">
             <li>Mapa del flujo actual: quién pide, quién aprueba, dónde se atora.</li>
@@ -811,7 +833,7 @@ figure.en-espera .video-control{display:none}
           <h3>Implementación</h3>
           <p class="para muted">Para equipos listos para cambiar cómo trabajan. Configuramos nuestras plataformas o construimos la que tu operación necesita.</p>
           <ul class="recibes">
-            <li>Intake, plantillas, CLM, expedientes, poderes o litigios, según tu hoja de ruta.</li>
+            <li>Ventanilla de solicitudes, plantillas, gestión de contratos, expedientes, poderes o litigios, según tu hoja de ruta.</li>
             <li>Reglas de tu dirección jurídica cargadas para la IA.</li>
             <li>Migración de tu cartera actual y capacitación del equipo.</li>
           </ul>
@@ -819,7 +841,7 @@ figure.en-espera .video-control{display:none}
         </article>
         <article class="oferta rev">
           <p class="label">Paso 04</p>
-          <h3>Operación LegalOps</h3>
+          <h3>Operación</h3>
           <p class="para muted">Para áreas legales sin un equipo de operaciones propio. Operamos el sistema contigo hasta que tu equipo lo haga solo.</p>
           <ul class="recibes">
             <li>Tablero mensual de tiempos, volumen y riesgo.</li>
@@ -840,7 +862,7 @@ figure.en-espera .video-control{display:none}
         <p class="lead">Todas las plataformas trabajando juntas, con la misma IA y la misma base.</p>
       </div>
       <figure class="en-espera video-producto rev">
-        <video id="video-producto" muted loop playsinline preload="metadata" poster="video/plataformas-poster.jpg" width="1280" height="720" aria-label="Video sin audio con las plataformas de Veredo y sus beneficios: intake, revisión con IA, plantillas, firma electrónica, vencimientos, expedientes y tableros">
+        <video id="video-producto" muted loop playsinline preload="metadata" poster="video/plataformas-poster.jpg" width="1280" height="720" aria-label="Video sin audio con las plataformas de Veredo y sus beneficios: ventanilla de solicitudes, revisión con IA, plantillas, firma electrónica, vencimientos, expedientes y tableros">
           <source src="video/plataformas.mp4" type="video/mp4">
         </video>
         <button type="button" class="play-grande" data-video="video-producto"><svg class="ico" aria-hidden="true"><use href="#i-play"/></svg>Ver video · 26 s</button>
@@ -926,10 +948,10 @@ figure.en-espera .video-control{display:none}
         </div>
         <div class="paso-panel" role="tabpanel" id="mp-2" aria-labelledby="mt-2" tabindex="0" hidden>
           <div><h3>Medimos de dónde partimos.</h3><p>Sacamos la línea base de tiempos, volumen y riesgo con datos de tu operación. Sin ese dato no hay forma de saber si algo mejoró.</p></div>
-          <ul class="recibes"><li class="label" style="display:block;padding:0;border:0">Medimos</li><li><span><code class="var">tiempo_ciclo</code> Días de la solicitud a la aprobación.</span></li><li><span><code class="var">solicitudes_mes</code> Volumen por área.</span></li><li><span><code class="var">aprobaciones</code> Vueltas antes de firmar.</span></li><li><span><code class="var">riesgo_alto</code> Hallazgos y vencimientos sin atender.</span></li></ul>
+          <ul class="recibes"><li class="label" style="display:block;padding:0;border:0">Medimos</li><li><span><b>Tiempo de respuesta.</b> Días de la solicitud a la aprobación.</span></li><li><span><b>Volumen.</b> Solicitudes al mes por área.</span></li><li><span><b>Vueltas.</b> Revisiones antes de firmar.</span></li><li><span><b>Riesgo abierto.</b> Hallazgos y vencimientos sin atender.</span></li></ul>
         </div>
         <div class="paso-panel" role="tabpanel" id="mp-3" aria-labelledby="mt-3" tabindex="0" hidden>
-          <div><h3>Automatizamos donde el dato lo justifica.</h3><p>Plantillas, intake, CLM, flujos de aprobación e IA, cargados con las reglas de tu dirección jurídica. Migramos tu cartera actual.</p></div>
+          <div><h3>Automatizamos donde el dato lo justifica.</h3><p>Plantillas, ventanilla de solicitudes, gestión de contratos, flujos de aprobación e IA, cargados con las reglas de tu dirección jurídica. Migramos tu cartera actual.</p></div>
           <ul class="recibes"><li class="label" style="display:block;padding:0;border:0">Recibes</li><li>Las soluciones configuradas.</li><li>Tus reglas y plantillas cargadas.</li><li>Tu equipo capacitado.</li></ul>
         </div>
         <div class="paso-panel" role="tabpanel" id="mp-4" aria-labelledby="mt-4" tabindex="0" hidden>
@@ -950,9 +972,9 @@ figure.en-espera .video-control{display:none}
         <p class="lead">Cada solución funciona sola o conectada con las demás, con la misma IA y la misma base.</p>
       </div>
       <div class="grupos">
-        <div class="grupo rev"><h3>Contratos</h3><ul><li>Gestión de contratos (CLM)</li><li>Plantillas y generación de documentos</li><li>Revisión con IA</li><li>Firma electrónica</li><li>Vencimientos y renovaciones</li><li>Playbooks de negociación</li></ul></div>
+        <div class="grupo rev"><h3>Contratos</h3><ul><li>Gestión de contratos</li><li>Plantillas y generación de documentos</li><li>Revisión con IA</li><li>Firma electrónica</li><li>Vencimientos y renovaciones</li><li>Criterios de negociación</li></ul></div>
         <div class="grupo rev"><h3>Corporativo</h3><ul><li>Expedientes corporativos</li><li>Poderes y representantes</li><li>Litigios y despachos externos</li></ul></div>
-        <div class="grupo rev"><h3>Gestión</h3><ul><li>Intake legal</li><li>Flujos de aprobación</li><li>Tableros legales</li><li>Capacitación en IA legal</li></ul></div>
+        <div class="grupo rev"><h3>Gestión</h3><ul><li>Ventanilla única de solicitudes</li><li>Flujos de aprobación</li><li>Tableros legales</li><li>Capacitación en IA legal</li></ul></div>
       </div>
       <p class="medida-linea rev">¿Tu proceso no está aquí? Lo mapeamos y lo construimos. <a href="#diagnostico">Cuéntanos tu caso</a></p>
     </div>
@@ -1004,8 +1026,9 @@ figure.en-espera .video-control{display:none}
         <details><summary>¿Es un software o una consultoría?<svg class="ico" aria-hidden="true"><use href="#i-mas"/></svg></summary><p>Las dos cosas. Implementamos nuestras plataformas, las configuramos con tus reglas y las operamos contigo. Si tu proceso necesita algo que no existe, lo construimos.</p></details>
         <details><summary>¿Qué pasa con mi información si dejo de trabajar con ustedes?<svg class="ico" aria-hidden="true"><use href="#i-mas"/></svg></summary><p>Es tuya. Te entregamos toda tu información en formatos estándar y la eliminamos de nuestras plataformas cuando lo confirmes.</p></details>
         <details><summary>Pero ya trabajamos con otras IA (Claude, ChatGPT, Copilot).<svg class="ico" aria-hidden="true"><use href="#i-mas"/></svg></summary><p>Veredo no es otra IA. Es tu operación legal funcionando: la diseñamos, la configuramos con tus reglas y la operamos contigo.</p></details>
-        <details><summary>¿En qué se diferencia Veredo de Legalario o de Harvey?<svg class="ico" aria-hidden="true"><use href="#i-mas"/></svg></summary><p>Legalario es una plataforma mexicana de firma electrónica, creación de documentos y gestión de contratos. Harvey es un asistente de inteligencia artificial jurídica para grandes despachos y departamentos legales, que se licencia por abogado. Veredo implementa y opera las plataformas que tu área legal necesita (intake, contratos, poderes y litigios) con las reglas de tu dirección jurídica, y te acompaña hasta que tu equipo las usa solo.</p></details>
-        <details><summary>¿Tengo que contratar todo?<svg class="ico" aria-hidden="true"><use href="#i-mas"/></svg></summary><p>No. Cada solución funciona sola. Muchos equipos empiezan por intake o por gestión de contratos y suman lo demás después.</p></details>
+        <details><summary>¿Tengo que contratar todo?<svg class="ico" aria-hidden="true"><use href="#i-mas"/></svg></summary><p>No. Cada solución funciona sola. Muchos equipos empiezan por la ventanilla de solicitudes o por la gestión de contratos y suman lo demás después.</p></details>
+        <details><summary>¿Quién responde si la IA no detecta un riesgo?<svg class="ico" aria-hidden="true"><use href="#i-mas"/></svg></summary><p>La IA no sustituye la revisión de un abogado. Cada hallazgo lo valida alguien de tu equipo antes de usarse, y la plataforma no aprueba ni firma nada por sí sola. El criterio jurídico y la decisión final son de tu dirección jurídica. Lo que Veredo se compromete a entregar, y cómo responde por ello, queda por escrito en el contrato de servicio.</p></details>
+        <details><summary>¿Qué necesita mi equipo y cuánto tarda?<svg class="ico" aria-hidden="true"><use href="#i-mas"/></svg></summary><p>Una persona de tu dirección jurídica que defina las reglas y apruebe las plantillas, acceso a tus contratos y formatos actuales, y unas horas a la semana para revisar la configuración. El tiempo depende del alcance: la propuesta que recibes después del diagnóstico trae el calendario por etapas.</p></details>
         <details><summary>¿Reemplaza a mi equipo legal?<svg class="ico" aria-hidden="true"><use href="#i-mas"/></svg></summary><p>No. Le quita el trabajo operativo para que dedique su tiempo al criterio jurídico. La IA propone y tu equipo decide.</p></details>
         <details><summary>¿Trabajan con lo que ya tenemos?<svg class="ico" aria-hidden="true"><use href="#i-mas"/></svg></summary><p>Sí. Migramos tu cartera actual y conectamos con las herramientas que ya usa tu empresa cuando el proyecto lo requiere.</p></details>
       </div>
@@ -1016,7 +1039,7 @@ figure.en-espera .video-control{display:none}
   <section class="sec cierre" id="diagnostico" aria-labelledby="t-diagnostico">
     <div class="wrap cierre-grid">
       <div class="lado">
-        <p class="label">Diagnóstico LegalOps</p>
+        <p class="label">Diagnóstico</p>
         <h2 id="t-diagnostico">Agenda tu diagnóstico.</h2>
         <p>Cuéntanos dónde se atora tu área legal. Te respondemos con una propuesta para mapear, medir y decidir qué automatizar primero.</p>
         <ol class="pasos">
@@ -1033,17 +1056,26 @@ figure.en-espera .video-control{display:none}
         <fieldset class="campo"><legend>Hora</legend><div class="horas-agenda" id="horas-agenda" role="radiogroup" aria-label="Hora"></div></fieldset>
         <div class="agenda-listo" id="agenda-listo" hidden>
           <p class="agenda-resumen" id="agenda-resumen"></p>
-          <div class="fila">
-            <a class="btn btn-primario" id="agenda-google" href="#" target="_blank" rel="noopener">Enviar invitación con Google Calendar</a>
-            <a class="btn b-copiar" id="agenda-correo" href="mailto:contacto@veredo.com.mx">Enviar por correo</a>
+          <div class="campos">
+            <div class="campo"><label for="a-nombre">Nombre</label><input id="a-nombre" autocomplete="name" aria-describedby="e-a-nombre"><p class="err" id="e-a-nombre"></p></div>
+            <div class="campo"><label for="a-correo">Correo de trabajo</label><input id="a-correo" type="email" autocomplete="email" aria-describedby="e-a-correo"><p class="err" id="e-a-correo"></p></div>
+            <div class="campo"><label for="a-empresa">Empresa <span class="opc">(opcional)</span></label><input id="a-empresa" autocomplete="organization"></div>
           </div>
-          <p class="aviso">La invitación llega a contacto@veredo.com.mx y te confirmamos el horario por correo.</p>
+          <div class="fila"><button type="button" class="btn btn-primario" id="agenda-enviar">Solicitar este horario</button></div>
+          <p class="aviso">Te confirmamos el horario por correo. Usamos tus datos solo para agendar la llamada. Consulta el <a href="aviso-de-privacidad.html">aviso de privacidad</a>.</p>
+          <p class="aviso envio-error" id="agenda-error" role="alert" hidden></p>
+        </div>
+        <div class="enviado" id="agenda-ok" hidden tabindex="-1">
+          <h3>Recibimos tu solicitud.</h3>
+          <p id="agenda-ok-txt"></p>
+          <div class="fila"><a class="btn b-copiar" id="agenda-ics" href="#" download="llamada-veredo.ics">Agregar a mi calendario</a></div>
         </div>
       </div>
       <form class="form" id="pedido" novalidate aria-labelledby="t-form-escribe">
         <p class="tope"><span id="t-form-escribe">¿Prefieres escribirnos?</span></p>
         <div class="campos">
           <div class="campo"><label for="f-nombre">Nombre</label><input id="f-nombre" name="nombre" autocomplete="name" required aria-describedby="e-nombre"><p class="err" id="e-nombre"></p></div>
+          <div class="campo"><label for="f-correo">Correo de trabajo</label><input id="f-correo" name="correo" type="email" autocomplete="email" required aria-describedby="e-correo"><p class="err" id="e-correo"></p></div>
           <div class="campo"><label for="f-empresa">Empresa</label><input id="f-empresa" name="empresa" autocomplete="organization" required aria-describedby="e-empresa"><p class="err" id="e-empresa"></p></div>
           <div class="campo"><label for="f-puesto">Puesto <span class="opc">(opcional)</span></label><input id="f-puesto" name="puesto" autocomplete="organization-title"></div>
           <div class="campo"><label for="f-volumen">Contratos al mes <span class="opc">(opcional)</span></label>
@@ -1051,28 +1083,25 @@ figure.en-espera .video-control{display:none}
           </div>
           <fieldset class="campo ancho"><legend>¿Qué te interesa? <span class="opc">(opcional)</span></legend>
             <div class="opciones">
-              <label><input type="checkbox" id="o-diag" name="interes" value="Diagnóstico LegalOps"><span>Diagnóstico</span></label>
+              <label><input type="checkbox" id="o-diag" name="interes" value="Diagnóstico"><span>Diagnóstico</span></label>
               <label><input type="checkbox" id="o-impl" name="interes" value="Implementación"><span>Implementación</span></label>
-              <label><input type="checkbox" id="o-oper" name="interes" value="Operación LegalOps"><span>Operación</span></label>
+              <label><input type="checkbox" id="o-oper" name="interes" value="Operación"><span>Operación</span></label>
               <label><input type="checkbox" id="o-contr" name="interes" value="Contratos"><span>Contratos</span></label>
               <label><input type="checkbox" id="o-corp" name="interes" value="Expedientes y poderes"><span>Expedientes y poderes</span></label>
               <label><input type="checkbox" id="o-lit" name="interes" value="Litigios"><span>Litigios</span></label>
               <label><input type="checkbox" id="o-tab" name="interes" value="Tableros"><span>Tableros</span></label>
             </div>
           </fieldset>
-          <div class="campo ancho"><label for="f-atora">¿Dónde se atora hoy tu área legal? <span class="opc">(opcional)</span></label><textarea id="f-atora" name="atora" rows="3"></textarea></div>
+          <div class="campo ancho"><label for="f-atora">¿Dónde se atora hoy tu área legal? <span class="opc">(opcional)</span></label><textarea id="f-atora" name="atora" rows="3" maxlength="3000"></textarea></div>
+          <div class="campo ancho trampa" aria-hidden="true"><label for="f-sitio">Sitio web</label><input id="f-sitio" name="sitio" tabindex="-1" autocomplete="off"></div>
+          <label class="consiente ancho"><input type="checkbox" id="f-info"><span>Acepto recibir información de Veredo. <span class="opc">(opcional)</span></span></label>
         </div>
-        <button type="submit" class="btn btn-primario">Preparar mi mensaje <svg class="ico" aria-hidden="true"><use href="#i-flecha"/></svg></button>
-        <p class="aviso">Aviso de privacidad simplificado: usamos tus datos solo para responder tu solicitud y, si lo autorizas, enviarte información de Veredo. Esta página no guarda tus datos: arma un correo que tú envías. Consulta el <a href="aviso-de-privacidad.html">aviso de privacidad integral</a>.</p>
-        <div class="listo" id="listo" hidden tabindex="-1">
-          <h3>Tu mensaje está listo.</h3>
-          <pre id="mensaje"></pre>
-          <div class="fila">
-            <a class="btn btn-primario" id="abrir-correo" href="mailto:contacto@veredo.com.mx">Abrir en mi correo</a>
-            <button type="button" class="btn b-copiar" id="copiar-msg">Copiar mensaje</button>
-          </div>
-          <p class="aviso">O escríbenos a <code>contacto@veredo.com.mx</code></p>
-          <span class="estado" id="copiado" role="status" aria-live="polite"></span>
+        <button type="submit" class="btn btn-primario" id="f-enviar">Enviar <svg class="ico" aria-hidden="true"><use href="#i-flecha"/></svg></button>
+        <p class="aviso">Aviso de privacidad simplificado: usamos tus datos para responder tu solicitud y, solo si lo autorizas, para enviarte información de Veredo. Consulta el <a href="aviso-de-privacidad.html">aviso de privacidad integral</a>.</p>
+        <p class="aviso envio-error" id="f-error" role="alert" hidden></p>
+        <div class="enviado" id="listo" hidden tabindex="-1">
+          <h3>Recibimos tu mensaje.</h3>
+          <p id="listo-txt"></p>
         </div>
       </form>
       </div>
@@ -1134,6 +1163,16 @@ figure.en-espera .video-control{display:none}
     if('IntersectionObserver' in window){new IntersectionObserver(function(es){if(!es[0].isIntersecting&&!v.paused)v.pause();},{threshold:0}).observe(v);}
   });
 
+  // Envío de solicitudes: se guardan en la base de datos de Veredo
+  var SB_URL='https://icgijwbxvudbektmbatp.supabase.co',SB_KEY='sb_publishable_GQe1S6CqAne7SGGK34DySA_eycrKL-Q';
+  function val(id){return (document.getElementById(id).value||'').trim()}
+  function correoOk(x){return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(x)}
+  function marcarCampo(id,msj,ok){var c=document.getElementById(id),e=document.getElementById('e-'+id),mal=!ok(val(id));c.setAttribute('aria-invalid',mal?'true':'false');if(e)e.textContent=mal?msj:'';return !mal}
+  function enviarSolicitud(datos){
+    return fetch(SB_URL+'/rest/v1/rpc/solicitud_contacto_veredo',{method:'POST',headers:{'Content-Type':'application/json','apikey':SB_KEY},body:JSON.stringify({p:datos})})
+      .then(function(r){if(!r.ok)throw new Error('envio');return r.json()});
+  }
+
   // Agenda: días hábiles de las próximas dos semanas, bloques de 30 min en hora del centro de México (UTC-6)
   (function(){
     var cd=document.getElementById('dias-agenda'),ch=document.getElementById('horas-agenda');if(!cd)return;
@@ -1154,13 +1193,28 @@ figure.en-espera .video-control{display:none}
       var d=dias[elegido.dia],h=elegido.hora,fin=(function(){var p=h.split(':'),m=+p[0]*60+(+p[1])+30;return pad(Math.floor(m/60))+':'+pad(m%60);})();
       var texto=DIAS[d.getUTCDay()]+' '+d.getUTCDate()+' de '+MESES[d.getUTCMonth()]+', de '+h+' a '+fin+' h';
       document.getElementById('agenda-resumen').textContent=texto.charAt(0).toUpperCase()+texto.slice(1)+'.';
-      var empresa=(document.getElementById('f-empresa').value||'').trim();
-      var titulo='Llamada de diagnóstico con Veredo'+(empresa?': '+empresa:'');
-      var detalle='Llamada de 30 minutos para revisar dónde se atora el área legal y preparar la propuesta de diagnóstico.';
-      document.getElementById('agenda-google').href='https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent(titulo)+'&dates='+utc(d,h)+'/'+utc(d,fin)+'&details='+encodeURIComponent(detalle)+'&add='+encodeURIComponent('contacto@veredo.com.mx')+'&ctz=America/Mexico_City';
-      document.getElementById('agenda-correo').href='mailto:contacto@veredo.com.mx?subject='+encodeURIComponent(titulo)+'&body='+encodeURIComponent('Hola, equipo de Veredo:\n\nQuiero agendar una llamada de diagnóstico el '+texto+' (hora del centro de México).\n\nGracias.');
+      elegido.texto=texto;elegido.ini=utc(d,h);elegido.fin=utc(d,fin);
+      document.getElementById('agenda-ok').hidden=true;
       listo.hidden=false;
     }
+    function isoDe(c){return c.slice(0,4)+'-'+c.slice(4,6)+'-'+c.slice(6,8)+'T'+c.slice(9,11)+':'+c.slice(11,13)+':00Z';}
+    var bEnv=document.getElementById('agenda-enviar'),errA=document.getElementById('agenda-error');
+    bEnv.addEventListener('click',function(){
+      var okN=marcarCampo('a-nombre','Escribe tu nombre.',function(x){return !!x}),okC=marcarCampo('a-correo','Escribe un correo válido.',correoOk);
+      if(!okN){document.getElementById('a-nombre').focus();return}
+      if(!okC){document.getElementById('a-correo').focus();return}
+      var nombre=val('a-nombre'),correo=val('a-correo'),empresa=val('a-empresa');
+      errA.hidden=true;bEnv.setAttribute('aria-busy','true');bEnv.textContent='Enviando…';
+      enviarSolicitud({tipo:'llamada',nombre:nombre,correo:correo,empresa:empresa,horario:elegido.texto+' (hora del centro de México)',horario_inicio:isoDe(elegido.ini)}).then(function(){
+        document.getElementById('agenda-listo').hidden=true;
+        document.getElementById('agenda-ok-txt').textContent='Pediste una llamada el '+elegido.texto+' (hora del centro de México). Te confirmamos por correo a '+correo+'.';
+        var ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Veredo//Agenda//ES','METHOD:PUBLISH','BEGIN:VEVENT','UID:'+Date.now()+'@veredo.com.mx','DTSTAMP:'+new Date().toISOString().replace(/[-:]/g,'').slice(0,15)+'Z','DTSTART:'+elegido.ini,'DTEND:'+elegido.fin,'SUMMARY:Llamada de diagnóstico con Veredo'+(empresa?' · '+empresa.replace(/[,;\\]/g,' '):''),'DESCRIPTION:Llamada de 30 minutos. Por confirmar por correo.','END:VEVENT','END:VCALENDAR'].join('\r\n');
+        document.getElementById('agenda-ics').href='data:text/calendar;charset=utf-8,'+encodeURIComponent(ics);
+        var ok=document.getElementById('agenda-ok');ok.hidden=false;ok.focus({preventScroll:true});
+      }).catch(function(){
+        errA.innerHTML='No pudimos enviar tu solicitud. Escríbenos a <a href="mailto:contacto@veredo.com.mx?subject='+encodeURIComponent('Llamada de diagnóstico')+'&body='+encodeURIComponent('Quiero agendar una llamada el '+elegido.texto+' (hora del centro de México).')+'">contacto@veredo.com.mx</a>.';errA.hidden=false;
+      }).then(function(){bEnv.removeAttribute('aria-busy');bEnv.textContent='Solicitar este horario';});
+    });
     function elegirDia(b){elegido.dia=+b.getAttribute('data-v');radio(cd,bd,b.getAttribute('data-v'));actualizar();}
     function elegirHora(b){elegido.hora=b.getAttribute('data-v');radio(ch,bh,elegido.hora);actualizar();}
     bd.forEach(function(b){b.addEventListener('click',function(){elegirDia(b);});});
@@ -1247,25 +1301,24 @@ figure.en-espera .video-control{display:none}
   }
 
   // Formulario
-  var f=document.getElementById('pedido'),listo=document.getElementById('listo'),msg=document.getElementById('mensaje'),ok=document.getElementById('copiado');
-  var v=function(id){return document.getElementById(id).value.trim()};
-  var textos={'f-nombre':'Escribe tu nombre.','f-empresa':'Escribe el nombre de tu empresa.'};
-  function marcar(id){var c=document.getElementById(id),e=document.getElementById('e-'+id.slice(2)),mal=!v(id);c.setAttribute('aria-invalid',mal?'true':'false');e.textContent=mal?textos[id]:'';return !mal;}
-  Object.keys(textos).forEach(function(id){document.getElementById(id).addEventListener('input',function(){if(this.getAttribute('aria-invalid')==='true')marcar(id)})});
+  var f=document.getElementById('pedido'),listo=document.getElementById('listo'),errF=document.getElementById('f-error'),bF=document.getElementById('f-enviar');
+  var reglas=[['f-nombre','Escribe tu nombre.',function(x){return !!x}],['f-correo','Escribe un correo válido.',correoOk],['f-empresa','Escribe el nombre de tu empresa.',function(x){return !!x}]];
+  function campoF(r){var c=document.getElementById(r[0]),e=document.getElementById('e-'+r[0].slice(2)),mal=!r[2](val(r[0]));c.setAttribute('aria-invalid',mal?'true':'false');e.textContent=mal?r[1]:'';return !mal}
+  reglas.forEach(function(r){document.getElementById(r[0]).addEventListener('input',function(){if(this.getAttribute('aria-invalid')==='true')campoF(r)})});
   f.addEventListener('submit',function(e){
     e.preventDefault();
-    var a=marcar('f-nombre'),b=marcar('f-empresa');
-    if(!a){document.getElementById('f-nombre').focus();return}
-    if(!b){document.getElementById('f-empresa').focus();return}
+    for(var k=0;k<reglas.length;k++){if(!campoF(reglas[k])){document.getElementById(reglas[k][0]).focus();return}}
     var intereses=[].slice.call(f.querySelectorAll('input[name="interes"]:checked')).map(function(c){return c.value}).join(', ');
-    var t='Hola, equipo de Veredo:\n\nQuiero agendar un diagnóstico.\n\nNombre: '+v('f-nombre')+'\nEmpresa: '+v('f-empresa')+(v('f-puesto')?'\nPuesto: '+v('f-puesto'):'')+(v('f-volumen')?'\nContratos al mes: '+v('f-volumen'):'')+(intereses?'\nMe interesa: '+intereses:'')+(v('f-atora')?'\n\nDónde se atora hoy nuestra área legal:\n'+v('f-atora'):'')+'\n\nGracias.';
-    msg.textContent=t;listo.hidden=false;ok.textContent='';
-    document.getElementById('abrir-correo').href='mailto:contacto@veredo.com.mx?subject='+encodeURIComponent('Diagnóstico Veredo: '+v('f-empresa'))+'&body='+encodeURIComponent(t);
-    listo.focus({preventScroll:true});listo.scrollIntoView({behavior:reduce?'auto':'smooth',block:'nearest'});
-  });
-  document.getElementById('copiar-msg').addEventListener('click',function(){
-    function sel(){var r=document.createRange();r.selectNodeContents(msg);var s=window.getSelection();s.removeAllRanges();s.addRange(r);ok.textContent='Texto seleccionado: cópialo con Ctrl+C o Cmd+C.'}
-    try{navigator.clipboard.writeText(msg.textContent).then(function(){ok.textContent='Mensaje copiado.'},sel)}catch(err){sel()}
+    var datos={tipo:'mensaje',nombre:val('f-nombre'),correo:val('f-correo'),empresa:val('f-empresa'),puesto:val('f-puesto'),volumen:val('f-volumen'),intereses:intereses,mensaje:val('f-atora'),sitio:val('f-sitio'),acepta_informacion:document.getElementById('f-info').checked};
+    errF.hidden=true;bF.setAttribute('aria-busy','true');
+    enviarSolicitud(datos).then(function(){
+      document.getElementById('listo-txt').textContent='Gracias, '+datos.nombre.split(' ')[0]+'. Te escribimos a '+datos.correo+' para agendar el diagnóstico.';
+      f.querySelectorAll('.campos, #f-enviar, .aviso').forEach(function(x){x.hidden=true});
+      listo.hidden=false;listo.focus({preventScroll:true});listo.scrollIntoView({behavior:reduce?'auto':'smooth',block:'nearest'});
+    }).catch(function(){
+      var cuerpo='Nombre: '+datos.nombre+'\nEmpresa: '+datos.empresa+(datos.mensaje?'\n\n'+datos.mensaje:'');
+      errF.innerHTML='No pudimos enviar tu mensaje. Escríbenos a <a href="mailto:contacto@veredo.com.mx?subject='+encodeURIComponent('Diagnóstico Veredo: '+datos.empresa)+'&body='+encodeURIComponent(cuerpo)+'">contacto@veredo.com.mx</a>.';errF.hidden=false;
+    }).then(function(){bF.removeAttribute('aria-busy')});
   });
 })();
 </script>
