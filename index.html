@@ -693,6 +693,56 @@ button[aria-busy="true"]{opacity:.6;pointer-events:none}
 /* Entrada al hacer scroll: visible en reposo; solo se anima con JS y movimiento permitido */
 .js-anim .rev{opacity:.001;transform:translateY(20px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
 .js-anim .rev.visto{opacity:1;transform:none}
+
+/* ---------------- Credibilidad visual */
+/* Hero: retícula de puntos, símbolo de marca y tarjetas de producto flotando */
+.hero-texto{background-image:radial-gradient(circle at 1px 1px,rgba(18,20,24,.09) 1px,transparent 0);background-size:22px 22px}
+.bloque{position:relative;overflow:hidden}
+.bloque .marca-v{position:absolute;right:-6%;bottom:-18%;width:58%;max-width:520px;fill:#FFFFFF;opacity:.14;pointer-events:none}
+.bloque .video-hero{z-index:1}
+.flota{display:none}
+@media (min-width:1000px){
+  .hero .bloque{position:relative}
+  .flota{display:grid;position:absolute;z-index:3;gap:6px;background:#FFFFFF;color:#121418;border-radius:12px;padding:14px 16px;min-width:230px;box-shadow:0 18px 40px -12px rgba(18,20,24,.35),0 2px 6px rgba(18,20,24,.08);animation:flota 7s ease-in-out infinite}
+  .flota .f-tag{justify-self:start;font:600 11px/16px var(--sans);padding:3px 10px;border-radius:999px}
+  .flota .f-riesgo{color:#B4231B;background:#FBEBEB}
+  .flota .f-ok{color:#1E6B3A;background:#E3F3E8;display:inline-flex;align-items:center;gap:6px}
+  .flota .f-ok svg{width:12px;height:12px}
+  .flota b{font:800 15px/20px var(--sans);letter-spacing:-.01em}
+  .flota span.m{font:500 11px/14px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:#5B6270}
+  .flota-1{top:11%;left:20px;animation-delay:-1.5s}
+  .flota-2{bottom:9%;right:40px;animation-delay:-4s}
+}
+@keyframes flota{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+/* Banda de garantías bajo el hero */
+.garantias{border-bottom:1px solid var(--line);background:var(--surface)}
+.garantias ul{display:flex;gap:var(--s8);overflow-x:auto;scrollbar-width:none;padding-block:22px}
+.garantias ul::-webkit-scrollbar{display:none}
+.garantias li{display:flex;align-items:center;gap:10px;white-space:nowrap;font:500 12px/16px var(--mono);letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
+.garantias li .ico{width:20px;height:20px;color:var(--mandarina-text);flex:none}
+@media (min-width:1000px){.garantias ul{display:grid;grid-template-columns:repeat(5,1fr);gap:24px;overflow:visible}.garantias li{white-space:normal;line-height:18px}}
+
+/* Cinta de documentos: amplitud de lo que se maneja */
+.cinta{overflow:hidden;border-block:1px solid var(--line);padding-block:26px;margin-top:var(--s16);-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.cinta-pista{display:flex;width:max-content;animation:cinta 48s linear infinite}
+.cinta:hover .cinta-pista{animation-play-state:paused}
+.cinta-pista span{display:inline-flex;align-items:center;gap:28px;padding-right:28px;font:800 clamp(22px,2.4vw,34px)/1 var(--sans);letter-spacing:-.02em;color:var(--ink);white-space:nowrap}
+.cinta-pista span:nth-child(even){color:transparent;-webkit-text-stroke:1px var(--line-strong)}
+.cinta-pista span::after{content:"";width:10px;height:10px;background:var(--mandarina);flex:none}
+@keyframes cinta{to{transform:translateX(-50%)}}
+
+/* Tarjetas que responden al pasar el cursor */
+@media (hover:hover){
+  .oferta,.grupo{transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+  .oferta:hover,.grupo:hover{transform:translateY(-6px)}
+  .oferta:hover h3,.grupo:hover h3{color:var(--mandarina-text)}
+}
+
+/* Pie con la marca en grande */
+.pie{position:relative;overflow:hidden}
+.pie-marca{display:block;width:100%;height:auto;margin-top:var(--s12);opacity:.07;pointer-events:none}
+.pie-marca .w{fill:var(--ink)}
 </style>
 </head>
 <body>
@@ -768,12 +818,27 @@ button[aria-busy="true"]{opacity:.6;pointer-events:none}
       </div>
     </div>
     <div class="bloque">
+      <svg class="marca-v" viewBox="0 0 100 128" aria-hidden="true"><path d="M0.00,24.00 L28.00,24.00 L48.60,83.40 L72.00,0.00 L100.00,0.00 L64.00,128.00 L36.00,128.00 Z"/></svg>
+      <div class="flota flota-1" aria-hidden="true"><span class="f-tag f-riesgo">Riesgo alto</span><b>Intereses moratorios</b><span class="m">Cláusula quinta · con cita</span></div>
+      <div class="flota flota-2" aria-hidden="true"><span class="f-tag f-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg>Firmado</span><b>Con e.firma desde el portal</b><span class="m">Constancia NOM-151</span></div>
       <figure class="video-hero">
         <video id="video-hero" muted loop playsinline preload="auto" poster="video/servicios-poster.jpg" width="1280" height="720" aria-label="Video sin audio: Diagnóstico, Implementación y Operación, y las soluciones que implementamos">
           <source src="video/servicios.mp4" type="video/mp4">
         </video>
         <button type="button" class="video-control" id="video-control" aria-pressed="false" aria-label="Pausar video"><svg class="ico" aria-hidden="true"><use href="#i-pausa"/></svg></button>
       </figure>
+    </div>
+  </section>
+
+  <section class="garantias" aria-label="Cómo protege Veredo tu información">
+    <div class="wrap">
+      <ul>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-firma"/></svg>e.firma y constancia NOM-151</li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-candado"/></svg>Cifrado en reposo y en tránsito</li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-db"/></svg>Datos separados por empresa</li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-historial"/></svg>Bitácora de cada acceso</li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-ia"/></svg>La IA cita el texto exacto</li>
+      </ul>
     </div>
   </section>
 
@@ -975,6 +1040,7 @@ button[aria-busy="true"]{opacity:.6;pointer-events:none}
       </div>
       <p class="medida-linea rev">¿Tu proceso no está aquí? Lo mapeamos y lo construimos. <a href="#diagnostico">Cuéntanos tu caso</a></p>
     </div>
+    <div class="cinta" aria-hidden="true"><div class="cinta-pista"><span>Prestación de servicios</span><span>Suministro</span><span>Arrendamiento</span><span>Confidencialidad</span><span>Compraventa</span><span>Distribución</span><span>Poderes</span><span>Actas constitutivas</span><span>Convenios modificatorios</span><span>Litigios</span><span>Comodato</span><span>Licencias</span><span>Prestación de servicios</span><span>Suministro</span><span>Arrendamiento</span><span>Confidencialidad</span><span>Compraventa</span><span>Distribución</span><span>Poderes</span><span>Actas constitutivas</span><span>Convenios modificatorios</span><span>Litigios</span><span>Comodato</span><span>Licencias</span></div></div>
   </section>
 
   <!-- Confidencialidad -->
@@ -1115,6 +1181,7 @@ button[aria-busy="true"]{opacity:.6;pointer-events:none}
       <div><h4>Soluciones</h4><ul><li><a href="#soluciones">Contratos</a></li><li><a href="#soluciones">Corporativo</a></li><li><a href="#soluciones">Gestión y datos</a></li></ul></div>
       <div><h4>Contacto</h4><ul><li><a href="#agenda">Agenda una llamada</a></li><li><a href="mailto:contacto@veredo.com.mx">contacto@veredo.com.mx</a></li></ul></div>
     </div>
+    <svg class="pie-marca" viewBox="0 0 349.9 74.5" aria-hidden="true"><use href="#lockup"/></svg>
     <div class="legal"><span>© 2026 Veredo.</span><a href="aviso-de-privacidad.html">Aviso de privacidad</a><span>Capturas con datos de demostración.</span></div>
   </div>
 </footer>
@@ -1269,7 +1336,8 @@ button[aria-busy="true"]{opacity:.6;pointer-events:none}
     var tl=g.timeline({defaults:{ease:'expo.out'}});
     tl.from('.titular .linea>span',{yPercent:110,duration:1.1,stagger:.12})
       .from('.hero-texto .lead, .hero-texto .acciones',{y:16,opacity:0,duration:.6,stagger:.07,ease:'power2.out'},'-=.7')
-      .from('.video-hero',{y:60,opacity:0,duration:1.1},.25);
+      .from('.video-hero',{y:60,opacity:0,duration:1.1},.25)
+      .from('.flota',{y:24,opacity:0,duration:.9,stagger:.2,clearProps:'transform'},.9);
 
 
     // 3. Producto: la pantalla crece al entrar, como si se acercara
