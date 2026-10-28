@@ -743,6 +743,21 @@ button[aria-busy="true"]{opacity:.6;pointer-events:none}
 .pie{position:relative;overflow:hidden}
 .pie-marca{display:block;width:100%;height:auto;margin-top:var(--s12);opacity:.07;pointer-events:none}
 .pie-marca .w{fill:var(--ink)}
+
+/* ---------------- Animación */
+#progreso{position:fixed;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--mandarina-light),var(--mandarina));transform-origin:0 50%;transform:scaleX(0);z-index:60;pointer-events:none}
+.palabra{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.1em;margin-bottom:-.1em}
+.palabra>span{display:inline-block;will-change:transform}
+.bloque,.caso-banda,.cierre{background-size:180% 180%;animation:fluye 16s ease-in-out infinite alternate}
+@keyframes fluye{0%{background-position:0% 0%}100%{background-position:100% 100%}}
+.btn-primario{position:relative;overflow:hidden;isolation:isolate}
+.btn-primario::after{content:"";position:absolute;inset:-2px;z-index:-1;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.55) 50%,transparent 70%);transform:translateX(-120%);transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.btn-primario:hover::after{transform:translateX(120%)}
+.cf-antes s{text-decoration:none;background:linear-gradient(currentColor,currentColor) 0 58%/100% 3px no-repeat}
+.anim-on .cf-antes s{background-size:0% 3px}
+.hero .bloque{perspective:1400px}
+.video-hero{transform-style:preserve-3d;will-change:transform}
+.gsap-cinta .cinta-pista{animation:none}
 </style>
 </head>
 <body>
@@ -785,6 +800,7 @@ button[aria-busy="true"]{opacity:.6;pointer-events:none}
   </defs>
 </svg>
 
+<div id="progreso" aria-hidden="true"></div>
 <header class="top">
   <nav class="wrap nav" aria-label="Principal">
     <a href="#inicio" aria-label="Veredo, inicio"><svg class="logo" viewBox="0 0 349.9 74.5" role="img" aria-label="Veredo"><use href="#lockup"/></svg></a>
@@ -1353,6 +1369,65 @@ button[aria-busy="true"]{opacity:.6;pointer-events:none}
       window.veredoIrAPaso=function(i){window.scrollTo({top:st.start+(st.end-st.start)*(i+.5)/4,behavior:'smooth'});};
       return function(){window.veredoIrAPaso=null;mUI.classList.remove('fijo');};
     });
+
+    // ---------- Animaciones de alto impacto ----------
+    document.documentElement.classList.add('anim-on');
+    var fino=window.matchMedia('(hover: hover) and (pointer: fine) and (min-width: 1000px)').matches;
+
+    // Barra de progreso de lectura
+    g.to('#progreso',{scaleX:1,ease:'none',scrollTrigger:{start:0,end:'max',scrub:.3}});
+
+    // Banda de garantías: entra después del titular
+    tl.from('.garantias li',{y:14,opacity:0,duration:.5,stagger:.08,ease:'power2.out'},1.1);
+
+    // Títulos: cada palabra sube desde una ranura
+    [].slice.call(document.querySelectorAll('main h2, section h2')).forEach(function(h){
+      if(h.closest('.hero')||h.dataset.partido)return;
+      var txt=h.textContent.trim();if(!txt)return;
+      h.dataset.partido='1';h.setAttribute('aria-label',txt);
+      h.innerHTML=txt.split(/\s+/).map(function(w){return '<span class="palabra" aria-hidden="true"><span>'+w+'</span></span>'}).join(' ');
+      g.from(h.querySelectorAll('.palabra>span'),{yPercent:115,rotate:4,duration:1,ease:'expo.out',stagger:.045,scrollTrigger:{trigger:h,start:'top 88%'}});
+    });
+
+    // Listas: los renglones entran en cascada
+    ST.batch('.recibes li, .grupo li, .conf-puntos li, .caso-historia li, .dolores li, .preguntas details',{start:'top 92%',once:true,
+      onEnter:function(b){g.from(b,{y:22,opacity:0,duration:.7,ease:'power3.out',stagger:.07,clearProps:'transform,opacity'})}});
+
+    // Caso: la tachadura se dibuja y la cifra nueva aparece con impulso
+    g.timeline({scrollTrigger:{trigger:'.caso-cifra',start:'top 80%'}})
+      .to('.cf-antes s',{backgroundSize:'100% 3px',duration:.6,ease:'power2.inOut'})
+      .from('.cf-ahora',{scale:.55,opacity:0,transformOrigin:'0% 100%',duration:.9,ease:'back.out(2.2)'},'-=.1');
+
+    // Símbolo del hero: se desplaza y gira al hacer scroll
+    g.to('.marca-v',{yPercent:-30,rotate:-6,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+
+    // Marca del pie: aparece al llegar al final
+    g.fromTo('.pie-marca',{yPercent:35,opacity:0},{yPercent:0,opacity:.07,ease:'none',scrollTrigger:{trigger:'.pie',start:'top 95%',end:'bottom bottom',scrub:true}});
+
+    // Cinta de documentos: corre sola y acelera con la velocidad del scroll
+    var pista=document.querySelector('.cinta-pista');
+    if(pista){document.documentElement.classList.add('gsap-cinta');
+      var corre=g.to(pista,{xPercent:-50,duration:48,ease:'none',repeat:-1});
+      ST.create({trigger:'.cinta',start:'top bottom',end:'bottom top',onUpdate:function(s){var v=Math.min(6,1+Math.abs(s.getVelocity())/400);g.to(corre,{timeScale:v*(s.direction<0?-1:1),duration:.2,overwrite:true});g.to(corre,{timeScale:1,duration:1.2,delay:.25,ease:'power2.out'});}});
+      var cinta=document.querySelector('.cinta');cinta.addEventListener('mouseenter',function(){g.to(corre,{timeScale:.15,duration:.4})});cinta.addEventListener('mouseleave',function(){g.to(corre,{timeScale:1,duration:.6})});
+    }
+
+    if(fino){
+      // Hero en 3D: el video y las tarjetas siguen al cursor con distinta profundidad
+      var heroSec=document.querySelector('.hero'),figHero=document.querySelector('.video-hero'),f1=document.querySelector('.flota-1'),f2=document.querySelector('.flota-2');
+      var rx=g.quickTo(figHero,'rotationX',{duration:.8,ease:'power3'}),ry=g.quickTo(figHero,'rotationY',{duration:.8,ease:'power3'});
+      var a1=g.quickTo(f1,'x',{duration:1,ease:'power3'}),b1=g.quickTo(f1,'y',{duration:1,ease:'power3'}),a2=g.quickTo(f2,'x',{duration:1,ease:'power3'}),b2=g.quickTo(f2,'y',{duration:1,ease:'power3'});
+      heroSec.addEventListener('mousemove',function(e){var r=heroSec.getBoundingClientRect(),px=(e.clientX-r.left)/r.width-.5,py=(e.clientY-r.top)/r.height-.5;
+        ry(px*7);rx(-py*6);a1(px*-26);b1(py*-18);a2(px*30);b2(py*22);});
+      heroSec.addEventListener('mouseleave',function(){rx(0);ry(0);a1(0);b1(0);a2(0);b2(0);});
+
+      // Botones principales magnéticos
+      [].slice.call(document.querySelectorAll('.btn-primario')).forEach(function(b){
+        var mx=g.quickTo(b,'x',{duration:.4,ease:'power3'}),my=g.quickTo(b,'y',{duration:.4,ease:'power3'});
+        b.addEventListener('mousemove',function(e){var r=b.getBoundingClientRect();mx((e.clientX-r.left-r.width/2)*.25);my((e.clientY-r.top-r.height/2)*.35);});
+        b.addEventListener('mouseleave',function(){g.to(b,{x:0,y:0,duration:.8,ease:'elastic.out(1,.4)'});});
+      });
+    }
     window.addEventListener('load',function(){ST.refresh();});
   }
 
